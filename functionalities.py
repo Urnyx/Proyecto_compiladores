@@ -41,4 +41,4 @@ desde(i hasta 10){
 }
 '''
 
-print(ejecutar(data))
+# print(ejecutar(data))

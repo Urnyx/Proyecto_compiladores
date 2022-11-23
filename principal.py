@@ -4,11 +4,13 @@ from expresiones import *
 from instrucciones import *
 
 result = ''
+res = []
     
 def procesar_imprimir(instr, ts) :
     global result
-    print('> ',resolver_cadena(instr.cad, ts))
-    result += resolver_cadena(instr.cad, ts) +'\n'
+    res.append(resolver_cadena(instr.cad, ts))
+    # print('> ',resolver_cadena(instr.cad, ts))
+    result = result + resolver_cadena(instr.cad, ts) +'\n'
     
 def procesar_definicion(instr, ts) :
     simbolo = TS.Simbolo(instr.id, TS.TIPO_DATO.NUMERO, 0)      # inicializamos con 0 como valor por defecto
@@ -130,10 +132,7 @@ def mostrar(input):
 
 data='''
 anota(2)[;
-
-def (x){
-    anota(x)
-}
 '''
 
-print(run(data))
+
+# print(mostrar(data))
