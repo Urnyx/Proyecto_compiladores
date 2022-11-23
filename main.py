@@ -9,9 +9,10 @@ app = Flask(__name__,template_folder='templates')
 def home(): 
     return render_template('index.html')
 
-@app.route('/',methods = ['GET','POST'])
+@app.route('/check',methods = ['GET','POST'])
 def check():    
-    result= ''
+    resultL= ''
+    resultE=''
     if request.method == 'POST':
         text = request.form["syntax"]
         try:
@@ -20,20 +21,19 @@ def check():
                 syntax = F(text)
                 syntax.saveTokens()
                 tokens = syntax.getTokens()
-                result = tokens
-            return render_template('index.html',result=result,text=text)   
+                resultL = tokens
+            return render_template('index.html',result=resultL,text=text)   
         except:
-            result=''
-            result = ejecutarCodigo(text)
-            print(result)
-            return render_template('index.html',result=result,text=text)
+            resultE = ejecutarCodigo(text)
+            print(resultE)
+            return render_template('index.html',result=resultE,text=text)
     
-    return render_template('index.html',result=result,text=text)
+    return render_template('index.html',result=resultL,text=text)
     
         
 def ejecutarCodigo(text):    
     syntax = ejecutar(text)
-        
+    
     return syntax
 
 if __name__ == "__main__":

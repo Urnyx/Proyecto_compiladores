@@ -22,11 +22,14 @@ class funtions:
     
 
 def ejecutar(sintax):    
-    result = ""    
-    result += mostrar(sintax)+"\n"
+    res = ''
     
-    return result
-        
+    for i in mostrar(sintax):
+        if i != None:
+           res += i +"\n"
+
+    return res
+
 data = '''
 dca x[;
 
@@ -35,10 +38,6 @@ x-:2[;
 anota(x)[;
 
 anota(8)[;
-
-desde(i hasta 10){
-    anota(i)[;
-}
 '''
 
 # print(ejecutar(data))

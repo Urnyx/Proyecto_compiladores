@@ -3,14 +3,12 @@ import ts as TS
 from expresiones import *
 from instrucciones import *
 
-result = ''
-res = []
     
 def procesar_imprimir(instr, ts) :
-    global result
-    res.append(resolver_cadena(instr.cad, ts))
+    result = ''
     # print('> ',resolver_cadena(instr.cad, ts))
-    result = result + resolver_cadena(instr.cad, ts) +'\n'
+    result=(resolver_cadena(instr.cad, ts))
+    return result
     
 def procesar_definicion(instr, ts) :
     simbolo = TS.Simbolo(instr.id, TS.TIPO_DATO.NUMERO, 0)      # inicializamos con 0 como valor por defecto
@@ -101,9 +99,10 @@ def resolver_expresion_aritmetica(expNum, ts) :
 
 
 def procesar_instrucciones(instrucciones, ts) :
+    res =[]
     ## lista de instrucciones recolectadas
     for instr in instrucciones :
-        if isinstance(instr, Imprimir) : procesar_imprimir(instr, ts)
+        if isinstance(instr, Imprimir) : res.append(procesar_imprimir(instr, ts))
         elif isinstance(instr, Definicion) : procesar_definicion(instr, ts)
         elif isinstance(instr, Asignacion) : procesar_asignacion(instr, ts)
         elif isinstance(instr, Mientras) : procesar_mientras(instr, ts)
@@ -113,6 +112,7 @@ def procesar_instrucciones(instrucciones, ts) :
         elif isinstance(instr, Funcion) : procesar_for(instr, ts)
         elif isinstance(instr, FuncionCall) : procesar_for(instr, ts)
         else : print('Error: instrucción no válida')
+    return res
 
 f = open("entrada.txt", "r")
 input = f.read()
@@ -120,18 +120,18 @@ input = f.read()
 def run(input):
     instrucciones = g.parse(input)
     ts_global = TS.TablaDeSimbolos()
-    # print(instrucciones)
-    return str(procesar_instrucciones(instrucciones, ts_global))
+    return procesar_instrucciones(instrucciones, ts_global)
     
 def mostrar(input):
     try:
-        run(input)
-        return result
+        return run(input)
     except:
         return 'error'
 
 data='''
 anota(2)[;
+
+anota(4)[;
 '''
 
 
