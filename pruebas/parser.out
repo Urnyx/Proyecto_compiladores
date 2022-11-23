@@ -1,0 +1,2811 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    BREAK
+    DECIMAL
+    DEF
+    DOBPUNTO
+    ELIF
+    FOR
+    IN
+    MAYIGUAL
+    MENIGUAL
+    NIGUALQUE
+    PRINT
+    RANGE
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> function program
+Rule 2     program -> external-declaration program
+Rule 3     program -> empty
+Rule 4     external-declaration -> type assignment PTCOMA
+Rule 5     declaration -> type assignment PTCOMA
+Rule 6     declaration -> assignment PTCOMA
+Rule 7     declaration -> function_call PTCOMA
+Rule 8     assignment -> ID IGUAL assignment
+Rule 9     assignment -> ID IGUAL function_call
+Rule 10    assignment -> ID COMA assignment
+Rule 11    assignment -> ENTERO COMA assignment
+Rule 12    assignment -> ID MAS assignment
+Rule 13    assignment -> ID MENOS assignment
+Rule 14    assignment -> ID POR assignment
+Rule 15    assignment -> ID DIVIDIDO assignment
+Rule 16    assignment -> ENTERO MAS assignment
+Rule 17    assignment -> ENTERO MENOS assignment
+Rule 18    assignment -> ENTERO POR assignment
+Rule 19    assignment -> ENTERO DIVIDIDO assignment
+Rule 20    assignment -> STRING
+Rule 21    assignment -> PARIZQ assignment PARDER
+Rule 22    assignment -> MENOS assignment
+Rule 23    assignment -> ENTERO MAS MAS
+Rule 24    assignment -> ID MAS MAS
+Rule 25    assignment -> ENTERO MENOS MENOS
+Rule 26    assignment -> ID MENOS MENOS
+Rule 27    assignment -> ENTERO
+Rule 28    assignment -> ID
+Rule 29    function_call -> ID PARIZQ PARDER
+Rule 30    function_call -> ID PARIZQ assignment PARDER
+Rule 31    function -> type ID PARIZQ argument_list_option PARDER compound_statement
+Rule 32    argument_list_option -> argument_list
+Rule 33    argument_list_option -> empty
+Rule 34    argument_list -> argument_list COMA argument
+Rule 35    argument_list -> argument
+Rule 36    argument -> type ID
+Rule 37    compound_statement -> LLAVIZQ statement_list LLAVDER
+Rule 38    statement_list -> statement_list statement
+Rule 39    statement_list -> empty
+Rule 40    statement -> iteration_statement
+Rule 41    statement -> declaration
+Rule 42    statement -> selection_statement
+Rule 43    statement -> return-statement
+Rule 44    type -> INT
+Rule 45    type -> FLOAT
+Rule 46    type -> CHAR
+Rule 47    type -> VOID
+Rule 48    iteration_statement -> WHILE PARIZQ expression PARDER compound_statement
+Rule 49    iteration_statement -> WHILE PARIZQ expression PARDER statement
+Rule 50    selection_statement -> IF PARIZQ expression PARDER compound_statement
+Rule 51    selection_statement -> IF PARIZQ expression PARDER statement
+Rule 52    selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE compound_statement
+Rule 53    selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE statement
+Rule 54    selection_statement -> IF PARIZQ expression PARDER statement ELSE compound_statement
+Rule 55    selection_statement -> IF PARIZQ expression PARDER statement ELSE statement
+Rule 56    return-statement -> RETURN PTCOMA
+Rule 57    return-statement -> RETURN expression PTCOMA
+Rule 58    expression -> expression IGUALQUE expression
+Rule 59    expression -> expression MENQUE expression
+Rule 60    expression -> expression MAYQUE expression
+Rule 61    expression -> expression AND expression
+Rule 62    expression -> expression OR expression
+Rule 63    expression -> assignment
+Rule 64    empty -> <empty>
+
+Terminals, with rules where they appear
+
+AND                  : 61
+BREAK                : 
+CHAR                 : 46
+COMA                 : 10 11 34
+DECIMAL              : 
+DEF                  : 
+DIVIDIDO             : 15 19
+DOBPUNTO             : 
+ELIF                 : 
+ELSE                 : 52 53 54 55
+ENTERO               : 11 16 17 18 19 23 25 27
+FLOAT                : 45
+FOR                  : 
+ID                   : 8 9 10 12 13 14 15 24 26 28 29 30 31 36
+IF                   : 50 51 52 53 54 55
+IGUAL                : 8 9
+IGUALQUE             : 58
+IN                   : 
+INT                  : 44
+LLAVDER              : 37
+LLAVIZQ              : 37
+MAS                  : 12 16 23 23 24 24
+MAYIGUAL             : 
+MAYQUE               : 60
+MENIGUAL             : 
+MENOS                : 13 17 22 25 25 26 26
+MENQUE               : 59
+NIGUALQUE            : 
+OR                   : 62
+PARDER               : 21 29 30 31 48 49 50 51 52 53 54 55
+PARIZQ               : 21 29 30 31 48 49 50 51 52 53 54 55
+POR                  : 14 18
+PRINT                : 
+PTCOMA               : 4 5 6 7 56 57
+RANGE                : 
+RETURN               : 56 57
+STRING               : 20
+VOID                 : 47
+WHILE                : 48 49
+error                : 
+
+Nonterminals, with rules where they appear
+
+argument             : 34 35
+argument_list        : 32 34
+argument_list_option : 31
+assignment           : 4 5 6 8 10 11 12 13 14 15 16 17 18 19 21 22 30 63
+compound_statement   : 31 48 50 52 52 53 54
+declaration          : 41
+empty                : 3 33 39
+expression           : 48 49 50 51 52 53 54 55 57 58 58 59 59 60 60 61 61 62 62
+external-declaration : 2
+function             : 1
+function_call        : 7 9
+iteration_statement  : 40
+program              : 1 2 0
+return-statement     : 43
+selection_statement  : 42
+statement            : 38 49 51 53 54 55 55
+statement_list       : 37 38
+type                 : 4 5 31 36
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . function program
+    (2) program -> . external-declaration program
+    (3) program -> . empty
+    (31) function -> . type ID PARIZQ argument_list_option PARDER compound_statement
+    (4) external-declaration -> . type assignment PTCOMA
+    (64) empty -> .
+    (44) type -> . INT
+    (45) type -> . FLOAT
+    (46) type -> . CHAR
+    (47) type -> . VOID
+
+    $end            reduce using rule 64 (empty -> .)
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
+    CHAR            shift and go to state 8
+    VOID            shift and go to state 9
+
+    program                        shift and go to state 1
+    function                       shift and go to state 2
+    external-declaration           shift and go to state 3
+    empty                          shift and go to state 4
+    type                           shift and go to state 5
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> function . program
+    (1) program -> . function program
+    (2) program -> . external-declaration program
+    (3) program -> . empty
+    (31) function -> . type ID PARIZQ argument_list_option PARDER compound_statement
+    (4) external-declaration -> . type assignment PTCOMA
+    (64) empty -> .
+    (44) type -> . INT
+    (45) type -> . FLOAT
+    (46) type -> . CHAR
+    (47) type -> . VOID
+
+    $end            reduce using rule 64 (empty -> .)
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
+    CHAR            shift and go to state 8
+    VOID            shift and go to state 9
+
+    function                       shift and go to state 2
+    program                        shift and go to state 10
+    external-declaration           shift and go to state 3
+    empty                          shift and go to state 4
+    type                           shift and go to state 5
+
+state 3
+
+    (2) program -> external-declaration . program
+    (1) program -> . function program
+    (2) program -> . external-declaration program
+    (3) program -> . empty
+    (31) function -> . type ID PARIZQ argument_list_option PARDER compound_statement
+    (4) external-declaration -> . type assignment PTCOMA
+    (64) empty -> .
+    (44) type -> . INT
+    (45) type -> . FLOAT
+    (46) type -> . CHAR
+    (47) type -> . VOID
+
+    $end            reduce using rule 64 (empty -> .)
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
+    CHAR            shift and go to state 8
+    VOID            shift and go to state 9
+
+    external-declaration           shift and go to state 3
+    program                        shift and go to state 11
+    function                       shift and go to state 2
+    empty                          shift and go to state 4
+    type                           shift and go to state 5
+
+state 4
+
+    (3) program -> empty .
+
+    $end            reduce using rule 3 (program -> empty .)
+
+
+state 5
+
+    (31) function -> type . ID PARIZQ argument_list_option PARDER compound_statement
+    (4) external-declaration -> type . assignment PTCOMA
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+
+    ID              shift and go to state 12
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    assignment                     shift and go to state 14
+
+state 6
+
+    (44) type -> INT .
+
+    ID              reduce using rule 44 (type -> INT .)
+    ENTERO          reduce using rule 44 (type -> INT .)
+    STRING          reduce using rule 44 (type -> INT .)
+    PARIZQ          reduce using rule 44 (type -> INT .)
+    MENOS           reduce using rule 44 (type -> INT .)
+
+
+state 7
+
+    (45) type -> FLOAT .
+
+    ID              reduce using rule 45 (type -> FLOAT .)
+    ENTERO          reduce using rule 45 (type -> FLOAT .)
+    STRING          reduce using rule 45 (type -> FLOAT .)
+    PARIZQ          reduce using rule 45 (type -> FLOAT .)
+    MENOS           reduce using rule 45 (type -> FLOAT .)
+
+
+state 8
+
+    (46) type -> CHAR .
+
+    ID              reduce using rule 46 (type -> CHAR .)
+    ENTERO          reduce using rule 46 (type -> CHAR .)
+    STRING          reduce using rule 46 (type -> CHAR .)
+    PARIZQ          reduce using rule 46 (type -> CHAR .)
+    MENOS           reduce using rule 46 (type -> CHAR .)
+
+
+state 9
+
+    (47) type -> VOID .
+
+    ID              reduce using rule 47 (type -> VOID .)
+    ENTERO          reduce using rule 47 (type -> VOID .)
+    STRING          reduce using rule 47 (type -> VOID .)
+    PARIZQ          reduce using rule 47 (type -> VOID .)
+    MENOS           reduce using rule 47 (type -> VOID .)
+
+
+state 10
+
+    (1) program -> function program .
+
+    $end            reduce using rule 1 (program -> function program .)
+
+
+state 11
+
+    (2) program -> external-declaration program .
+
+    $end            reduce using rule 2 (program -> external-declaration program .)
+
+
+state 12
+
+    (31) function -> type ID . PARIZQ argument_list_option PARDER compound_statement
+    (8) assignment -> ID . IGUAL assignment
+    (9) assignment -> ID . IGUAL function_call
+    (10) assignment -> ID . COMA assignment
+    (12) assignment -> ID . MAS assignment
+    (13) assignment -> ID . MENOS assignment
+    (14) assignment -> ID . POR assignment
+    (15) assignment -> ID . DIVIDIDO assignment
+    (24) assignment -> ID . MAS MAS
+    (26) assignment -> ID . MENOS MENOS
+    (28) assignment -> ID .
+
+    PARIZQ          shift and go to state 18
+    IGUAL           shift and go to state 19
+    COMA            shift and go to state 20
+    MAS             shift and go to state 21
+    MENOS           shift and go to state 22
+    POR             shift and go to state 23
+    DIVIDIDO        shift and go to state 24
+    PTCOMA          reduce using rule 28 (assignment -> ID .)
+
+
+state 13
+
+    (21) assignment -> PARIZQ . assignment PARDER
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+
+    ID              shift and go to state 26
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    assignment                     shift and go to state 25
+
+state 14
+
+    (4) external-declaration -> type assignment . PTCOMA
+
+    PTCOMA          shift and go to state 27
+
+
+state 15
+
+    (11) assignment -> ENTERO . COMA assignment
+    (16) assignment -> ENTERO . MAS assignment
+    (17) assignment -> ENTERO . MENOS assignment
+    (18) assignment -> ENTERO . POR assignment
+    (19) assignment -> ENTERO . DIVIDIDO assignment
+    (23) assignment -> ENTERO . MAS MAS
+    (25) assignment -> ENTERO . MENOS MENOS
+    (27) assignment -> ENTERO .
+
+    COMA            shift and go to state 28
+    MAS             shift and go to state 29
+    MENOS           shift and go to state 30
+    POR             shift and go to state 31
+    DIVIDIDO        shift and go to state 32
+    PTCOMA          reduce using rule 27 (assignment -> ENTERO .)
+    PARDER          reduce using rule 27 (assignment -> ENTERO .)
+    IGUALQUE        reduce using rule 27 (assignment -> ENTERO .)
+    MENQUE          reduce using rule 27 (assignment -> ENTERO .)
+    MAYQUE          reduce using rule 27 (assignment -> ENTERO .)
+    AND             reduce using rule 27 (assignment -> ENTERO .)
+    OR              reduce using rule 27 (assignment -> ENTERO .)
+
+
+state 16
+
+    (22) assignment -> MENOS . assignment
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+
+    ID              shift and go to state 26
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    assignment                     shift and go to state 33
+
+state 17
+
+    (20) assignment -> STRING .
+
+    PTCOMA          reduce using rule 20 (assignment -> STRING .)
+    PARDER          reduce using rule 20 (assignment -> STRING .)
+    IGUALQUE        reduce using rule 20 (assignment -> STRING .)
+    MENQUE          reduce using rule 20 (assignment -> STRING .)
+    MAYQUE          reduce using rule 20 (assignment -> STRING .)
+    AND             reduce using rule 20 (assignment -> STRING .)
+    OR              reduce using rule 20 (assignment -> STRING .)
+
+
+state 18
+
+    (31) function -> type ID PARIZQ . argument_list_option PARDER compound_statement
+    (32) argument_list_option -> . argument_list
+    (33) argument_list_option -> . empty
+    (34) argument_list -> . argument_list COMA argument
+    (35) argument_list -> . argument
+    (64) empty -> .
+    (36) argument -> . type ID
+    (44) type -> . INT
+    (45) type -> . FLOAT
+    (46) type -> . CHAR
+    (47) type -> . VOID
+
+    PARDER          reduce using rule 64 (empty -> .)
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
+    CHAR            shift and go to state 8
+    VOID            shift and go to state 9
+
+    type                           shift and go to state 34
+    argument_list_option           shift and go to state 35
+    argument_list                  shift and go to state 36
+    empty                          shift and go to state 37
+    argument                       shift and go to state 38
+
+state 19
+
+    (8) assignment -> ID IGUAL . assignment
+    (9) assignment -> ID IGUAL . function_call
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+    (29) function_call -> . ID PARIZQ PARDER
+    (30) function_call -> . ID PARIZQ assignment PARDER
+
+    ID              shift and go to state 39
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    assignment                     shift and go to state 40
+    function_call                  shift and go to state 41
+
+state 20
+
+    (10) assignment -> ID COMA . assignment
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+
+    ID              shift and go to state 26
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    assignment                     shift and go to state 42
+
+state 21
+
+    (12) assignment -> ID MAS . assignment
+    (24) assignment -> ID MAS . MAS
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+
+    MAS             shift and go to state 43
+    ID              shift and go to state 26
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    assignment                     shift and go to state 44
+
+state 22
+
+    (13) assignment -> ID MENOS . assignment
+    (26) assignment -> ID MENOS . MENOS
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+
+    MENOS           shift and go to state 45
+    ID              shift and go to state 26
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+
+    assignment                     shift and go to state 46
+
+state 23
+
+    (14) assignment -> ID POR . assignment
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+
+    ID              shift and go to state 26
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    assignment                     shift and go to state 47
+
+state 24
+
+    (15) assignment -> ID DIVIDIDO . assignment
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+
+    ID              shift and go to state 26
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    assignment                     shift and go to state 48
+
+state 25
+
+    (21) assignment -> PARIZQ assignment . PARDER
+
+    PARDER          shift and go to state 49
+
+
+state 26
+
+    (8) assignment -> ID . IGUAL assignment
+    (9) assignment -> ID . IGUAL function_call
+    (10) assignment -> ID . COMA assignment
+    (12) assignment -> ID . MAS assignment
+    (13) assignment -> ID . MENOS assignment
+    (14) assignment -> ID . POR assignment
+    (15) assignment -> ID . DIVIDIDO assignment
+    (24) assignment -> ID . MAS MAS
+    (26) assignment -> ID . MENOS MENOS
+    (28) assignment -> ID .
+
+    IGUAL           shift and go to state 19
+    COMA            shift and go to state 20
+    MAS             shift and go to state 21
+    MENOS           shift and go to state 22
+    POR             shift and go to state 23
+    DIVIDIDO        shift and go to state 24
+    PARDER          reduce using rule 28 (assignment -> ID .)
+    PTCOMA          reduce using rule 28 (assignment -> ID .)
+    IGUALQUE        reduce using rule 28 (assignment -> ID .)
+    MENQUE          reduce using rule 28 (assignment -> ID .)
+    MAYQUE          reduce using rule 28 (assignment -> ID .)
+    AND             reduce using rule 28 (assignment -> ID .)
+    OR              reduce using rule 28 (assignment -> ID .)
+
+
+state 27
+
+    (4) external-declaration -> type assignment PTCOMA .
+
+    INT             reduce using rule 4 (external-declaration -> type assignment PTCOMA .)
+    FLOAT           reduce using rule 4 (external-declaration -> type assignment PTCOMA .)
+    CHAR            reduce using rule 4 (external-declaration -> type assignment PTCOMA .)
+    VOID            reduce using rule 4 (external-declaration -> type assignment PTCOMA .)
+    $end            reduce using rule 4 (external-declaration -> type assignment PTCOMA .)
+
+
+state 28
+
+    (11) assignment -> ENTERO COMA . assignment
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+
+    ID              shift and go to state 26
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    assignment                     shift and go to state 50
+
+state 29
+
+    (16) assignment -> ENTERO MAS . assignment
+    (23) assignment -> ENTERO MAS . MAS
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+
+    MAS             shift and go to state 51
+    ID              shift and go to state 26
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    assignment                     shift and go to state 52
+
+state 30
+
+    (17) assignment -> ENTERO MENOS . assignment
+    (25) assignment -> ENTERO MENOS . MENOS
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+
+    MENOS           shift and go to state 53
+    ID              shift and go to state 26
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+
+    assignment                     shift and go to state 54
+
+state 31
+
+    (18) assignment -> ENTERO POR . assignment
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+
+    ID              shift and go to state 26
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    assignment                     shift and go to state 55
+
+state 32
+
+    (19) assignment -> ENTERO DIVIDIDO . assignment
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+
+    ID              shift and go to state 26
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    assignment                     shift and go to state 56
+
+state 33
+
+    (22) assignment -> MENOS assignment .
+
+    PTCOMA          reduce using rule 22 (assignment -> MENOS assignment .)
+    PARDER          reduce using rule 22 (assignment -> MENOS assignment .)
+    IGUALQUE        reduce using rule 22 (assignment -> MENOS assignment .)
+    MENQUE          reduce using rule 22 (assignment -> MENOS assignment .)
+    MAYQUE          reduce using rule 22 (assignment -> MENOS assignment .)
+    AND             reduce using rule 22 (assignment -> MENOS assignment .)
+    OR              reduce using rule 22 (assignment -> MENOS assignment .)
+
+
+state 34
+
+    (36) argument -> type . ID
+
+    ID              shift and go to state 57
+
+
+state 35
+
+    (31) function -> type ID PARIZQ argument_list_option . PARDER compound_statement
+
+    PARDER          shift and go to state 58
+
+
+state 36
+
+    (32) argument_list_option -> argument_list .
+    (34) argument_list -> argument_list . COMA argument
+
+    PARDER          reduce using rule 32 (argument_list_option -> argument_list .)
+    COMA            shift and go to state 59
+
+
+state 37
+
+    (33) argument_list_option -> empty .
+
+    PARDER          reduce using rule 33 (argument_list_option -> empty .)
+
+
+state 38
+
+    (35) argument_list -> argument .
+
+    COMA            reduce using rule 35 (argument_list -> argument .)
+    PARDER          reduce using rule 35 (argument_list -> argument .)
+
+
+state 39
+
+    (8) assignment -> ID . IGUAL assignment
+    (9) assignment -> ID . IGUAL function_call
+    (10) assignment -> ID . COMA assignment
+    (12) assignment -> ID . MAS assignment
+    (13) assignment -> ID . MENOS assignment
+    (14) assignment -> ID . POR assignment
+    (15) assignment -> ID . DIVIDIDO assignment
+    (24) assignment -> ID . MAS MAS
+    (26) assignment -> ID . MENOS MENOS
+    (28) assignment -> ID .
+    (29) function_call -> ID . PARIZQ PARDER
+    (30) function_call -> ID . PARIZQ assignment PARDER
+
+    IGUAL           shift and go to state 19
+    COMA            shift and go to state 20
+    MAS             shift and go to state 21
+    MENOS           shift and go to state 22
+    POR             shift and go to state 23
+    DIVIDIDO        shift and go to state 24
+    PTCOMA          reduce using rule 28 (assignment -> ID .)
+    PARDER          reduce using rule 28 (assignment -> ID .)
+    IGUALQUE        reduce using rule 28 (assignment -> ID .)
+    MENQUE          reduce using rule 28 (assignment -> ID .)
+    MAYQUE          reduce using rule 28 (assignment -> ID .)
+    AND             reduce using rule 28 (assignment -> ID .)
+    OR              reduce using rule 28 (assignment -> ID .)
+    PARIZQ          shift and go to state 60
+
+
+state 40
+
+    (8) assignment -> ID IGUAL assignment .
+
+    PTCOMA          reduce using rule 8 (assignment -> ID IGUAL assignment .)
+    PARDER          reduce using rule 8 (assignment -> ID IGUAL assignment .)
+    IGUALQUE        reduce using rule 8 (assignment -> ID IGUAL assignment .)
+    MENQUE          reduce using rule 8 (assignment -> ID IGUAL assignment .)
+    MAYQUE          reduce using rule 8 (assignment -> ID IGUAL assignment .)
+    AND             reduce using rule 8 (assignment -> ID IGUAL assignment .)
+    OR              reduce using rule 8 (assignment -> ID IGUAL assignment .)
+
+
+state 41
+
+    (9) assignment -> ID IGUAL function_call .
+
+    PTCOMA          reduce using rule 9 (assignment -> ID IGUAL function_call .)
+    PARDER          reduce using rule 9 (assignment -> ID IGUAL function_call .)
+    IGUALQUE        reduce using rule 9 (assignment -> ID IGUAL function_call .)
+    MENQUE          reduce using rule 9 (assignment -> ID IGUAL function_call .)
+    MAYQUE          reduce using rule 9 (assignment -> ID IGUAL function_call .)
+    AND             reduce using rule 9 (assignment -> ID IGUAL function_call .)
+    OR              reduce using rule 9 (assignment -> ID IGUAL function_call .)
+
+
+state 42
+
+    (10) assignment -> ID COMA assignment .
+
+    PTCOMA          reduce using rule 10 (assignment -> ID COMA assignment .)
+    PARDER          reduce using rule 10 (assignment -> ID COMA assignment .)
+    IGUALQUE        reduce using rule 10 (assignment -> ID COMA assignment .)
+    MENQUE          reduce using rule 10 (assignment -> ID COMA assignment .)
+    MAYQUE          reduce using rule 10 (assignment -> ID COMA assignment .)
+    AND             reduce using rule 10 (assignment -> ID COMA assignment .)
+    OR              reduce using rule 10 (assignment -> ID COMA assignment .)
+
+
+state 43
+
+    (24) assignment -> ID MAS MAS .
+
+    PTCOMA          reduce using rule 24 (assignment -> ID MAS MAS .)
+    PARDER          reduce using rule 24 (assignment -> ID MAS MAS .)
+    IGUALQUE        reduce using rule 24 (assignment -> ID MAS MAS .)
+    MENQUE          reduce using rule 24 (assignment -> ID MAS MAS .)
+    MAYQUE          reduce using rule 24 (assignment -> ID MAS MAS .)
+    AND             reduce using rule 24 (assignment -> ID MAS MAS .)
+    OR              reduce using rule 24 (assignment -> ID MAS MAS .)
+
+
+state 44
+
+    (12) assignment -> ID MAS assignment .
+
+    PTCOMA          reduce using rule 12 (assignment -> ID MAS assignment .)
+    PARDER          reduce using rule 12 (assignment -> ID MAS assignment .)
+    IGUALQUE        reduce using rule 12 (assignment -> ID MAS assignment .)
+    MENQUE          reduce using rule 12 (assignment -> ID MAS assignment .)
+    MAYQUE          reduce using rule 12 (assignment -> ID MAS assignment .)
+    AND             reduce using rule 12 (assignment -> ID MAS assignment .)
+    OR              reduce using rule 12 (assignment -> ID MAS assignment .)
+
+
+state 45
+
+    (26) assignment -> ID MENOS MENOS .
+    (22) assignment -> MENOS . assignment
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+
+    PTCOMA          reduce using rule 26 (assignment -> ID MENOS MENOS .)
+    PARDER          reduce using rule 26 (assignment -> ID MENOS MENOS .)
+    IGUALQUE        reduce using rule 26 (assignment -> ID MENOS MENOS .)
+    MENQUE          reduce using rule 26 (assignment -> ID MENOS MENOS .)
+    MAYQUE          reduce using rule 26 (assignment -> ID MENOS MENOS .)
+    AND             reduce using rule 26 (assignment -> ID MENOS MENOS .)
+    OR              reduce using rule 26 (assignment -> ID MENOS MENOS .)
+    ID              shift and go to state 26
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    assignment                     shift and go to state 33
+
+state 46
+
+    (13) assignment -> ID MENOS assignment .
+
+    PTCOMA          reduce using rule 13 (assignment -> ID MENOS assignment .)
+    PARDER          reduce using rule 13 (assignment -> ID MENOS assignment .)
+    IGUALQUE        reduce using rule 13 (assignment -> ID MENOS assignment .)
+    MENQUE          reduce using rule 13 (assignment -> ID MENOS assignment .)
+    MAYQUE          reduce using rule 13 (assignment -> ID MENOS assignment .)
+    AND             reduce using rule 13 (assignment -> ID MENOS assignment .)
+    OR              reduce using rule 13 (assignment -> ID MENOS assignment .)
+
+
+state 47
+
+    (14) assignment -> ID POR assignment .
+
+    PTCOMA          reduce using rule 14 (assignment -> ID POR assignment .)
+    PARDER          reduce using rule 14 (assignment -> ID POR assignment .)
+    IGUALQUE        reduce using rule 14 (assignment -> ID POR assignment .)
+    MENQUE          reduce using rule 14 (assignment -> ID POR assignment .)
+    MAYQUE          reduce using rule 14 (assignment -> ID POR assignment .)
+    AND             reduce using rule 14 (assignment -> ID POR assignment .)
+    OR              reduce using rule 14 (assignment -> ID POR assignment .)
+
+
+state 48
+
+    (15) assignment -> ID DIVIDIDO assignment .
+
+    PTCOMA          reduce using rule 15 (assignment -> ID DIVIDIDO assignment .)
+    PARDER          reduce using rule 15 (assignment -> ID DIVIDIDO assignment .)
+    IGUALQUE        reduce using rule 15 (assignment -> ID DIVIDIDO assignment .)
+    MENQUE          reduce using rule 15 (assignment -> ID DIVIDIDO assignment .)
+    MAYQUE          reduce using rule 15 (assignment -> ID DIVIDIDO assignment .)
+    AND             reduce using rule 15 (assignment -> ID DIVIDIDO assignment .)
+    OR              reduce using rule 15 (assignment -> ID DIVIDIDO assignment .)
+
+
+state 49
+
+    (21) assignment -> PARIZQ assignment PARDER .
+
+    PTCOMA          reduce using rule 21 (assignment -> PARIZQ assignment PARDER .)
+    PARDER          reduce using rule 21 (assignment -> PARIZQ assignment PARDER .)
+    IGUALQUE        reduce using rule 21 (assignment -> PARIZQ assignment PARDER .)
+    MENQUE          reduce using rule 21 (assignment -> PARIZQ assignment PARDER .)
+    MAYQUE          reduce using rule 21 (assignment -> PARIZQ assignment PARDER .)
+    AND             reduce using rule 21 (assignment -> PARIZQ assignment PARDER .)
+    OR              reduce using rule 21 (assignment -> PARIZQ assignment PARDER .)
+
+
+state 50
+
+    (11) assignment -> ENTERO COMA assignment .
+
+    PTCOMA          reduce using rule 11 (assignment -> ENTERO COMA assignment .)
+    PARDER          reduce using rule 11 (assignment -> ENTERO COMA assignment .)
+    IGUALQUE        reduce using rule 11 (assignment -> ENTERO COMA assignment .)
+    MENQUE          reduce using rule 11 (assignment -> ENTERO COMA assignment .)
+    MAYQUE          reduce using rule 11 (assignment -> ENTERO COMA assignment .)
+    AND             reduce using rule 11 (assignment -> ENTERO COMA assignment .)
+    OR              reduce using rule 11 (assignment -> ENTERO COMA assignment .)
+
+
+state 51
+
+    (23) assignment -> ENTERO MAS MAS .
+
+    PTCOMA          reduce using rule 23 (assignment -> ENTERO MAS MAS .)
+    PARDER          reduce using rule 23 (assignment -> ENTERO MAS MAS .)
+    IGUALQUE        reduce using rule 23 (assignment -> ENTERO MAS MAS .)
+    MENQUE          reduce using rule 23 (assignment -> ENTERO MAS MAS .)
+    MAYQUE          reduce using rule 23 (assignment -> ENTERO MAS MAS .)
+    AND             reduce using rule 23 (assignment -> ENTERO MAS MAS .)
+    OR              reduce using rule 23 (assignment -> ENTERO MAS MAS .)
+
+
+state 52
+
+    (16) assignment -> ENTERO MAS assignment .
+
+    PTCOMA          reduce using rule 16 (assignment -> ENTERO MAS assignment .)
+    PARDER          reduce using rule 16 (assignment -> ENTERO MAS assignment .)
+    IGUALQUE        reduce using rule 16 (assignment -> ENTERO MAS assignment .)
+    MENQUE          reduce using rule 16 (assignment -> ENTERO MAS assignment .)
+    MAYQUE          reduce using rule 16 (assignment -> ENTERO MAS assignment .)
+    AND             reduce using rule 16 (assignment -> ENTERO MAS assignment .)
+    OR              reduce using rule 16 (assignment -> ENTERO MAS assignment .)
+
+
+state 53
+
+    (25) assignment -> ENTERO MENOS MENOS .
+    (22) assignment -> MENOS . assignment
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+
+    PTCOMA          reduce using rule 25 (assignment -> ENTERO MENOS MENOS .)
+    PARDER          reduce using rule 25 (assignment -> ENTERO MENOS MENOS .)
+    IGUALQUE        reduce using rule 25 (assignment -> ENTERO MENOS MENOS .)
+    MENQUE          reduce using rule 25 (assignment -> ENTERO MENOS MENOS .)
+    MAYQUE          reduce using rule 25 (assignment -> ENTERO MENOS MENOS .)
+    AND             reduce using rule 25 (assignment -> ENTERO MENOS MENOS .)
+    OR              reduce using rule 25 (assignment -> ENTERO MENOS MENOS .)
+    ID              shift and go to state 26
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    assignment                     shift and go to state 33
+
+state 54
+
+    (17) assignment -> ENTERO MENOS assignment .
+
+    PTCOMA          reduce using rule 17 (assignment -> ENTERO MENOS assignment .)
+    PARDER          reduce using rule 17 (assignment -> ENTERO MENOS assignment .)
+    IGUALQUE        reduce using rule 17 (assignment -> ENTERO MENOS assignment .)
+    MENQUE          reduce using rule 17 (assignment -> ENTERO MENOS assignment .)
+    MAYQUE          reduce using rule 17 (assignment -> ENTERO MENOS assignment .)
+    AND             reduce using rule 17 (assignment -> ENTERO MENOS assignment .)
+    OR              reduce using rule 17 (assignment -> ENTERO MENOS assignment .)
+
+
+state 55
+
+    (18) assignment -> ENTERO POR assignment .
+
+    PTCOMA          reduce using rule 18 (assignment -> ENTERO POR assignment .)
+    PARDER          reduce using rule 18 (assignment -> ENTERO POR assignment .)
+    IGUALQUE        reduce using rule 18 (assignment -> ENTERO POR assignment .)
+    MENQUE          reduce using rule 18 (assignment -> ENTERO POR assignment .)
+    MAYQUE          reduce using rule 18 (assignment -> ENTERO POR assignment .)
+    AND             reduce using rule 18 (assignment -> ENTERO POR assignment .)
+    OR              reduce using rule 18 (assignment -> ENTERO POR assignment .)
+
+
+state 56
+
+    (19) assignment -> ENTERO DIVIDIDO assignment .
+
+    PTCOMA          reduce using rule 19 (assignment -> ENTERO DIVIDIDO assignment .)
+    PARDER          reduce using rule 19 (assignment -> ENTERO DIVIDIDO assignment .)
+    IGUALQUE        reduce using rule 19 (assignment -> ENTERO DIVIDIDO assignment .)
+    MENQUE          reduce using rule 19 (assignment -> ENTERO DIVIDIDO assignment .)
+    MAYQUE          reduce using rule 19 (assignment -> ENTERO DIVIDIDO assignment .)
+    AND             reduce using rule 19 (assignment -> ENTERO DIVIDIDO assignment .)
+    OR              reduce using rule 19 (assignment -> ENTERO DIVIDIDO assignment .)
+
+
+state 57
+
+    (36) argument -> type ID .
+
+    COMA            reduce using rule 36 (argument -> type ID .)
+    PARDER          reduce using rule 36 (argument -> type ID .)
+
+
+state 58
+
+    (31) function -> type ID PARIZQ argument_list_option PARDER . compound_statement
+    (37) compound_statement -> . LLAVIZQ statement_list LLAVDER
+
+    LLAVIZQ         shift and go to state 62
+
+    compound_statement             shift and go to state 61
+
+state 59
+
+    (34) argument_list -> argument_list COMA . argument
+    (36) argument -> . type ID
+    (44) type -> . INT
+    (45) type -> . FLOAT
+    (46) type -> . CHAR
+    (47) type -> . VOID
+
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
+    CHAR            shift and go to state 8
+    VOID            shift and go to state 9
+
+    argument                       shift and go to state 63
+    type                           shift and go to state 34
+
+state 60
+
+    (29) function_call -> ID PARIZQ . PARDER
+    (30) function_call -> ID PARIZQ . assignment PARDER
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+
+    PARDER          shift and go to state 64
+    ID              shift and go to state 26
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    assignment                     shift and go to state 65
+
+state 61
+
+    (31) function -> type ID PARIZQ argument_list_option PARDER compound_statement .
+
+    INT             reduce using rule 31 (function -> type ID PARIZQ argument_list_option PARDER compound_statement .)
+    FLOAT           reduce using rule 31 (function -> type ID PARIZQ argument_list_option PARDER compound_statement .)
+    CHAR            reduce using rule 31 (function -> type ID PARIZQ argument_list_option PARDER compound_statement .)
+    VOID            reduce using rule 31 (function -> type ID PARIZQ argument_list_option PARDER compound_statement .)
+    $end            reduce using rule 31 (function -> type ID PARIZQ argument_list_option PARDER compound_statement .)
+
+
+state 62
+
+    (37) compound_statement -> LLAVIZQ . statement_list LLAVDER
+    (38) statement_list -> . statement_list statement
+    (39) statement_list -> . empty
+    (64) empty -> .
+
+    LLAVDER         reduce using rule 64 (empty -> .)
+    WHILE           reduce using rule 64 (empty -> .)
+    IF              reduce using rule 64 (empty -> .)
+    RETURN          reduce using rule 64 (empty -> .)
+    INT             reduce using rule 64 (empty -> .)
+    FLOAT           reduce using rule 64 (empty -> .)
+    CHAR            reduce using rule 64 (empty -> .)
+    VOID            reduce using rule 64 (empty -> .)
+    ID              reduce using rule 64 (empty -> .)
+    ENTERO          reduce using rule 64 (empty -> .)
+    STRING          reduce using rule 64 (empty -> .)
+    PARIZQ          reduce using rule 64 (empty -> .)
+    MENOS           reduce using rule 64 (empty -> .)
+
+    statement_list                 shift and go to state 66
+    empty                          shift and go to state 67
+
+state 63
+
+    (34) argument_list -> argument_list COMA argument .
+
+    COMA            reduce using rule 34 (argument_list -> argument_list COMA argument .)
+    PARDER          reduce using rule 34 (argument_list -> argument_list COMA argument .)
+
+
+state 64
+
+    (29) function_call -> ID PARIZQ PARDER .
+
+    PTCOMA          reduce using rule 29 (function_call -> ID PARIZQ PARDER .)
+    PARDER          reduce using rule 29 (function_call -> ID PARIZQ PARDER .)
+    IGUALQUE        reduce using rule 29 (function_call -> ID PARIZQ PARDER .)
+    MENQUE          reduce using rule 29 (function_call -> ID PARIZQ PARDER .)
+    MAYQUE          reduce using rule 29 (function_call -> ID PARIZQ PARDER .)
+    AND             reduce using rule 29 (function_call -> ID PARIZQ PARDER .)
+    OR              reduce using rule 29 (function_call -> ID PARIZQ PARDER .)
+
+
+state 65
+
+    (30) function_call -> ID PARIZQ assignment . PARDER
+
+    PARDER          shift and go to state 68
+
+
+state 66
+
+    (37) compound_statement -> LLAVIZQ statement_list . LLAVDER
+    (38) statement_list -> statement_list . statement
+    (40) statement -> . iteration_statement
+    (41) statement -> . declaration
+    (42) statement -> . selection_statement
+    (43) statement -> . return-statement
+    (48) iteration_statement -> . WHILE PARIZQ expression PARDER compound_statement
+    (49) iteration_statement -> . WHILE PARIZQ expression PARDER statement
+    (5) declaration -> . type assignment PTCOMA
+    (6) declaration -> . assignment PTCOMA
+    (7) declaration -> . function_call PTCOMA
+    (50) selection_statement -> . IF PARIZQ expression PARDER compound_statement
+    (51) selection_statement -> . IF PARIZQ expression PARDER statement
+    (52) selection_statement -> . IF PARIZQ expression PARDER compound_statement ELSE compound_statement
+    (53) selection_statement -> . IF PARIZQ expression PARDER compound_statement ELSE statement
+    (54) selection_statement -> . IF PARIZQ expression PARDER statement ELSE compound_statement
+    (55) selection_statement -> . IF PARIZQ expression PARDER statement ELSE statement
+    (56) return-statement -> . RETURN PTCOMA
+    (57) return-statement -> . RETURN expression PTCOMA
+    (44) type -> . INT
+    (45) type -> . FLOAT
+    (46) type -> . CHAR
+    (47) type -> . VOID
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+    (29) function_call -> . ID PARIZQ PARDER
+    (30) function_call -> . ID PARIZQ assignment PARDER
+
+    LLAVDER         shift and go to state 69
+    WHILE           shift and go to state 75
+    IF              shift and go to state 79
+    RETURN          shift and go to state 80
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
+    CHAR            shift and go to state 8
+    VOID            shift and go to state 9
+    ID              shift and go to state 39
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    statement                      shift and go to state 70
+    iteration_statement            shift and go to state 71
+    declaration                    shift and go to state 72
+    selection_statement            shift and go to state 73
+    return-statement               shift and go to state 74
+    type                           shift and go to state 76
+    assignment                     shift and go to state 77
+    function_call                  shift and go to state 78
+
+state 67
+
+    (39) statement_list -> empty .
+
+    LLAVDER         reduce using rule 39 (statement_list -> empty .)
+    WHILE           reduce using rule 39 (statement_list -> empty .)
+    IF              reduce using rule 39 (statement_list -> empty .)
+    RETURN          reduce using rule 39 (statement_list -> empty .)
+    INT             reduce using rule 39 (statement_list -> empty .)
+    FLOAT           reduce using rule 39 (statement_list -> empty .)
+    CHAR            reduce using rule 39 (statement_list -> empty .)
+    VOID            reduce using rule 39 (statement_list -> empty .)
+    ID              reduce using rule 39 (statement_list -> empty .)
+    ENTERO          reduce using rule 39 (statement_list -> empty .)
+    STRING          reduce using rule 39 (statement_list -> empty .)
+    PARIZQ          reduce using rule 39 (statement_list -> empty .)
+    MENOS           reduce using rule 39 (statement_list -> empty .)
+
+
+state 68
+
+    (30) function_call -> ID PARIZQ assignment PARDER .
+
+    PTCOMA          reduce using rule 30 (function_call -> ID PARIZQ assignment PARDER .)
+    PARDER          reduce using rule 30 (function_call -> ID PARIZQ assignment PARDER .)
+    IGUALQUE        reduce using rule 30 (function_call -> ID PARIZQ assignment PARDER .)
+    MENQUE          reduce using rule 30 (function_call -> ID PARIZQ assignment PARDER .)
+    MAYQUE          reduce using rule 30 (function_call -> ID PARIZQ assignment PARDER .)
+    AND             reduce using rule 30 (function_call -> ID PARIZQ assignment PARDER .)
+    OR              reduce using rule 30 (function_call -> ID PARIZQ assignment PARDER .)
+
+
+state 69
+
+    (37) compound_statement -> LLAVIZQ statement_list LLAVDER .
+
+    INT             reduce using rule 37 (compound_statement -> LLAVIZQ statement_list LLAVDER .)
+    FLOAT           reduce using rule 37 (compound_statement -> LLAVIZQ statement_list LLAVDER .)
+    CHAR            reduce using rule 37 (compound_statement -> LLAVIZQ statement_list LLAVDER .)
+    VOID            reduce using rule 37 (compound_statement -> LLAVIZQ statement_list LLAVDER .)
+    $end            reduce using rule 37 (compound_statement -> LLAVIZQ statement_list LLAVDER .)
+    LLAVDER         reduce using rule 37 (compound_statement -> LLAVIZQ statement_list LLAVDER .)
+    WHILE           reduce using rule 37 (compound_statement -> LLAVIZQ statement_list LLAVDER .)
+    IF              reduce using rule 37 (compound_statement -> LLAVIZQ statement_list LLAVDER .)
+    RETURN          reduce using rule 37 (compound_statement -> LLAVIZQ statement_list LLAVDER .)
+    ID              reduce using rule 37 (compound_statement -> LLAVIZQ statement_list LLAVDER .)
+    ENTERO          reduce using rule 37 (compound_statement -> LLAVIZQ statement_list LLAVDER .)
+    STRING          reduce using rule 37 (compound_statement -> LLAVIZQ statement_list LLAVDER .)
+    PARIZQ          reduce using rule 37 (compound_statement -> LLAVIZQ statement_list LLAVDER .)
+    MENOS           reduce using rule 37 (compound_statement -> LLAVIZQ statement_list LLAVDER .)
+    ELSE            reduce using rule 37 (compound_statement -> LLAVIZQ statement_list LLAVDER .)
+
+
+state 70
+
+    (38) statement_list -> statement_list statement .
+
+    LLAVDER         reduce using rule 38 (statement_list -> statement_list statement .)
+    WHILE           reduce using rule 38 (statement_list -> statement_list statement .)
+    IF              reduce using rule 38 (statement_list -> statement_list statement .)
+    RETURN          reduce using rule 38 (statement_list -> statement_list statement .)
+    INT             reduce using rule 38 (statement_list -> statement_list statement .)
+    FLOAT           reduce using rule 38 (statement_list -> statement_list statement .)
+    CHAR            reduce using rule 38 (statement_list -> statement_list statement .)
+    VOID            reduce using rule 38 (statement_list -> statement_list statement .)
+    ID              reduce using rule 38 (statement_list -> statement_list statement .)
+    ENTERO          reduce using rule 38 (statement_list -> statement_list statement .)
+    STRING          reduce using rule 38 (statement_list -> statement_list statement .)
+    PARIZQ          reduce using rule 38 (statement_list -> statement_list statement .)
+    MENOS           reduce using rule 38 (statement_list -> statement_list statement .)
+
+
+state 71
+
+    (40) statement -> iteration_statement .
+
+    LLAVDER         reduce using rule 40 (statement -> iteration_statement .)
+    WHILE           reduce using rule 40 (statement -> iteration_statement .)
+    IF              reduce using rule 40 (statement -> iteration_statement .)
+    RETURN          reduce using rule 40 (statement -> iteration_statement .)
+    INT             reduce using rule 40 (statement -> iteration_statement .)
+    FLOAT           reduce using rule 40 (statement -> iteration_statement .)
+    CHAR            reduce using rule 40 (statement -> iteration_statement .)
+    VOID            reduce using rule 40 (statement -> iteration_statement .)
+    ID              reduce using rule 40 (statement -> iteration_statement .)
+    ENTERO          reduce using rule 40 (statement -> iteration_statement .)
+    STRING          reduce using rule 40 (statement -> iteration_statement .)
+    PARIZQ          reduce using rule 40 (statement -> iteration_statement .)
+    MENOS           reduce using rule 40 (statement -> iteration_statement .)
+    ELSE            reduce using rule 40 (statement -> iteration_statement .)
+
+
+state 72
+
+    (41) statement -> declaration .
+
+    LLAVDER         reduce using rule 41 (statement -> declaration .)
+    WHILE           reduce using rule 41 (statement -> declaration .)
+    IF              reduce using rule 41 (statement -> declaration .)
+    RETURN          reduce using rule 41 (statement -> declaration .)
+    INT             reduce using rule 41 (statement -> declaration .)
+    FLOAT           reduce using rule 41 (statement -> declaration .)
+    CHAR            reduce using rule 41 (statement -> declaration .)
+    VOID            reduce using rule 41 (statement -> declaration .)
+    ID              reduce using rule 41 (statement -> declaration .)
+    ENTERO          reduce using rule 41 (statement -> declaration .)
+    STRING          reduce using rule 41 (statement -> declaration .)
+    PARIZQ          reduce using rule 41 (statement -> declaration .)
+    MENOS           reduce using rule 41 (statement -> declaration .)
+    ELSE            reduce using rule 41 (statement -> declaration .)
+
+
+state 73
+
+    (42) statement -> selection_statement .
+
+    LLAVDER         reduce using rule 42 (statement -> selection_statement .)
+    WHILE           reduce using rule 42 (statement -> selection_statement .)
+    IF              reduce using rule 42 (statement -> selection_statement .)
+    RETURN          reduce using rule 42 (statement -> selection_statement .)
+    INT             reduce using rule 42 (statement -> selection_statement .)
+    FLOAT           reduce using rule 42 (statement -> selection_statement .)
+    CHAR            reduce using rule 42 (statement -> selection_statement .)
+    VOID            reduce using rule 42 (statement -> selection_statement .)
+    ID              reduce using rule 42 (statement -> selection_statement .)
+    ENTERO          reduce using rule 42 (statement -> selection_statement .)
+    STRING          reduce using rule 42 (statement -> selection_statement .)
+    PARIZQ          reduce using rule 42 (statement -> selection_statement .)
+    MENOS           reduce using rule 42 (statement -> selection_statement .)
+    ELSE            reduce using rule 42 (statement -> selection_statement .)
+
+
+state 74
+
+    (43) statement -> return-statement .
+
+    LLAVDER         reduce using rule 43 (statement -> return-statement .)
+    WHILE           reduce using rule 43 (statement -> return-statement .)
+    IF              reduce using rule 43 (statement -> return-statement .)
+    RETURN          reduce using rule 43 (statement -> return-statement .)
+    INT             reduce using rule 43 (statement -> return-statement .)
+    FLOAT           reduce using rule 43 (statement -> return-statement .)
+    CHAR            reduce using rule 43 (statement -> return-statement .)
+    VOID            reduce using rule 43 (statement -> return-statement .)
+    ID              reduce using rule 43 (statement -> return-statement .)
+    ENTERO          reduce using rule 43 (statement -> return-statement .)
+    STRING          reduce using rule 43 (statement -> return-statement .)
+    PARIZQ          reduce using rule 43 (statement -> return-statement .)
+    MENOS           reduce using rule 43 (statement -> return-statement .)
+    ELSE            reduce using rule 43 (statement -> return-statement .)
+
+
+state 75
+
+    (48) iteration_statement -> WHILE . PARIZQ expression PARDER compound_statement
+    (49) iteration_statement -> WHILE . PARIZQ expression PARDER statement
+
+    PARIZQ          shift and go to state 81
+
+
+state 76
+
+    (5) declaration -> type . assignment PTCOMA
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+
+    ID              shift and go to state 26
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    assignment                     shift and go to state 82
+
+state 77
+
+    (6) declaration -> assignment . PTCOMA
+
+    PTCOMA          shift and go to state 83
+
+
+state 78
+
+    (7) declaration -> function_call . PTCOMA
+
+    PTCOMA          shift and go to state 84
+
+
+state 79
+
+    (50) selection_statement -> IF . PARIZQ expression PARDER compound_statement
+    (51) selection_statement -> IF . PARIZQ expression PARDER statement
+    (52) selection_statement -> IF . PARIZQ expression PARDER compound_statement ELSE compound_statement
+    (53) selection_statement -> IF . PARIZQ expression PARDER compound_statement ELSE statement
+    (54) selection_statement -> IF . PARIZQ expression PARDER statement ELSE compound_statement
+    (55) selection_statement -> IF . PARIZQ expression PARDER statement ELSE statement
+
+    PARIZQ          shift and go to state 85
+
+
+state 80
+
+    (56) return-statement -> RETURN . PTCOMA
+    (57) return-statement -> RETURN . expression PTCOMA
+    (58) expression -> . expression IGUALQUE expression
+    (59) expression -> . expression MENQUE expression
+    (60) expression -> . expression MAYQUE expression
+    (61) expression -> . expression AND expression
+    (62) expression -> . expression OR expression
+    (63) expression -> . assignment
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+
+    PTCOMA          shift and go to state 86
+    ID              shift and go to state 26
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    expression                     shift and go to state 87
+    assignment                     shift and go to state 88
+
+state 81
+
+    (48) iteration_statement -> WHILE PARIZQ . expression PARDER compound_statement
+    (49) iteration_statement -> WHILE PARIZQ . expression PARDER statement
+    (58) expression -> . expression IGUALQUE expression
+    (59) expression -> . expression MENQUE expression
+    (60) expression -> . expression MAYQUE expression
+    (61) expression -> . expression AND expression
+    (62) expression -> . expression OR expression
+    (63) expression -> . assignment
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+
+    ID              shift and go to state 26
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    expression                     shift and go to state 89
+    assignment                     shift and go to state 88
+
+state 82
+
+    (5) declaration -> type assignment . PTCOMA
+
+    PTCOMA          shift and go to state 90
+
+
+state 83
+
+    (6) declaration -> assignment PTCOMA .
+
+    LLAVDER         reduce using rule 6 (declaration -> assignment PTCOMA .)
+    WHILE           reduce using rule 6 (declaration -> assignment PTCOMA .)
+    IF              reduce using rule 6 (declaration -> assignment PTCOMA .)
+    RETURN          reduce using rule 6 (declaration -> assignment PTCOMA .)
+    INT             reduce using rule 6 (declaration -> assignment PTCOMA .)
+    FLOAT           reduce using rule 6 (declaration -> assignment PTCOMA .)
+    CHAR            reduce using rule 6 (declaration -> assignment PTCOMA .)
+    VOID            reduce using rule 6 (declaration -> assignment PTCOMA .)
+    ID              reduce using rule 6 (declaration -> assignment PTCOMA .)
+    ENTERO          reduce using rule 6 (declaration -> assignment PTCOMA .)
+    STRING          reduce using rule 6 (declaration -> assignment PTCOMA .)
+    PARIZQ          reduce using rule 6 (declaration -> assignment PTCOMA .)
+    MENOS           reduce using rule 6 (declaration -> assignment PTCOMA .)
+    ELSE            reduce using rule 6 (declaration -> assignment PTCOMA .)
+
+
+state 84
+
+    (7) declaration -> function_call PTCOMA .
+
+    LLAVDER         reduce using rule 7 (declaration -> function_call PTCOMA .)
+    WHILE           reduce using rule 7 (declaration -> function_call PTCOMA .)
+    IF              reduce using rule 7 (declaration -> function_call PTCOMA .)
+    RETURN          reduce using rule 7 (declaration -> function_call PTCOMA .)
+    INT             reduce using rule 7 (declaration -> function_call PTCOMA .)
+    FLOAT           reduce using rule 7 (declaration -> function_call PTCOMA .)
+    CHAR            reduce using rule 7 (declaration -> function_call PTCOMA .)
+    VOID            reduce using rule 7 (declaration -> function_call PTCOMA .)
+    ID              reduce using rule 7 (declaration -> function_call PTCOMA .)
+    ENTERO          reduce using rule 7 (declaration -> function_call PTCOMA .)
+    STRING          reduce using rule 7 (declaration -> function_call PTCOMA .)
+    PARIZQ          reduce using rule 7 (declaration -> function_call PTCOMA .)
+    MENOS           reduce using rule 7 (declaration -> function_call PTCOMA .)
+    ELSE            reduce using rule 7 (declaration -> function_call PTCOMA .)
+
+
+state 85
+
+    (50) selection_statement -> IF PARIZQ . expression PARDER compound_statement
+    (51) selection_statement -> IF PARIZQ . expression PARDER statement
+    (52) selection_statement -> IF PARIZQ . expression PARDER compound_statement ELSE compound_statement
+    (53) selection_statement -> IF PARIZQ . expression PARDER compound_statement ELSE statement
+    (54) selection_statement -> IF PARIZQ . expression PARDER statement ELSE compound_statement
+    (55) selection_statement -> IF PARIZQ . expression PARDER statement ELSE statement
+    (58) expression -> . expression IGUALQUE expression
+    (59) expression -> . expression MENQUE expression
+    (60) expression -> . expression MAYQUE expression
+    (61) expression -> . expression AND expression
+    (62) expression -> . expression OR expression
+    (63) expression -> . assignment
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+
+    ID              shift and go to state 26
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    expression                     shift and go to state 91
+    assignment                     shift and go to state 88
+
+state 86
+
+    (56) return-statement -> RETURN PTCOMA .
+
+    LLAVDER         reduce using rule 56 (return-statement -> RETURN PTCOMA .)
+    WHILE           reduce using rule 56 (return-statement -> RETURN PTCOMA .)
+    IF              reduce using rule 56 (return-statement -> RETURN PTCOMA .)
+    RETURN          reduce using rule 56 (return-statement -> RETURN PTCOMA .)
+    INT             reduce using rule 56 (return-statement -> RETURN PTCOMA .)
+    FLOAT           reduce using rule 56 (return-statement -> RETURN PTCOMA .)
+    CHAR            reduce using rule 56 (return-statement -> RETURN PTCOMA .)
+    VOID            reduce using rule 56 (return-statement -> RETURN PTCOMA .)
+    ID              reduce using rule 56 (return-statement -> RETURN PTCOMA .)
+    ENTERO          reduce using rule 56 (return-statement -> RETURN PTCOMA .)
+    STRING          reduce using rule 56 (return-statement -> RETURN PTCOMA .)
+    PARIZQ          reduce using rule 56 (return-statement -> RETURN PTCOMA .)
+    MENOS           reduce using rule 56 (return-statement -> RETURN PTCOMA .)
+    ELSE            reduce using rule 56 (return-statement -> RETURN PTCOMA .)
+
+
+state 87
+
+    (57) return-statement -> RETURN expression . PTCOMA
+    (58) expression -> expression . IGUALQUE expression
+    (59) expression -> expression . MENQUE expression
+    (60) expression -> expression . MAYQUE expression
+    (61) expression -> expression . AND expression
+    (62) expression -> expression . OR expression
+
+    PTCOMA          shift and go to state 92
+    IGUALQUE        shift and go to state 93
+    MENQUE          shift and go to state 94
+    MAYQUE          shift and go to state 95
+    AND             shift and go to state 96
+    OR              shift and go to state 97
+
+
+state 88
+
+    (63) expression -> assignment .
+
+    PTCOMA          reduce using rule 63 (expression -> assignment .)
+    IGUALQUE        reduce using rule 63 (expression -> assignment .)
+    MENQUE          reduce using rule 63 (expression -> assignment .)
+    MAYQUE          reduce using rule 63 (expression -> assignment .)
+    AND             reduce using rule 63 (expression -> assignment .)
+    OR              reduce using rule 63 (expression -> assignment .)
+    PARDER          reduce using rule 63 (expression -> assignment .)
+
+
+state 89
+
+    (48) iteration_statement -> WHILE PARIZQ expression . PARDER compound_statement
+    (49) iteration_statement -> WHILE PARIZQ expression . PARDER statement
+    (58) expression -> expression . IGUALQUE expression
+    (59) expression -> expression . MENQUE expression
+    (60) expression -> expression . MAYQUE expression
+    (61) expression -> expression . AND expression
+    (62) expression -> expression . OR expression
+
+    PARDER          shift and go to state 98
+    IGUALQUE        shift and go to state 93
+    MENQUE          shift and go to state 94
+    MAYQUE          shift and go to state 95
+    AND             shift and go to state 96
+    OR              shift and go to state 97
+
+
+state 90
+
+    (5) declaration -> type assignment PTCOMA .
+
+    LLAVDER         reduce using rule 5 (declaration -> type assignment PTCOMA .)
+    WHILE           reduce using rule 5 (declaration -> type assignment PTCOMA .)
+    IF              reduce using rule 5 (declaration -> type assignment PTCOMA .)
+    RETURN          reduce using rule 5 (declaration -> type assignment PTCOMA .)
+    INT             reduce using rule 5 (declaration -> type assignment PTCOMA .)
+    FLOAT           reduce using rule 5 (declaration -> type assignment PTCOMA .)
+    CHAR            reduce using rule 5 (declaration -> type assignment PTCOMA .)
+    VOID            reduce using rule 5 (declaration -> type assignment PTCOMA .)
+    ID              reduce using rule 5 (declaration -> type assignment PTCOMA .)
+    ENTERO          reduce using rule 5 (declaration -> type assignment PTCOMA .)
+    STRING          reduce using rule 5 (declaration -> type assignment PTCOMA .)
+    PARIZQ          reduce using rule 5 (declaration -> type assignment PTCOMA .)
+    MENOS           reduce using rule 5 (declaration -> type assignment PTCOMA .)
+    ELSE            reduce using rule 5 (declaration -> type assignment PTCOMA .)
+
+
+state 91
+
+    (50) selection_statement -> IF PARIZQ expression . PARDER compound_statement
+    (51) selection_statement -> IF PARIZQ expression . PARDER statement
+    (52) selection_statement -> IF PARIZQ expression . PARDER compound_statement ELSE compound_statement
+    (53) selection_statement -> IF PARIZQ expression . PARDER compound_statement ELSE statement
+    (54) selection_statement -> IF PARIZQ expression . PARDER statement ELSE compound_statement
+    (55) selection_statement -> IF PARIZQ expression . PARDER statement ELSE statement
+    (58) expression -> expression . IGUALQUE expression
+    (59) expression -> expression . MENQUE expression
+    (60) expression -> expression . MAYQUE expression
+    (61) expression -> expression . AND expression
+    (62) expression -> expression . OR expression
+
+    PARDER          shift and go to state 99
+    IGUALQUE        shift and go to state 93
+    MENQUE          shift and go to state 94
+    MAYQUE          shift and go to state 95
+    AND             shift and go to state 96
+    OR              shift and go to state 97
+
+
+state 92
+
+    (57) return-statement -> RETURN expression PTCOMA .
+
+    LLAVDER         reduce using rule 57 (return-statement -> RETURN expression PTCOMA .)
+    WHILE           reduce using rule 57 (return-statement -> RETURN expression PTCOMA .)
+    IF              reduce using rule 57 (return-statement -> RETURN expression PTCOMA .)
+    RETURN          reduce using rule 57 (return-statement -> RETURN expression PTCOMA .)
+    INT             reduce using rule 57 (return-statement -> RETURN expression PTCOMA .)
+    FLOAT           reduce using rule 57 (return-statement -> RETURN expression PTCOMA .)
+    CHAR            reduce using rule 57 (return-statement -> RETURN expression PTCOMA .)
+    VOID            reduce using rule 57 (return-statement -> RETURN expression PTCOMA .)
+    ID              reduce using rule 57 (return-statement -> RETURN expression PTCOMA .)
+    ENTERO          reduce using rule 57 (return-statement -> RETURN expression PTCOMA .)
+    STRING          reduce using rule 57 (return-statement -> RETURN expression PTCOMA .)
+    PARIZQ          reduce using rule 57 (return-statement -> RETURN expression PTCOMA .)
+    MENOS           reduce using rule 57 (return-statement -> RETURN expression PTCOMA .)
+    ELSE            reduce using rule 57 (return-statement -> RETURN expression PTCOMA .)
+
+
+state 93
+
+    (58) expression -> expression IGUALQUE . expression
+    (58) expression -> . expression IGUALQUE expression
+    (59) expression -> . expression MENQUE expression
+    (60) expression -> . expression MAYQUE expression
+    (61) expression -> . expression AND expression
+    (62) expression -> . expression OR expression
+    (63) expression -> . assignment
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+
+    ID              shift and go to state 26
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    expression                     shift and go to state 100
+    assignment                     shift and go to state 88
+
+state 94
+
+    (59) expression -> expression MENQUE . expression
+    (58) expression -> . expression IGUALQUE expression
+    (59) expression -> . expression MENQUE expression
+    (60) expression -> . expression MAYQUE expression
+    (61) expression -> . expression AND expression
+    (62) expression -> . expression OR expression
+    (63) expression -> . assignment
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+
+    ID              shift and go to state 26
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    expression                     shift and go to state 101
+    assignment                     shift and go to state 88
+
+state 95
+
+    (60) expression -> expression MAYQUE . expression
+    (58) expression -> . expression IGUALQUE expression
+    (59) expression -> . expression MENQUE expression
+    (60) expression -> . expression MAYQUE expression
+    (61) expression -> . expression AND expression
+    (62) expression -> . expression OR expression
+    (63) expression -> . assignment
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+
+    ID              shift and go to state 26
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    expression                     shift and go to state 102
+    assignment                     shift and go to state 88
+
+state 96
+
+    (61) expression -> expression AND . expression
+    (58) expression -> . expression IGUALQUE expression
+    (59) expression -> . expression MENQUE expression
+    (60) expression -> . expression MAYQUE expression
+    (61) expression -> . expression AND expression
+    (62) expression -> . expression OR expression
+    (63) expression -> . assignment
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+
+    ID              shift and go to state 26
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    expression                     shift and go to state 103
+    assignment                     shift and go to state 88
+
+state 97
+
+    (62) expression -> expression OR . expression
+    (58) expression -> . expression IGUALQUE expression
+    (59) expression -> . expression MENQUE expression
+    (60) expression -> . expression MAYQUE expression
+    (61) expression -> . expression AND expression
+    (62) expression -> . expression OR expression
+    (63) expression -> . assignment
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+
+    ID              shift and go to state 26
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    expression                     shift and go to state 104
+    assignment                     shift and go to state 88
+
+state 98
+
+    (48) iteration_statement -> WHILE PARIZQ expression PARDER . compound_statement
+    (49) iteration_statement -> WHILE PARIZQ expression PARDER . statement
+    (37) compound_statement -> . LLAVIZQ statement_list LLAVDER
+    (40) statement -> . iteration_statement
+    (41) statement -> . declaration
+    (42) statement -> . selection_statement
+    (43) statement -> . return-statement
+    (48) iteration_statement -> . WHILE PARIZQ expression PARDER compound_statement
+    (49) iteration_statement -> . WHILE PARIZQ expression PARDER statement
+    (5) declaration -> . type assignment PTCOMA
+    (6) declaration -> . assignment PTCOMA
+    (7) declaration -> . function_call PTCOMA
+    (50) selection_statement -> . IF PARIZQ expression PARDER compound_statement
+    (51) selection_statement -> . IF PARIZQ expression PARDER statement
+    (52) selection_statement -> . IF PARIZQ expression PARDER compound_statement ELSE compound_statement
+    (53) selection_statement -> . IF PARIZQ expression PARDER compound_statement ELSE statement
+    (54) selection_statement -> . IF PARIZQ expression PARDER statement ELSE compound_statement
+    (55) selection_statement -> . IF PARIZQ expression PARDER statement ELSE statement
+    (56) return-statement -> . RETURN PTCOMA
+    (57) return-statement -> . RETURN expression PTCOMA
+    (44) type -> . INT
+    (45) type -> . FLOAT
+    (46) type -> . CHAR
+    (47) type -> . VOID
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+    (29) function_call -> . ID PARIZQ PARDER
+    (30) function_call -> . ID PARIZQ assignment PARDER
+
+    LLAVIZQ         shift and go to state 62
+    WHILE           shift and go to state 75
+    IF              shift and go to state 79
+    RETURN          shift and go to state 80
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
+    CHAR            shift and go to state 8
+    VOID            shift and go to state 9
+    ID              shift and go to state 39
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    compound_statement             shift and go to state 105
+    statement                      shift and go to state 106
+    iteration_statement            shift and go to state 71
+    declaration                    shift and go to state 72
+    selection_statement            shift and go to state 73
+    return-statement               shift and go to state 74
+    type                           shift and go to state 76
+    assignment                     shift and go to state 77
+    function_call                  shift and go to state 78
+
+state 99
+
+    (50) selection_statement -> IF PARIZQ expression PARDER . compound_statement
+    (51) selection_statement -> IF PARIZQ expression PARDER . statement
+    (52) selection_statement -> IF PARIZQ expression PARDER . compound_statement ELSE compound_statement
+    (53) selection_statement -> IF PARIZQ expression PARDER . compound_statement ELSE statement
+    (54) selection_statement -> IF PARIZQ expression PARDER . statement ELSE compound_statement
+    (55) selection_statement -> IF PARIZQ expression PARDER . statement ELSE statement
+    (37) compound_statement -> . LLAVIZQ statement_list LLAVDER
+    (40) statement -> . iteration_statement
+    (41) statement -> . declaration
+    (42) statement -> . selection_statement
+    (43) statement -> . return-statement
+    (48) iteration_statement -> . WHILE PARIZQ expression PARDER compound_statement
+    (49) iteration_statement -> . WHILE PARIZQ expression PARDER statement
+    (5) declaration -> . type assignment PTCOMA
+    (6) declaration -> . assignment PTCOMA
+    (7) declaration -> . function_call PTCOMA
+    (50) selection_statement -> . IF PARIZQ expression PARDER compound_statement
+    (51) selection_statement -> . IF PARIZQ expression PARDER statement
+    (52) selection_statement -> . IF PARIZQ expression PARDER compound_statement ELSE compound_statement
+    (53) selection_statement -> . IF PARIZQ expression PARDER compound_statement ELSE statement
+    (54) selection_statement -> . IF PARIZQ expression PARDER statement ELSE compound_statement
+    (55) selection_statement -> . IF PARIZQ expression PARDER statement ELSE statement
+    (56) return-statement -> . RETURN PTCOMA
+    (57) return-statement -> . RETURN expression PTCOMA
+    (44) type -> . INT
+    (45) type -> . FLOAT
+    (46) type -> . CHAR
+    (47) type -> . VOID
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+    (29) function_call -> . ID PARIZQ PARDER
+    (30) function_call -> . ID PARIZQ assignment PARDER
+
+    LLAVIZQ         shift and go to state 62
+    WHILE           shift and go to state 75
+    IF              shift and go to state 79
+    RETURN          shift and go to state 80
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
+    CHAR            shift and go to state 8
+    VOID            shift and go to state 9
+    ID              shift and go to state 39
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    compound_statement             shift and go to state 107
+    statement                      shift and go to state 108
+    iteration_statement            shift and go to state 71
+    declaration                    shift and go to state 72
+    selection_statement            shift and go to state 73
+    return-statement               shift and go to state 74
+    type                           shift and go to state 76
+    assignment                     shift and go to state 77
+    function_call                  shift and go to state 78
+
+state 100
+
+    (58) expression -> expression IGUALQUE expression .
+    (58) expression -> expression . IGUALQUE expression
+    (59) expression -> expression . MENQUE expression
+    (60) expression -> expression . MAYQUE expression
+    (61) expression -> expression . AND expression
+    (62) expression -> expression . OR expression
+
+    PTCOMA          reduce using rule 58 (expression -> expression IGUALQUE expression .)
+    AND             reduce using rule 58 (expression -> expression IGUALQUE expression .)
+    OR              reduce using rule 58 (expression -> expression IGUALQUE expression .)
+    PARDER          reduce using rule 58 (expression -> expression IGUALQUE expression .)
+    IGUALQUE        shift and go to state 93
+    MENQUE          shift and go to state 94
+    MAYQUE          shift and go to state 95
+
+  ! IGUALQUE        [ reduce using rule 58 (expression -> expression IGUALQUE expression .) ]
+  ! MENQUE          [ reduce using rule 58 (expression -> expression IGUALQUE expression .) ]
+  ! MAYQUE          [ reduce using rule 58 (expression -> expression IGUALQUE expression .) ]
+  ! AND             [ shift and go to state 96 ]
+  ! OR              [ shift and go to state 97 ]
+
+
+state 101
+
+    (59) expression -> expression MENQUE expression .
+    (58) expression -> expression . IGUALQUE expression
+    (59) expression -> expression . MENQUE expression
+    (60) expression -> expression . MAYQUE expression
+    (61) expression -> expression . AND expression
+    (62) expression -> expression . OR expression
+
+    PTCOMA          reduce using rule 59 (expression -> expression MENQUE expression .)
+    IGUALQUE        reduce using rule 59 (expression -> expression MENQUE expression .)
+    MENQUE          reduce using rule 59 (expression -> expression MENQUE expression .)
+    MAYQUE          reduce using rule 59 (expression -> expression MENQUE expression .)
+    AND             reduce using rule 59 (expression -> expression MENQUE expression .)
+    OR              reduce using rule 59 (expression -> expression MENQUE expression .)
+    PARDER          reduce using rule 59 (expression -> expression MENQUE expression .)
+
+  ! IGUALQUE        [ shift and go to state 93 ]
+  ! MENQUE          [ shift and go to state 94 ]
+  ! MAYQUE          [ shift and go to state 95 ]
+  ! AND             [ shift and go to state 96 ]
+  ! OR              [ shift and go to state 97 ]
+
+
+state 102
+
+    (60) expression -> expression MAYQUE expression .
+    (58) expression -> expression . IGUALQUE expression
+    (59) expression -> expression . MENQUE expression
+    (60) expression -> expression . MAYQUE expression
+    (61) expression -> expression . AND expression
+    (62) expression -> expression . OR expression
+
+    PTCOMA          reduce using rule 60 (expression -> expression MAYQUE expression .)
+    IGUALQUE        reduce using rule 60 (expression -> expression MAYQUE expression .)
+    MENQUE          reduce using rule 60 (expression -> expression MAYQUE expression .)
+    MAYQUE          reduce using rule 60 (expression -> expression MAYQUE expression .)
+    AND             reduce using rule 60 (expression -> expression MAYQUE expression .)
+    OR              reduce using rule 60 (expression -> expression MAYQUE expression .)
+    PARDER          reduce using rule 60 (expression -> expression MAYQUE expression .)
+
+  ! IGUALQUE        [ shift and go to state 93 ]
+  ! MENQUE          [ shift and go to state 94 ]
+  ! MAYQUE          [ shift and go to state 95 ]
+  ! AND             [ shift and go to state 96 ]
+  ! OR              [ shift and go to state 97 ]
+
+
+state 103
+
+    (61) expression -> expression AND expression .
+    (58) expression -> expression . IGUALQUE expression
+    (59) expression -> expression . MENQUE expression
+    (60) expression -> expression . MAYQUE expression
+    (61) expression -> expression . AND expression
+    (62) expression -> expression . OR expression
+
+  ! shift/reduce conflict for IGUALQUE resolved as shift
+  ! shift/reduce conflict for MENQUE resolved as shift
+  ! shift/reduce conflict for MAYQUE resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    PTCOMA          reduce using rule 61 (expression -> expression AND expression .)
+    PARDER          reduce using rule 61 (expression -> expression AND expression .)
+    IGUALQUE        shift and go to state 93
+    MENQUE          shift and go to state 94
+    MAYQUE          shift and go to state 95
+    AND             shift and go to state 96
+    OR              shift and go to state 97
+
+  ! IGUALQUE        [ reduce using rule 61 (expression -> expression AND expression .) ]
+  ! MENQUE          [ reduce using rule 61 (expression -> expression AND expression .) ]
+  ! MAYQUE          [ reduce using rule 61 (expression -> expression AND expression .) ]
+  ! AND             [ reduce using rule 61 (expression -> expression AND expression .) ]
+  ! OR              [ reduce using rule 61 (expression -> expression AND expression .) ]
+
+
+state 104
+
+    (62) expression -> expression OR expression .
+    (58) expression -> expression . IGUALQUE expression
+    (59) expression -> expression . MENQUE expression
+    (60) expression -> expression . MAYQUE expression
+    (61) expression -> expression . AND expression
+    (62) expression -> expression . OR expression
+
+  ! shift/reduce conflict for IGUALQUE resolved as shift
+  ! shift/reduce conflict for MENQUE resolved as shift
+  ! shift/reduce conflict for MAYQUE resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    PTCOMA          reduce using rule 62 (expression -> expression OR expression .)
+    PARDER          reduce using rule 62 (expression -> expression OR expression .)
+    IGUALQUE        shift and go to state 93
+    MENQUE          shift and go to state 94
+    MAYQUE          shift and go to state 95
+    AND             shift and go to state 96
+    OR              shift and go to state 97
+
+  ! IGUALQUE        [ reduce using rule 62 (expression -> expression OR expression .) ]
+  ! MENQUE          [ reduce using rule 62 (expression -> expression OR expression .) ]
+  ! MAYQUE          [ reduce using rule 62 (expression -> expression OR expression .) ]
+  ! AND             [ reduce using rule 62 (expression -> expression OR expression .) ]
+  ! OR              [ reduce using rule 62 (expression -> expression OR expression .) ]
+
+
+state 105
+
+    (48) iteration_statement -> WHILE PARIZQ expression PARDER compound_statement .
+
+    LLAVDER         reduce using rule 48 (iteration_statement -> WHILE PARIZQ expression PARDER compound_statement .)
+    WHILE           reduce using rule 48 (iteration_statement -> WHILE PARIZQ expression PARDER compound_statement .)
+    IF              reduce using rule 48 (iteration_statement -> WHILE PARIZQ expression PARDER compound_statement .)
+    RETURN          reduce using rule 48 (iteration_statement -> WHILE PARIZQ expression PARDER compound_statement .)
+    INT             reduce using rule 48 (iteration_statement -> WHILE PARIZQ expression PARDER compound_statement .)
+    FLOAT           reduce using rule 48 (iteration_statement -> WHILE PARIZQ expression PARDER compound_statement .)
+    CHAR            reduce using rule 48 (iteration_statement -> WHILE PARIZQ expression PARDER compound_statement .)
+    VOID            reduce using rule 48 (iteration_statement -> WHILE PARIZQ expression PARDER compound_statement .)
+    ID              reduce using rule 48 (iteration_statement -> WHILE PARIZQ expression PARDER compound_statement .)
+    ENTERO          reduce using rule 48 (iteration_statement -> WHILE PARIZQ expression PARDER compound_statement .)
+    STRING          reduce using rule 48 (iteration_statement -> WHILE PARIZQ expression PARDER compound_statement .)
+    PARIZQ          reduce using rule 48 (iteration_statement -> WHILE PARIZQ expression PARDER compound_statement .)
+    MENOS           reduce using rule 48 (iteration_statement -> WHILE PARIZQ expression PARDER compound_statement .)
+    ELSE            reduce using rule 48 (iteration_statement -> WHILE PARIZQ expression PARDER compound_statement .)
+
+
+state 106
+
+    (49) iteration_statement -> WHILE PARIZQ expression PARDER statement .
+
+    LLAVDER         reduce using rule 49 (iteration_statement -> WHILE PARIZQ expression PARDER statement .)
+    WHILE           reduce using rule 49 (iteration_statement -> WHILE PARIZQ expression PARDER statement .)
+    IF              reduce using rule 49 (iteration_statement -> WHILE PARIZQ expression PARDER statement .)
+    RETURN          reduce using rule 49 (iteration_statement -> WHILE PARIZQ expression PARDER statement .)
+    INT             reduce using rule 49 (iteration_statement -> WHILE PARIZQ expression PARDER statement .)
+    FLOAT           reduce using rule 49 (iteration_statement -> WHILE PARIZQ expression PARDER statement .)
+    CHAR            reduce using rule 49 (iteration_statement -> WHILE PARIZQ expression PARDER statement .)
+    VOID            reduce using rule 49 (iteration_statement -> WHILE PARIZQ expression PARDER statement .)
+    ID              reduce using rule 49 (iteration_statement -> WHILE PARIZQ expression PARDER statement .)
+    ENTERO          reduce using rule 49 (iteration_statement -> WHILE PARIZQ expression PARDER statement .)
+    STRING          reduce using rule 49 (iteration_statement -> WHILE PARIZQ expression PARDER statement .)
+    PARIZQ          reduce using rule 49 (iteration_statement -> WHILE PARIZQ expression PARDER statement .)
+    MENOS           reduce using rule 49 (iteration_statement -> WHILE PARIZQ expression PARDER statement .)
+    ELSE            reduce using rule 49 (iteration_statement -> WHILE PARIZQ expression PARDER statement .)
+
+
+state 107
+
+    (50) selection_statement -> IF PARIZQ expression PARDER compound_statement .
+    (52) selection_statement -> IF PARIZQ expression PARDER compound_statement . ELSE compound_statement
+    (53) selection_statement -> IF PARIZQ expression PARDER compound_statement . ELSE statement
+
+    LLAVDER         reduce using rule 50 (selection_statement -> IF PARIZQ expression PARDER compound_statement .)
+    WHILE           reduce using rule 50 (selection_statement -> IF PARIZQ expression PARDER compound_statement .)
+    IF              reduce using rule 50 (selection_statement -> IF PARIZQ expression PARDER compound_statement .)
+    RETURN          reduce using rule 50 (selection_statement -> IF PARIZQ expression PARDER compound_statement .)
+    INT             reduce using rule 50 (selection_statement -> IF PARIZQ expression PARDER compound_statement .)
+    FLOAT           reduce using rule 50 (selection_statement -> IF PARIZQ expression PARDER compound_statement .)
+    CHAR            reduce using rule 50 (selection_statement -> IF PARIZQ expression PARDER compound_statement .)
+    VOID            reduce using rule 50 (selection_statement -> IF PARIZQ expression PARDER compound_statement .)
+    ID              reduce using rule 50 (selection_statement -> IF PARIZQ expression PARDER compound_statement .)
+    ENTERO          reduce using rule 50 (selection_statement -> IF PARIZQ expression PARDER compound_statement .)
+    STRING          reduce using rule 50 (selection_statement -> IF PARIZQ expression PARDER compound_statement .)
+    PARIZQ          reduce using rule 50 (selection_statement -> IF PARIZQ expression PARDER compound_statement .)
+    MENOS           reduce using rule 50 (selection_statement -> IF PARIZQ expression PARDER compound_statement .)
+    ELSE            reduce using rule 50 (selection_statement -> IF PARIZQ expression PARDER compound_statement .)
+
+  ! ELSE            [ shift and go to state 109 ]
+
+
+state 108
+
+    (51) selection_statement -> IF PARIZQ expression PARDER statement .
+    (54) selection_statement -> IF PARIZQ expression PARDER statement . ELSE compound_statement
+    (55) selection_statement -> IF PARIZQ expression PARDER statement . ELSE statement
+
+    LLAVDER         reduce using rule 51 (selection_statement -> IF PARIZQ expression PARDER statement .)
+    WHILE           reduce using rule 51 (selection_statement -> IF PARIZQ expression PARDER statement .)
+    IF              reduce using rule 51 (selection_statement -> IF PARIZQ expression PARDER statement .)
+    RETURN          reduce using rule 51 (selection_statement -> IF PARIZQ expression PARDER statement .)
+    INT             reduce using rule 51 (selection_statement -> IF PARIZQ expression PARDER statement .)
+    FLOAT           reduce using rule 51 (selection_statement -> IF PARIZQ expression PARDER statement .)
+    CHAR            reduce using rule 51 (selection_statement -> IF PARIZQ expression PARDER statement .)
+    VOID            reduce using rule 51 (selection_statement -> IF PARIZQ expression PARDER statement .)
+    ID              reduce using rule 51 (selection_statement -> IF PARIZQ expression PARDER statement .)
+    ENTERO          reduce using rule 51 (selection_statement -> IF PARIZQ expression PARDER statement .)
+    STRING          reduce using rule 51 (selection_statement -> IF PARIZQ expression PARDER statement .)
+    PARIZQ          reduce using rule 51 (selection_statement -> IF PARIZQ expression PARDER statement .)
+    MENOS           reduce using rule 51 (selection_statement -> IF PARIZQ expression PARDER statement .)
+    ELSE            reduce using rule 51 (selection_statement -> IF PARIZQ expression PARDER statement .)
+
+  ! ELSE            [ shift and go to state 110 ]
+
+
+state 109
+
+    (52) selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE . compound_statement
+    (53) selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE . statement
+    (37) compound_statement -> . LLAVIZQ statement_list LLAVDER
+    (40) statement -> . iteration_statement
+    (41) statement -> . declaration
+    (42) statement -> . selection_statement
+    (43) statement -> . return-statement
+    (48) iteration_statement -> . WHILE PARIZQ expression PARDER compound_statement
+    (49) iteration_statement -> . WHILE PARIZQ expression PARDER statement
+    (5) declaration -> . type assignment PTCOMA
+    (6) declaration -> . assignment PTCOMA
+    (7) declaration -> . function_call PTCOMA
+    (50) selection_statement -> . IF PARIZQ expression PARDER compound_statement
+    (51) selection_statement -> . IF PARIZQ expression PARDER statement
+    (52) selection_statement -> . IF PARIZQ expression PARDER compound_statement ELSE compound_statement
+    (53) selection_statement -> . IF PARIZQ expression PARDER compound_statement ELSE statement
+    (54) selection_statement -> . IF PARIZQ expression PARDER statement ELSE compound_statement
+    (55) selection_statement -> . IF PARIZQ expression PARDER statement ELSE statement
+    (56) return-statement -> . RETURN PTCOMA
+    (57) return-statement -> . RETURN expression PTCOMA
+    (44) type -> . INT
+    (45) type -> . FLOAT
+    (46) type -> . CHAR
+    (47) type -> . VOID
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+    (29) function_call -> . ID PARIZQ PARDER
+    (30) function_call -> . ID PARIZQ assignment PARDER
+
+    LLAVIZQ         shift and go to state 62
+    WHILE           shift and go to state 75
+    IF              shift and go to state 79
+    RETURN          shift and go to state 80
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
+    CHAR            shift and go to state 8
+    VOID            shift and go to state 9
+    ID              shift and go to state 39
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    compound_statement             shift and go to state 111
+    statement                      shift and go to state 112
+    iteration_statement            shift and go to state 71
+    declaration                    shift and go to state 72
+    selection_statement            shift and go to state 73
+    return-statement               shift and go to state 74
+    type                           shift and go to state 76
+    assignment                     shift and go to state 77
+    function_call                  shift and go to state 78
+
+state 110
+
+    (54) selection_statement -> IF PARIZQ expression PARDER statement ELSE . compound_statement
+    (55) selection_statement -> IF PARIZQ expression PARDER statement ELSE . statement
+    (37) compound_statement -> . LLAVIZQ statement_list LLAVDER
+    (40) statement -> . iteration_statement
+    (41) statement -> . declaration
+    (42) statement -> . selection_statement
+    (43) statement -> . return-statement
+    (48) iteration_statement -> . WHILE PARIZQ expression PARDER compound_statement
+    (49) iteration_statement -> . WHILE PARIZQ expression PARDER statement
+    (5) declaration -> . type assignment PTCOMA
+    (6) declaration -> . assignment PTCOMA
+    (7) declaration -> . function_call PTCOMA
+    (50) selection_statement -> . IF PARIZQ expression PARDER compound_statement
+    (51) selection_statement -> . IF PARIZQ expression PARDER statement
+    (52) selection_statement -> . IF PARIZQ expression PARDER compound_statement ELSE compound_statement
+    (53) selection_statement -> . IF PARIZQ expression PARDER compound_statement ELSE statement
+    (54) selection_statement -> . IF PARIZQ expression PARDER statement ELSE compound_statement
+    (55) selection_statement -> . IF PARIZQ expression PARDER statement ELSE statement
+    (56) return-statement -> . RETURN PTCOMA
+    (57) return-statement -> . RETURN expression PTCOMA
+    (44) type -> . INT
+    (45) type -> . FLOAT
+    (46) type -> . CHAR
+    (47) type -> . VOID
+    (8) assignment -> . ID IGUAL assignment
+    (9) assignment -> . ID IGUAL function_call
+    (10) assignment -> . ID COMA assignment
+    (11) assignment -> . ENTERO COMA assignment
+    (12) assignment -> . ID MAS assignment
+    (13) assignment -> . ID MENOS assignment
+    (14) assignment -> . ID POR assignment
+    (15) assignment -> . ID DIVIDIDO assignment
+    (16) assignment -> . ENTERO MAS assignment
+    (17) assignment -> . ENTERO MENOS assignment
+    (18) assignment -> . ENTERO POR assignment
+    (19) assignment -> . ENTERO DIVIDIDO assignment
+    (20) assignment -> . STRING
+    (21) assignment -> . PARIZQ assignment PARDER
+    (22) assignment -> . MENOS assignment
+    (23) assignment -> . ENTERO MAS MAS
+    (24) assignment -> . ID MAS MAS
+    (25) assignment -> . ENTERO MENOS MENOS
+    (26) assignment -> . ID MENOS MENOS
+    (27) assignment -> . ENTERO
+    (28) assignment -> . ID
+    (29) function_call -> . ID PARIZQ PARDER
+    (30) function_call -> . ID PARIZQ assignment PARDER
+
+    LLAVIZQ         shift and go to state 62
+    WHILE           shift and go to state 75
+    IF              shift and go to state 79
+    RETURN          shift and go to state 80
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
+    CHAR            shift and go to state 8
+    VOID            shift and go to state 9
+    ID              shift and go to state 39
+    ENTERO          shift and go to state 15
+    STRING          shift and go to state 17
+    PARIZQ          shift and go to state 13
+    MENOS           shift and go to state 16
+
+    statement                      shift and go to state 113
+    compound_statement             shift and go to state 114
+    iteration_statement            shift and go to state 71
+    declaration                    shift and go to state 72
+    selection_statement            shift and go to state 73
+    return-statement               shift and go to state 74
+    type                           shift and go to state 76
+    assignment                     shift and go to state 77
+    function_call                  shift and go to state 78
+
+state 111
+
+    (52) selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE compound_statement .
+
+    LLAVDER         reduce using rule 52 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE compound_statement .)
+    WHILE           reduce using rule 52 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE compound_statement .)
+    IF              reduce using rule 52 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE compound_statement .)
+    RETURN          reduce using rule 52 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE compound_statement .)
+    INT             reduce using rule 52 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE compound_statement .)
+    FLOAT           reduce using rule 52 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE compound_statement .)
+    CHAR            reduce using rule 52 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE compound_statement .)
+    VOID            reduce using rule 52 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE compound_statement .)
+    ID              reduce using rule 52 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE compound_statement .)
+    ENTERO          reduce using rule 52 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE compound_statement .)
+    STRING          reduce using rule 52 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE compound_statement .)
+    PARIZQ          reduce using rule 52 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE compound_statement .)
+    MENOS           reduce using rule 52 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE compound_statement .)
+    ELSE            reduce using rule 52 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE compound_statement .)
+
+
+state 112
+
+    (53) selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE statement .
+
+    LLAVDER         reduce using rule 53 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE statement .)
+    WHILE           reduce using rule 53 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE statement .)
+    IF              reduce using rule 53 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE statement .)
+    RETURN          reduce using rule 53 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE statement .)
+    INT             reduce using rule 53 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE statement .)
+    FLOAT           reduce using rule 53 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE statement .)
+    CHAR            reduce using rule 53 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE statement .)
+    VOID            reduce using rule 53 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE statement .)
+    ID              reduce using rule 53 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE statement .)
+    ENTERO          reduce using rule 53 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE statement .)
+    STRING          reduce using rule 53 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE statement .)
+    PARIZQ          reduce using rule 53 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE statement .)
+    MENOS           reduce using rule 53 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE statement .)
+    ELSE            reduce using rule 53 (selection_statement -> IF PARIZQ expression PARDER compound_statement ELSE statement .)
+
+
+state 113
+
+    (55) selection_statement -> IF PARIZQ expression PARDER statement ELSE statement .
+
+    LLAVDER         reduce using rule 55 (selection_statement -> IF PARIZQ expression PARDER statement ELSE statement .)
+    WHILE           reduce using rule 55 (selection_statement -> IF PARIZQ expression PARDER statement ELSE statement .)
+    IF              reduce using rule 55 (selection_statement -> IF PARIZQ expression PARDER statement ELSE statement .)
+    RETURN          reduce using rule 55 (selection_statement -> IF PARIZQ expression PARDER statement ELSE statement .)
+    INT             reduce using rule 55 (selection_statement -> IF PARIZQ expression PARDER statement ELSE statement .)
+    FLOAT           reduce using rule 55 (selection_statement -> IF PARIZQ expression PARDER statement ELSE statement .)
+    CHAR            reduce using rule 55 (selection_statement -> IF PARIZQ expression PARDER statement ELSE statement .)
+    VOID            reduce using rule 55 (selection_statement -> IF PARIZQ expression PARDER statement ELSE statement .)
+    ID              reduce using rule 55 (selection_statement -> IF PARIZQ expression PARDER statement ELSE statement .)
+    ENTERO          reduce using rule 55 (selection_statement -> IF PARIZQ expression PARDER statement ELSE statement .)
+    STRING          reduce using rule 55 (selection_statement -> IF PARIZQ expression PARDER statement ELSE statement .)
+    PARIZQ          reduce using rule 55 (selection_statement -> IF PARIZQ expression PARDER statement ELSE statement .)
+    MENOS           reduce using rule 55 (selection_statement -> IF PARIZQ expression PARDER statement ELSE statement .)
+    ELSE            reduce using rule 55 (selection_statement -> IF PARIZQ expression PARDER statement ELSE statement .)
+
+
+state 114
+
+    (54) selection_statement -> IF PARIZQ expression PARDER statement ELSE compound_statement .
+
+    LLAVDER         reduce using rule 54 (selection_statement -> IF PARIZQ expression PARDER statement ELSE compound_statement .)
+    WHILE           reduce using rule 54 (selection_statement -> IF PARIZQ expression PARDER statement ELSE compound_statement .)
+    IF              reduce using rule 54 (selection_statement -> IF PARIZQ expression PARDER statement ELSE compound_statement .)
+    RETURN          reduce using rule 54 (selection_statement -> IF PARIZQ expression PARDER statement ELSE compound_statement .)
+    INT             reduce using rule 54 (selection_statement -> IF PARIZQ expression PARDER statement ELSE compound_statement .)
+    FLOAT           reduce using rule 54 (selection_statement -> IF PARIZQ expression PARDER statement ELSE compound_statement .)
+    CHAR            reduce using rule 54 (selection_statement -> IF PARIZQ expression PARDER statement ELSE compound_statement .)
+    VOID            reduce using rule 54 (selection_statement -> IF PARIZQ expression PARDER statement ELSE compound_statement .)
+    ID              reduce using rule 54 (selection_statement -> IF PARIZQ expression PARDER statement ELSE compound_statement .)
+    ENTERO          reduce using rule 54 (selection_statement -> IF PARIZQ expression PARDER statement ELSE compound_statement .)
+    STRING          reduce using rule 54 (selection_statement -> IF PARIZQ expression PARDER statement ELSE compound_statement .)
+    PARIZQ          reduce using rule 54 (selection_statement -> IF PARIZQ expression PARDER statement ELSE compound_statement .)
+    MENOS           reduce using rule 54 (selection_statement -> IF PARIZQ expression PARDER statement ELSE compound_statement .)
+    ELSE            reduce using rule 54 (selection_statement -> IF PARIZQ expression PARDER statement ELSE compound_statement .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for IGUALQUE in state 103 resolved as shift
+WARNING: shift/reduce conflict for MENQUE in state 103 resolved as shift
+WARNING: shift/reduce conflict for MAYQUE in state 103 resolved as shift
+WARNING: shift/reduce conflict for AND in state 103 resolved as shift
+WARNING: shift/reduce conflict for OR in state 103 resolved as shift
+WARNING: shift/reduce conflict for IGUALQUE in state 104 resolved as shift
+WARNING: shift/reduce conflict for MENQUE in state 104 resolved as shift
+WARNING: shift/reduce conflict for MAYQUE in state 104 resolved as shift
+WARNING: shift/reduce conflict for AND in state 104 resolved as shift
+WARNING: shift/reduce conflict for OR in state 104 resolved as shift

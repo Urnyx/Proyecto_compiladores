@@ -1,0 +1,2613 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    BREAK
+    COMA
+    CONCAT
+    DEF
+    DOBPUNTO
+    RANGE
+    RETURN
+
+Grammar
+
+Rule 0     S' -> init
+Rule 1     init -> instrucciones
+Rule 2     instrucciones -> imprimir_instr instrucciones
+Rule 3     instrucciones -> asignacion_instr instrucciones
+Rule 4     instrucciones -> if_instr instrucciones
+Rule 5     instrucciones -> elif_instr instrucciones
+Rule 6     instrucciones -> else_instr instrucciones
+Rule 7     instrucciones -> while_instr instrucciones
+Rule 8     instrucciones -> empty
+Rule 9     instrucciones -> for_instr instrucciones
+Rule 10    if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+Rule 11    if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr
+Rule 12    if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+Rule 13    elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+Rule 14    elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+Rule 15    else_instr -> ELSE LLAVIZQ instrucciones LLAVDER
+Rule 16    while_instr -> WHILE PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+Rule 17    asignacion_instr -> ID IGUAL expresion PTCOMA
+Rule 18    asignacion_instr_increment -> ID IGUAL ID MAS ENTERO PTCOMA
+Rule 19    asignacion_instr_increment -> ID IGUAL ID MENOS ENTERO PTCOMA
+Rule 20    expresion -> ENTERO
+Rule 21    expresion -> DECIMAL
+Rule 22    expresion -> STRING
+Rule 23    expresion -> ID
+Rule 24    imprimir_instr -> PRINT PARIZQ expresion PARDER PTCOMA
+Rule 25    imprimir_instr -> PRINT PARIZQ expresion_logica PARDER PTCOMA
+Rule 26    expresion_logica -> expresion MENQUE expresion
+Rule 27    expresion_logica -> expresion MAYQUE expresion
+Rule 28    expresion_logica -> expresion IGUALQUE expresion
+Rule 29    expresion_logica -> expresion NIGUALQUE expresion
+Rule 30    expresion_logica -> expresion MENIGUAL expresion
+Rule 31    expresion_logica -> expresion MAYIGUAL expresion
+Rule 32    expresion_logica -> PARIZQ expresion_logica PARDER MENQUE PARIZQ expresion_logica PARDER
+Rule 33    expresion_logica -> PARIZQ expresion_logica PARDER MAYQUE PARIZQ expresion_logica PARDER
+Rule 34    expresion_logica -> PARIZQ expresion_logica PARDER IGUALQUE PARIZQ expresion_logica PARDER
+Rule 35    expresion_logica -> PARIZQ expresion_logica PARDER NIGUALQUE PARIZQ expresion_logica PARDER
+Rule 36    expresion_logica -> PARIZQ expresion_logica PARDER MAYIGUAL PARIZQ expresion_logica PARDER
+Rule 37    expresion_logica -> PARIZQ expresion_logica PARDER MENIGUAL PARIZQ expresion_logica PARDER
+Rule 38    expresion_logica -> PARIZQ expresion_logica PARDER AND PARIZQ expresion_logica PARDER
+Rule 39    expresion_logica -> PARIZQ expresion_logica PARDER OR PARIZQ expresion_logica PARDER
+Rule 40    expresion_logica -> expresion_logica AND expresion_logica
+Rule 41    expresion_logica -> expresion_logica OR expresion_logica
+Rule 42    expresion -> expresion MAS expresion
+Rule 43    expresion -> expresion MENOS expresion
+Rule 44    expresion -> expresion POR expresion
+Rule 45    expresion -> expresion DIVIDIDO expresion
+Rule 46    for_instr -> FOR PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER
+Rule 47    empty -> <empty>
+
+Terminals, with rules where they appear
+
+AND                  : 38 40
+BREAK                : 
+COMA                 : 
+CONCAT               : 
+DECIMAL              : 21
+DEF                  : 
+DIVIDIDO             : 45
+DOBPUNTO             : 
+ELIF                 : 13 14
+ELSE                 : 15
+ENTERO               : 18 19 20
+FOR                  : 46
+ID                   : 17 18 18 19 19 23 46
+IF                   : 10 11 12
+IGUAL                : 17 18 19
+IGUALQUE             : 28 34
+IN                   : 46
+LLAVDER              : 10 11 12 13 14 15 16 46
+LLAVIZQ              : 10 11 12 13 14 15 16 46
+MAS                  : 18 42
+MAYIGUAL             : 31 36
+MAYQUE               : 27 33
+MENIGUAL             : 30 37
+MENOS                : 19 43
+MENQUE               : 26 32
+NIGUALQUE            : 29 35
+OR                   : 39 41
+PARDER               : 10 11 12 13 14 16 24 25 32 32 33 33 34 34 35 35 36 36 37 37 38 38 39 39 46
+PARIZQ               : 10 11 12 13 14 16 24 25 32 32 33 33 34 34 35 35 36 36 37 37 38 38 39 39 46
+POR                  : 44
+PRINT                : 24 25
+PTCOMA               : 17 18 19 24 25
+RANGE                : 
+RETURN               : 
+STRING               : 22
+WHILE                : 16
+error                : 
+
+Nonterminals, with rules where they appear
+
+asignacion_instr     : 3
+asignacion_instr_increment : 
+elif_instr           : 5 11
+else_instr           : 6 12 14
+empty                : 8
+expresion            : 17 24 26 26 27 27 28 28 29 29 30 30 31 31 42 42 43 43 44 44 45 45 46
+expresion_logica     : 10 11 12 13 14 16 25 32 32 33 33 34 34 35 35 36 36 37 37 38 38 39 39 40 40 41 41
+for_instr            : 9
+if_instr             : 4
+imprimir_instr       : 2
+init                 : 0
+instrucciones        : 1 2 3 4 5 6 7 9 10 11 12 13 14 15 16 46
+while_instr          : 7
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . init
+    (1) init -> . instrucciones
+    (2) instrucciones -> . imprimir_instr instrucciones
+    (3) instrucciones -> . asignacion_instr instrucciones
+    (4) instrucciones -> . if_instr instrucciones
+    (5) instrucciones -> . elif_instr instrucciones
+    (6) instrucciones -> . else_instr instrucciones
+    (7) instrucciones -> . while_instr instrucciones
+    (8) instrucciones -> . empty
+    (9) instrucciones -> . for_instr instrucciones
+    (24) imprimir_instr -> . PRINT PARIZQ expresion PARDER PTCOMA
+    (25) imprimir_instr -> . PRINT PARIZQ expresion_logica PARDER PTCOMA
+    (17) asignacion_instr -> . ID IGUAL expresion PTCOMA
+    (10) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (11) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr
+    (12) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (13) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (14) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (15) else_instr -> . ELSE LLAVIZQ instrucciones LLAVDER
+    (16) while_instr -> . WHILE PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (47) empty -> .
+    (46) for_instr -> . FOR PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER
+
+    PRINT           shift and go to state 11
+    ID              shift and go to state 12
+    IF              shift and go to state 13
+    ELIF            shift and go to state 14
+    ELSE            shift and go to state 15
+    WHILE           shift and go to state 16
+    $end            reduce using rule 47 (empty -> .)
+    FOR             shift and go to state 17
+
+    init                           shift and go to state 1
+    instrucciones                  shift and go to state 2
+    imprimir_instr                 shift and go to state 3
+    asignacion_instr               shift and go to state 4
+    if_instr                       shift and go to state 5
+    elif_instr                     shift and go to state 6
+    else_instr                     shift and go to state 7
+    while_instr                    shift and go to state 8
+    empty                          shift and go to state 9
+    for_instr                      shift and go to state 10
+
+state 1
+
+    (0) S' -> init .
+
+
+
+state 2
+
+    (1) init -> instrucciones .
+
+    $end            reduce using rule 1 (init -> instrucciones .)
+
+
+state 3
+
+    (2) instrucciones -> imprimir_instr . instrucciones
+    (2) instrucciones -> . imprimir_instr instrucciones
+    (3) instrucciones -> . asignacion_instr instrucciones
+    (4) instrucciones -> . if_instr instrucciones
+    (5) instrucciones -> . elif_instr instrucciones
+    (6) instrucciones -> . else_instr instrucciones
+    (7) instrucciones -> . while_instr instrucciones
+    (8) instrucciones -> . empty
+    (9) instrucciones -> . for_instr instrucciones
+    (24) imprimir_instr -> . PRINT PARIZQ expresion PARDER PTCOMA
+    (25) imprimir_instr -> . PRINT PARIZQ expresion_logica PARDER PTCOMA
+    (17) asignacion_instr -> . ID IGUAL expresion PTCOMA
+    (10) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (11) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr
+    (12) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (13) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (14) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (15) else_instr -> . ELSE LLAVIZQ instrucciones LLAVDER
+    (16) while_instr -> . WHILE PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (47) empty -> .
+    (46) for_instr -> . FOR PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER
+
+    PRINT           shift and go to state 11
+    ID              shift and go to state 12
+    IF              shift and go to state 13
+    ELIF            shift and go to state 14
+    ELSE            shift and go to state 15
+    WHILE           shift and go to state 16
+    $end            reduce using rule 47 (empty -> .)
+    LLAVDER         reduce using rule 47 (empty -> .)
+    FOR             shift and go to state 17
+
+    imprimir_instr                 shift and go to state 3
+    instrucciones                  shift and go to state 18
+    asignacion_instr               shift and go to state 4
+    if_instr                       shift and go to state 5
+    elif_instr                     shift and go to state 6
+    else_instr                     shift and go to state 7
+    while_instr                    shift and go to state 8
+    empty                          shift and go to state 9
+    for_instr                      shift and go to state 10
+
+state 4
+
+    (3) instrucciones -> asignacion_instr . instrucciones
+    (2) instrucciones -> . imprimir_instr instrucciones
+    (3) instrucciones -> . asignacion_instr instrucciones
+    (4) instrucciones -> . if_instr instrucciones
+    (5) instrucciones -> . elif_instr instrucciones
+    (6) instrucciones -> . else_instr instrucciones
+    (7) instrucciones -> . while_instr instrucciones
+    (8) instrucciones -> . empty
+    (9) instrucciones -> . for_instr instrucciones
+    (24) imprimir_instr -> . PRINT PARIZQ expresion PARDER PTCOMA
+    (25) imprimir_instr -> . PRINT PARIZQ expresion_logica PARDER PTCOMA
+    (17) asignacion_instr -> . ID IGUAL expresion PTCOMA
+    (10) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (11) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr
+    (12) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (13) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (14) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (15) else_instr -> . ELSE LLAVIZQ instrucciones LLAVDER
+    (16) while_instr -> . WHILE PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (47) empty -> .
+    (46) for_instr -> . FOR PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER
+
+    PRINT           shift and go to state 11
+    ID              shift and go to state 12
+    IF              shift and go to state 13
+    ELIF            shift and go to state 14
+    ELSE            shift and go to state 15
+    WHILE           shift and go to state 16
+    $end            reduce using rule 47 (empty -> .)
+    LLAVDER         reduce using rule 47 (empty -> .)
+    FOR             shift and go to state 17
+
+    asignacion_instr               shift and go to state 4
+    instrucciones                  shift and go to state 19
+    imprimir_instr                 shift and go to state 3
+    if_instr                       shift and go to state 5
+    elif_instr                     shift and go to state 6
+    else_instr                     shift and go to state 7
+    while_instr                    shift and go to state 8
+    empty                          shift and go to state 9
+    for_instr                      shift and go to state 10
+
+state 5
+
+    (4) instrucciones -> if_instr . instrucciones
+    (2) instrucciones -> . imprimir_instr instrucciones
+    (3) instrucciones -> . asignacion_instr instrucciones
+    (4) instrucciones -> . if_instr instrucciones
+    (5) instrucciones -> . elif_instr instrucciones
+    (6) instrucciones -> . else_instr instrucciones
+    (7) instrucciones -> . while_instr instrucciones
+    (8) instrucciones -> . empty
+    (9) instrucciones -> . for_instr instrucciones
+    (24) imprimir_instr -> . PRINT PARIZQ expresion PARDER PTCOMA
+    (25) imprimir_instr -> . PRINT PARIZQ expresion_logica PARDER PTCOMA
+    (17) asignacion_instr -> . ID IGUAL expresion PTCOMA
+    (10) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (11) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr
+    (12) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (13) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (14) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (15) else_instr -> . ELSE LLAVIZQ instrucciones LLAVDER
+    (16) while_instr -> . WHILE PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (47) empty -> .
+    (46) for_instr -> . FOR PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER
+
+    PRINT           shift and go to state 11
+    ID              shift and go to state 12
+    IF              shift and go to state 13
+    ELIF            shift and go to state 14
+    ELSE            shift and go to state 15
+    WHILE           shift and go to state 16
+    $end            reduce using rule 47 (empty -> .)
+    LLAVDER         reduce using rule 47 (empty -> .)
+    FOR             shift and go to state 17
+
+    if_instr                       shift and go to state 5
+    instrucciones                  shift and go to state 20
+    imprimir_instr                 shift and go to state 3
+    asignacion_instr               shift and go to state 4
+    elif_instr                     shift and go to state 6
+    else_instr                     shift and go to state 7
+    while_instr                    shift and go to state 8
+    empty                          shift and go to state 9
+    for_instr                      shift and go to state 10
+
+state 6
+
+    (5) instrucciones -> elif_instr . instrucciones
+    (2) instrucciones -> . imprimir_instr instrucciones
+    (3) instrucciones -> . asignacion_instr instrucciones
+    (4) instrucciones -> . if_instr instrucciones
+    (5) instrucciones -> . elif_instr instrucciones
+    (6) instrucciones -> . else_instr instrucciones
+    (7) instrucciones -> . while_instr instrucciones
+    (8) instrucciones -> . empty
+    (9) instrucciones -> . for_instr instrucciones
+    (24) imprimir_instr -> . PRINT PARIZQ expresion PARDER PTCOMA
+    (25) imprimir_instr -> . PRINT PARIZQ expresion_logica PARDER PTCOMA
+    (17) asignacion_instr -> . ID IGUAL expresion PTCOMA
+    (10) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (11) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr
+    (12) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (13) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (14) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (15) else_instr -> . ELSE LLAVIZQ instrucciones LLAVDER
+    (16) while_instr -> . WHILE PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (47) empty -> .
+    (46) for_instr -> . FOR PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER
+
+    PRINT           shift and go to state 11
+    ID              shift and go to state 12
+    IF              shift and go to state 13
+    ELIF            shift and go to state 14
+    ELSE            shift and go to state 15
+    WHILE           shift and go to state 16
+    $end            reduce using rule 47 (empty -> .)
+    LLAVDER         reduce using rule 47 (empty -> .)
+    FOR             shift and go to state 17
+
+    elif_instr                     shift and go to state 6
+    instrucciones                  shift and go to state 21
+    imprimir_instr                 shift and go to state 3
+    asignacion_instr               shift and go to state 4
+    if_instr                       shift and go to state 5
+    else_instr                     shift and go to state 7
+    while_instr                    shift and go to state 8
+    empty                          shift and go to state 9
+    for_instr                      shift and go to state 10
+
+state 7
+
+    (6) instrucciones -> else_instr . instrucciones
+    (2) instrucciones -> . imprimir_instr instrucciones
+    (3) instrucciones -> . asignacion_instr instrucciones
+    (4) instrucciones -> . if_instr instrucciones
+    (5) instrucciones -> . elif_instr instrucciones
+    (6) instrucciones -> . else_instr instrucciones
+    (7) instrucciones -> . while_instr instrucciones
+    (8) instrucciones -> . empty
+    (9) instrucciones -> . for_instr instrucciones
+    (24) imprimir_instr -> . PRINT PARIZQ expresion PARDER PTCOMA
+    (25) imprimir_instr -> . PRINT PARIZQ expresion_logica PARDER PTCOMA
+    (17) asignacion_instr -> . ID IGUAL expresion PTCOMA
+    (10) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (11) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr
+    (12) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (13) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (14) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (15) else_instr -> . ELSE LLAVIZQ instrucciones LLAVDER
+    (16) while_instr -> . WHILE PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (47) empty -> .
+    (46) for_instr -> . FOR PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER
+
+    PRINT           shift and go to state 11
+    ID              shift and go to state 12
+    IF              shift and go to state 13
+    ELIF            shift and go to state 14
+    ELSE            shift and go to state 15
+    WHILE           shift and go to state 16
+    $end            reduce using rule 47 (empty -> .)
+    LLAVDER         reduce using rule 47 (empty -> .)
+    FOR             shift and go to state 17
+
+    else_instr                     shift and go to state 7
+    instrucciones                  shift and go to state 22
+    imprimir_instr                 shift and go to state 3
+    asignacion_instr               shift and go to state 4
+    if_instr                       shift and go to state 5
+    elif_instr                     shift and go to state 6
+    while_instr                    shift and go to state 8
+    empty                          shift and go to state 9
+    for_instr                      shift and go to state 10
+
+state 8
+
+    (7) instrucciones -> while_instr . instrucciones
+    (2) instrucciones -> . imprimir_instr instrucciones
+    (3) instrucciones -> . asignacion_instr instrucciones
+    (4) instrucciones -> . if_instr instrucciones
+    (5) instrucciones -> . elif_instr instrucciones
+    (6) instrucciones -> . else_instr instrucciones
+    (7) instrucciones -> . while_instr instrucciones
+    (8) instrucciones -> . empty
+    (9) instrucciones -> . for_instr instrucciones
+    (24) imprimir_instr -> . PRINT PARIZQ expresion PARDER PTCOMA
+    (25) imprimir_instr -> . PRINT PARIZQ expresion_logica PARDER PTCOMA
+    (17) asignacion_instr -> . ID IGUAL expresion PTCOMA
+    (10) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (11) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr
+    (12) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (13) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (14) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (15) else_instr -> . ELSE LLAVIZQ instrucciones LLAVDER
+    (16) while_instr -> . WHILE PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (47) empty -> .
+    (46) for_instr -> . FOR PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER
+
+    PRINT           shift and go to state 11
+    ID              shift and go to state 12
+    IF              shift and go to state 13
+    ELIF            shift and go to state 14
+    ELSE            shift and go to state 15
+    WHILE           shift and go to state 16
+    $end            reduce using rule 47 (empty -> .)
+    LLAVDER         reduce using rule 47 (empty -> .)
+    FOR             shift and go to state 17
+
+    while_instr                    shift and go to state 8
+    instrucciones                  shift and go to state 23
+    imprimir_instr                 shift and go to state 3
+    asignacion_instr               shift and go to state 4
+    if_instr                       shift and go to state 5
+    elif_instr                     shift and go to state 6
+    else_instr                     shift and go to state 7
+    empty                          shift and go to state 9
+    for_instr                      shift and go to state 10
+
+state 9
+
+    (8) instrucciones -> empty .
+
+    $end            reduce using rule 8 (instrucciones -> empty .)
+    LLAVDER         reduce using rule 8 (instrucciones -> empty .)
+
+
+state 10
+
+    (9) instrucciones -> for_instr . instrucciones
+    (2) instrucciones -> . imprimir_instr instrucciones
+    (3) instrucciones -> . asignacion_instr instrucciones
+    (4) instrucciones -> . if_instr instrucciones
+    (5) instrucciones -> . elif_instr instrucciones
+    (6) instrucciones -> . else_instr instrucciones
+    (7) instrucciones -> . while_instr instrucciones
+    (8) instrucciones -> . empty
+    (9) instrucciones -> . for_instr instrucciones
+    (24) imprimir_instr -> . PRINT PARIZQ expresion PARDER PTCOMA
+    (25) imprimir_instr -> . PRINT PARIZQ expresion_logica PARDER PTCOMA
+    (17) asignacion_instr -> . ID IGUAL expresion PTCOMA
+    (10) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (11) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr
+    (12) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (13) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (14) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (15) else_instr -> . ELSE LLAVIZQ instrucciones LLAVDER
+    (16) while_instr -> . WHILE PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (47) empty -> .
+    (46) for_instr -> . FOR PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER
+
+    PRINT           shift and go to state 11
+    ID              shift and go to state 12
+    IF              shift and go to state 13
+    ELIF            shift and go to state 14
+    ELSE            shift and go to state 15
+    WHILE           shift and go to state 16
+    $end            reduce using rule 47 (empty -> .)
+    LLAVDER         reduce using rule 47 (empty -> .)
+    FOR             shift and go to state 17
+
+    for_instr                      shift and go to state 10
+    instrucciones                  shift and go to state 24
+    imprimir_instr                 shift and go to state 3
+    asignacion_instr               shift and go to state 4
+    if_instr                       shift and go to state 5
+    elif_instr                     shift and go to state 6
+    else_instr                     shift and go to state 7
+    while_instr                    shift and go to state 8
+    empty                          shift and go to state 9
+
+state 11
+
+    (24) imprimir_instr -> PRINT . PARIZQ expresion PARDER PTCOMA
+    (25) imprimir_instr -> PRINT . PARIZQ expresion_logica PARDER PTCOMA
+
+    PARIZQ          shift and go to state 25
+
+
+state 12
+
+    (17) asignacion_instr -> ID . IGUAL expresion PTCOMA
+
+    IGUAL           shift and go to state 26
+
+
+state 13
+
+    (10) if_instr -> IF . PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (11) if_instr -> IF . PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr
+    (12) if_instr -> IF . PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+
+    PARIZQ          shift and go to state 27
+
+
+state 14
+
+    (13) elif_instr -> ELIF . PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (14) elif_instr -> ELIF . PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+
+    PARIZQ          shift and go to state 28
+
+
+state 15
+
+    (15) else_instr -> ELSE . LLAVIZQ instrucciones LLAVDER
+
+    LLAVIZQ         shift and go to state 29
+
+
+state 16
+
+    (16) while_instr -> WHILE . PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+
+    PARIZQ          shift and go to state 30
+
+
+state 17
+
+    (46) for_instr -> FOR . PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER
+
+    PARIZQ          shift and go to state 31
+
+
+state 18
+
+    (2) instrucciones -> imprimir_instr instrucciones .
+
+    $end            reduce using rule 2 (instrucciones -> imprimir_instr instrucciones .)
+    LLAVDER         reduce using rule 2 (instrucciones -> imprimir_instr instrucciones .)
+
+
+state 19
+
+    (3) instrucciones -> asignacion_instr instrucciones .
+
+    $end            reduce using rule 3 (instrucciones -> asignacion_instr instrucciones .)
+    LLAVDER         reduce using rule 3 (instrucciones -> asignacion_instr instrucciones .)
+
+
+state 20
+
+    (4) instrucciones -> if_instr instrucciones .
+
+    $end            reduce using rule 4 (instrucciones -> if_instr instrucciones .)
+    LLAVDER         reduce using rule 4 (instrucciones -> if_instr instrucciones .)
+
+
+state 21
+
+    (5) instrucciones -> elif_instr instrucciones .
+
+    $end            reduce using rule 5 (instrucciones -> elif_instr instrucciones .)
+    LLAVDER         reduce using rule 5 (instrucciones -> elif_instr instrucciones .)
+
+
+state 22
+
+    (6) instrucciones -> else_instr instrucciones .
+
+    $end            reduce using rule 6 (instrucciones -> else_instr instrucciones .)
+    LLAVDER         reduce using rule 6 (instrucciones -> else_instr instrucciones .)
+
+
+state 23
+
+    (7) instrucciones -> while_instr instrucciones .
+
+    $end            reduce using rule 7 (instrucciones -> while_instr instrucciones .)
+    LLAVDER         reduce using rule 7 (instrucciones -> while_instr instrucciones .)
+
+
+state 24
+
+    (9) instrucciones -> for_instr instrucciones .
+
+    $end            reduce using rule 9 (instrucciones -> for_instr instrucciones .)
+    LLAVDER         reduce using rule 9 (instrucciones -> for_instr instrucciones .)
+
+
+state 25
+
+    (24) imprimir_instr -> PRINT PARIZQ . expresion PARDER PTCOMA
+    (25) imprimir_instr -> PRINT PARIZQ . expresion_logica PARDER PTCOMA
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+    (26) expresion_logica -> . expresion MENQUE expresion
+    (27) expresion_logica -> . expresion MAYQUE expresion
+    (28) expresion_logica -> . expresion IGUALQUE expresion
+    (29) expresion_logica -> . expresion NIGUALQUE expresion
+    (30) expresion_logica -> . expresion MENIGUAL expresion
+    (31) expresion_logica -> . expresion MAYIGUAL expresion
+    (32) expresion_logica -> . PARIZQ expresion_logica PARDER MENQUE PARIZQ expresion_logica PARDER
+    (33) expresion_logica -> . PARIZQ expresion_logica PARDER MAYQUE PARIZQ expresion_logica PARDER
+    (34) expresion_logica -> . PARIZQ expresion_logica PARDER IGUALQUE PARIZQ expresion_logica PARDER
+    (35) expresion_logica -> . PARIZQ expresion_logica PARDER NIGUALQUE PARIZQ expresion_logica PARDER
+    (36) expresion_logica -> . PARIZQ expresion_logica PARDER MAYIGUAL PARIZQ expresion_logica PARDER
+    (37) expresion_logica -> . PARIZQ expresion_logica PARDER MENIGUAL PARIZQ expresion_logica PARDER
+    (38) expresion_logica -> . PARIZQ expresion_logica PARDER AND PARIZQ expresion_logica PARDER
+    (39) expresion_logica -> . PARIZQ expresion_logica PARDER OR PARIZQ expresion_logica PARDER
+    (40) expresion_logica -> . expresion_logica AND expresion_logica
+    (41) expresion_logica -> . expresion_logica OR expresion_logica
+
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+    PARIZQ          shift and go to state 32
+
+    expresion                      shift and go to state 33
+    expresion_logica               shift and go to state 34
+
+state 26
+
+    (17) asignacion_instr -> ID IGUAL . expresion PTCOMA
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion                      shift and go to state 39
+
+state 27
+
+    (10) if_instr -> IF PARIZQ . expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (11) if_instr -> IF PARIZQ . expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr
+    (12) if_instr -> IF PARIZQ . expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (26) expresion_logica -> . expresion MENQUE expresion
+    (27) expresion_logica -> . expresion MAYQUE expresion
+    (28) expresion_logica -> . expresion IGUALQUE expresion
+    (29) expresion_logica -> . expresion NIGUALQUE expresion
+    (30) expresion_logica -> . expresion MENIGUAL expresion
+    (31) expresion_logica -> . expresion MAYIGUAL expresion
+    (32) expresion_logica -> . PARIZQ expresion_logica PARDER MENQUE PARIZQ expresion_logica PARDER
+    (33) expresion_logica -> . PARIZQ expresion_logica PARDER MAYQUE PARIZQ expresion_logica PARDER
+    (34) expresion_logica -> . PARIZQ expresion_logica PARDER IGUALQUE PARIZQ expresion_logica PARDER
+    (35) expresion_logica -> . PARIZQ expresion_logica PARDER NIGUALQUE PARIZQ expresion_logica PARDER
+    (36) expresion_logica -> . PARIZQ expresion_logica PARDER MAYIGUAL PARIZQ expresion_logica PARDER
+    (37) expresion_logica -> . PARIZQ expresion_logica PARDER MENIGUAL PARIZQ expresion_logica PARDER
+    (38) expresion_logica -> . PARIZQ expresion_logica PARDER AND PARIZQ expresion_logica PARDER
+    (39) expresion_logica -> . PARIZQ expresion_logica PARDER OR PARIZQ expresion_logica PARDER
+    (40) expresion_logica -> . expresion_logica AND expresion_logica
+    (41) expresion_logica -> . expresion_logica OR expresion_logica
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    PARIZQ          shift and go to state 32
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion_logica               shift and go to state 40
+    expresion                      shift and go to state 41
+
+state 28
+
+    (13) elif_instr -> ELIF PARIZQ . expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (14) elif_instr -> ELIF PARIZQ . expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (26) expresion_logica -> . expresion MENQUE expresion
+    (27) expresion_logica -> . expresion MAYQUE expresion
+    (28) expresion_logica -> . expresion IGUALQUE expresion
+    (29) expresion_logica -> . expresion NIGUALQUE expresion
+    (30) expresion_logica -> . expresion MENIGUAL expresion
+    (31) expresion_logica -> . expresion MAYIGUAL expresion
+    (32) expresion_logica -> . PARIZQ expresion_logica PARDER MENQUE PARIZQ expresion_logica PARDER
+    (33) expresion_logica -> . PARIZQ expresion_logica PARDER MAYQUE PARIZQ expresion_logica PARDER
+    (34) expresion_logica -> . PARIZQ expresion_logica PARDER IGUALQUE PARIZQ expresion_logica PARDER
+    (35) expresion_logica -> . PARIZQ expresion_logica PARDER NIGUALQUE PARIZQ expresion_logica PARDER
+    (36) expresion_logica -> . PARIZQ expresion_logica PARDER MAYIGUAL PARIZQ expresion_logica PARDER
+    (37) expresion_logica -> . PARIZQ expresion_logica PARDER MENIGUAL PARIZQ expresion_logica PARDER
+    (38) expresion_logica -> . PARIZQ expresion_logica PARDER AND PARIZQ expresion_logica PARDER
+    (39) expresion_logica -> . PARIZQ expresion_logica PARDER OR PARIZQ expresion_logica PARDER
+    (40) expresion_logica -> . expresion_logica AND expresion_logica
+    (41) expresion_logica -> . expresion_logica OR expresion_logica
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    PARIZQ          shift and go to state 32
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion_logica               shift and go to state 42
+    expresion                      shift and go to state 41
+
+state 29
+
+    (15) else_instr -> ELSE LLAVIZQ . instrucciones LLAVDER
+    (2) instrucciones -> . imprimir_instr instrucciones
+    (3) instrucciones -> . asignacion_instr instrucciones
+    (4) instrucciones -> . if_instr instrucciones
+    (5) instrucciones -> . elif_instr instrucciones
+    (6) instrucciones -> . else_instr instrucciones
+    (7) instrucciones -> . while_instr instrucciones
+    (8) instrucciones -> . empty
+    (9) instrucciones -> . for_instr instrucciones
+    (24) imprimir_instr -> . PRINT PARIZQ expresion PARDER PTCOMA
+    (25) imprimir_instr -> . PRINT PARIZQ expresion_logica PARDER PTCOMA
+    (17) asignacion_instr -> . ID IGUAL expresion PTCOMA
+    (10) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (11) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr
+    (12) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (13) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (14) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (15) else_instr -> . ELSE LLAVIZQ instrucciones LLAVDER
+    (16) while_instr -> . WHILE PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (47) empty -> .
+    (46) for_instr -> . FOR PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER
+
+    PRINT           shift and go to state 11
+    ID              shift and go to state 12
+    IF              shift and go to state 13
+    ELIF            shift and go to state 14
+    ELSE            shift and go to state 15
+    WHILE           shift and go to state 16
+    LLAVDER         reduce using rule 47 (empty -> .)
+    FOR             shift and go to state 17
+
+    instrucciones                  shift and go to state 43
+    imprimir_instr                 shift and go to state 3
+    asignacion_instr               shift and go to state 4
+    if_instr                       shift and go to state 5
+    elif_instr                     shift and go to state 6
+    else_instr                     shift and go to state 7
+    while_instr                    shift and go to state 8
+    empty                          shift and go to state 9
+    for_instr                      shift and go to state 10
+
+state 30
+
+    (16) while_instr -> WHILE PARIZQ . expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (26) expresion_logica -> . expresion MENQUE expresion
+    (27) expresion_logica -> . expresion MAYQUE expresion
+    (28) expresion_logica -> . expresion IGUALQUE expresion
+    (29) expresion_logica -> . expresion NIGUALQUE expresion
+    (30) expresion_logica -> . expresion MENIGUAL expresion
+    (31) expresion_logica -> . expresion MAYIGUAL expresion
+    (32) expresion_logica -> . PARIZQ expresion_logica PARDER MENQUE PARIZQ expresion_logica PARDER
+    (33) expresion_logica -> . PARIZQ expresion_logica PARDER MAYQUE PARIZQ expresion_logica PARDER
+    (34) expresion_logica -> . PARIZQ expresion_logica PARDER IGUALQUE PARIZQ expresion_logica PARDER
+    (35) expresion_logica -> . PARIZQ expresion_logica PARDER NIGUALQUE PARIZQ expresion_logica PARDER
+    (36) expresion_logica -> . PARIZQ expresion_logica PARDER MAYIGUAL PARIZQ expresion_logica PARDER
+    (37) expresion_logica -> . PARIZQ expresion_logica PARDER MENIGUAL PARIZQ expresion_logica PARDER
+    (38) expresion_logica -> . PARIZQ expresion_logica PARDER AND PARIZQ expresion_logica PARDER
+    (39) expresion_logica -> . PARIZQ expresion_logica PARDER OR PARIZQ expresion_logica PARDER
+    (40) expresion_logica -> . expresion_logica AND expresion_logica
+    (41) expresion_logica -> . expresion_logica OR expresion_logica
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    PARIZQ          shift and go to state 32
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion_logica               shift and go to state 44
+    expresion                      shift and go to state 41
+
+state 31
+
+    (46) for_instr -> FOR PARIZQ . ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER
+
+    ID              shift and go to state 45
+
+
+state 32
+
+    (32) expresion_logica -> PARIZQ . expresion_logica PARDER MENQUE PARIZQ expresion_logica PARDER
+    (33) expresion_logica -> PARIZQ . expresion_logica PARDER MAYQUE PARIZQ expresion_logica PARDER
+    (34) expresion_logica -> PARIZQ . expresion_logica PARDER IGUALQUE PARIZQ expresion_logica PARDER
+    (35) expresion_logica -> PARIZQ . expresion_logica PARDER NIGUALQUE PARIZQ expresion_logica PARDER
+    (36) expresion_logica -> PARIZQ . expresion_logica PARDER MAYIGUAL PARIZQ expresion_logica PARDER
+    (37) expresion_logica -> PARIZQ . expresion_logica PARDER MENIGUAL PARIZQ expresion_logica PARDER
+    (38) expresion_logica -> PARIZQ . expresion_logica PARDER AND PARIZQ expresion_logica PARDER
+    (39) expresion_logica -> PARIZQ . expresion_logica PARDER OR PARIZQ expresion_logica PARDER
+    (26) expresion_logica -> . expresion MENQUE expresion
+    (27) expresion_logica -> . expresion MAYQUE expresion
+    (28) expresion_logica -> . expresion IGUALQUE expresion
+    (29) expresion_logica -> . expresion NIGUALQUE expresion
+    (30) expresion_logica -> . expresion MENIGUAL expresion
+    (31) expresion_logica -> . expresion MAYIGUAL expresion
+    (32) expresion_logica -> . PARIZQ expresion_logica PARDER MENQUE PARIZQ expresion_logica PARDER
+    (33) expresion_logica -> . PARIZQ expresion_logica PARDER MAYQUE PARIZQ expresion_logica PARDER
+    (34) expresion_logica -> . PARIZQ expresion_logica PARDER IGUALQUE PARIZQ expresion_logica PARDER
+    (35) expresion_logica -> . PARIZQ expresion_logica PARDER NIGUALQUE PARIZQ expresion_logica PARDER
+    (36) expresion_logica -> . PARIZQ expresion_logica PARDER MAYIGUAL PARIZQ expresion_logica PARDER
+    (37) expresion_logica -> . PARIZQ expresion_logica PARDER MENIGUAL PARIZQ expresion_logica PARDER
+    (38) expresion_logica -> . PARIZQ expresion_logica PARDER AND PARIZQ expresion_logica PARDER
+    (39) expresion_logica -> . PARIZQ expresion_logica PARDER OR PARIZQ expresion_logica PARDER
+    (40) expresion_logica -> . expresion_logica AND expresion_logica
+    (41) expresion_logica -> . expresion_logica OR expresion_logica
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    PARIZQ          shift and go to state 32
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion_logica               shift and go to state 46
+    expresion                      shift and go to state 41
+
+state 33
+
+    (24) imprimir_instr -> PRINT PARIZQ expresion . PARDER PTCOMA
+    (42) expresion -> expresion . MAS expresion
+    (43) expresion -> expresion . MENOS expresion
+    (44) expresion -> expresion . POR expresion
+    (45) expresion -> expresion . DIVIDIDO expresion
+    (26) expresion_logica -> expresion . MENQUE expresion
+    (27) expresion_logica -> expresion . MAYQUE expresion
+    (28) expresion_logica -> expresion . IGUALQUE expresion
+    (29) expresion_logica -> expresion . NIGUALQUE expresion
+    (30) expresion_logica -> expresion . MENIGUAL expresion
+    (31) expresion_logica -> expresion . MAYIGUAL expresion
+
+    PARDER          shift and go to state 47
+    MAS             shift and go to state 48
+    MENOS           shift and go to state 49
+    POR             shift and go to state 50
+    DIVIDIDO        shift and go to state 51
+    MENQUE          shift and go to state 52
+    MAYQUE          shift and go to state 53
+    IGUALQUE        shift and go to state 54
+    NIGUALQUE       shift and go to state 55
+    MENIGUAL        shift and go to state 56
+    MAYIGUAL        shift and go to state 57
+
+
+state 34
+
+    (25) imprimir_instr -> PRINT PARIZQ expresion_logica . PARDER PTCOMA
+    (40) expresion_logica -> expresion_logica . AND expresion_logica
+    (41) expresion_logica -> expresion_logica . OR expresion_logica
+
+    PARDER          shift and go to state 58
+    AND             shift and go to state 59
+    OR              shift and go to state 60
+
+
+state 35
+
+    (20) expresion -> ENTERO .
+
+    PARDER          reduce using rule 20 (expresion -> ENTERO .)
+    MAS             reduce using rule 20 (expresion -> ENTERO .)
+    MENOS           reduce using rule 20 (expresion -> ENTERO .)
+    POR             reduce using rule 20 (expresion -> ENTERO .)
+    DIVIDIDO        reduce using rule 20 (expresion -> ENTERO .)
+    MENQUE          reduce using rule 20 (expresion -> ENTERO .)
+    MAYQUE          reduce using rule 20 (expresion -> ENTERO .)
+    IGUALQUE        reduce using rule 20 (expresion -> ENTERO .)
+    NIGUALQUE       reduce using rule 20 (expresion -> ENTERO .)
+    MENIGUAL        reduce using rule 20 (expresion -> ENTERO .)
+    MAYIGUAL        reduce using rule 20 (expresion -> ENTERO .)
+    PTCOMA          reduce using rule 20 (expresion -> ENTERO .)
+    AND             reduce using rule 20 (expresion -> ENTERO .)
+    OR              reduce using rule 20 (expresion -> ENTERO .)
+
+
+state 36
+
+    (21) expresion -> DECIMAL .
+
+    PARDER          reduce using rule 21 (expresion -> DECIMAL .)
+    MAS             reduce using rule 21 (expresion -> DECIMAL .)
+    MENOS           reduce using rule 21 (expresion -> DECIMAL .)
+    POR             reduce using rule 21 (expresion -> DECIMAL .)
+    DIVIDIDO        reduce using rule 21 (expresion -> DECIMAL .)
+    MENQUE          reduce using rule 21 (expresion -> DECIMAL .)
+    MAYQUE          reduce using rule 21 (expresion -> DECIMAL .)
+    IGUALQUE        reduce using rule 21 (expresion -> DECIMAL .)
+    NIGUALQUE       reduce using rule 21 (expresion -> DECIMAL .)
+    MENIGUAL        reduce using rule 21 (expresion -> DECIMAL .)
+    MAYIGUAL        reduce using rule 21 (expresion -> DECIMAL .)
+    PTCOMA          reduce using rule 21 (expresion -> DECIMAL .)
+    AND             reduce using rule 21 (expresion -> DECIMAL .)
+    OR              reduce using rule 21 (expresion -> DECIMAL .)
+
+
+state 37
+
+    (22) expresion -> STRING .
+
+    PARDER          reduce using rule 22 (expresion -> STRING .)
+    MAS             reduce using rule 22 (expresion -> STRING .)
+    MENOS           reduce using rule 22 (expresion -> STRING .)
+    POR             reduce using rule 22 (expresion -> STRING .)
+    DIVIDIDO        reduce using rule 22 (expresion -> STRING .)
+    MENQUE          reduce using rule 22 (expresion -> STRING .)
+    MAYQUE          reduce using rule 22 (expresion -> STRING .)
+    IGUALQUE        reduce using rule 22 (expresion -> STRING .)
+    NIGUALQUE       reduce using rule 22 (expresion -> STRING .)
+    MENIGUAL        reduce using rule 22 (expresion -> STRING .)
+    MAYIGUAL        reduce using rule 22 (expresion -> STRING .)
+    PTCOMA          reduce using rule 22 (expresion -> STRING .)
+    AND             reduce using rule 22 (expresion -> STRING .)
+    OR              reduce using rule 22 (expresion -> STRING .)
+
+
+state 38
+
+    (23) expresion -> ID .
+
+    PARDER          reduce using rule 23 (expresion -> ID .)
+    MAS             reduce using rule 23 (expresion -> ID .)
+    MENOS           reduce using rule 23 (expresion -> ID .)
+    POR             reduce using rule 23 (expresion -> ID .)
+    DIVIDIDO        reduce using rule 23 (expresion -> ID .)
+    MENQUE          reduce using rule 23 (expresion -> ID .)
+    MAYQUE          reduce using rule 23 (expresion -> ID .)
+    IGUALQUE        reduce using rule 23 (expresion -> ID .)
+    NIGUALQUE       reduce using rule 23 (expresion -> ID .)
+    MENIGUAL        reduce using rule 23 (expresion -> ID .)
+    MAYIGUAL        reduce using rule 23 (expresion -> ID .)
+    PTCOMA          reduce using rule 23 (expresion -> ID .)
+    AND             reduce using rule 23 (expresion -> ID .)
+    OR              reduce using rule 23 (expresion -> ID .)
+
+
+state 39
+
+    (17) asignacion_instr -> ID IGUAL expresion . PTCOMA
+    (42) expresion -> expresion . MAS expresion
+    (43) expresion -> expresion . MENOS expresion
+    (44) expresion -> expresion . POR expresion
+    (45) expresion -> expresion . DIVIDIDO expresion
+
+    PTCOMA          shift and go to state 61
+    MAS             shift and go to state 48
+    MENOS           shift and go to state 49
+    POR             shift and go to state 50
+    DIVIDIDO        shift and go to state 51
+
+
+state 40
+
+    (10) if_instr -> IF PARIZQ expresion_logica . PARDER LLAVIZQ instrucciones LLAVDER
+    (11) if_instr -> IF PARIZQ expresion_logica . PARDER LLAVIZQ instrucciones LLAVDER elif_instr
+    (12) if_instr -> IF PARIZQ expresion_logica . PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (40) expresion_logica -> expresion_logica . AND expresion_logica
+    (41) expresion_logica -> expresion_logica . OR expresion_logica
+
+    PARDER          shift and go to state 62
+    AND             shift and go to state 59
+    OR              shift and go to state 60
+
+
+state 41
+
+    (26) expresion_logica -> expresion . MENQUE expresion
+    (27) expresion_logica -> expresion . MAYQUE expresion
+    (28) expresion_logica -> expresion . IGUALQUE expresion
+    (29) expresion_logica -> expresion . NIGUALQUE expresion
+    (30) expresion_logica -> expresion . MENIGUAL expresion
+    (31) expresion_logica -> expresion . MAYIGUAL expresion
+    (42) expresion -> expresion . MAS expresion
+    (43) expresion -> expresion . MENOS expresion
+    (44) expresion -> expresion . POR expresion
+    (45) expresion -> expresion . DIVIDIDO expresion
+
+    MENQUE          shift and go to state 52
+    MAYQUE          shift and go to state 53
+    IGUALQUE        shift and go to state 54
+    NIGUALQUE       shift and go to state 55
+    MENIGUAL        shift and go to state 56
+    MAYIGUAL        shift and go to state 57
+    MAS             shift and go to state 48
+    MENOS           shift and go to state 49
+    POR             shift and go to state 50
+    DIVIDIDO        shift and go to state 51
+
+
+state 42
+
+    (13) elif_instr -> ELIF PARIZQ expresion_logica . PARDER LLAVIZQ instrucciones LLAVDER
+    (14) elif_instr -> ELIF PARIZQ expresion_logica . PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (40) expresion_logica -> expresion_logica . AND expresion_logica
+    (41) expresion_logica -> expresion_logica . OR expresion_logica
+
+    PARDER          shift and go to state 63
+    AND             shift and go to state 59
+    OR              shift and go to state 60
+
+
+state 43
+
+    (15) else_instr -> ELSE LLAVIZQ instrucciones . LLAVDER
+
+    LLAVDER         shift and go to state 64
+
+
+state 44
+
+    (16) while_instr -> WHILE PARIZQ expresion_logica . PARDER LLAVIZQ instrucciones LLAVDER
+    (40) expresion_logica -> expresion_logica . AND expresion_logica
+    (41) expresion_logica -> expresion_logica . OR expresion_logica
+
+    PARDER          shift and go to state 65
+    AND             shift and go to state 59
+    OR              shift and go to state 60
+
+
+state 45
+
+    (46) for_instr -> FOR PARIZQ ID . IN expresion PARDER LLAVIZQ instrucciones LLAVDER
+
+    IN              shift and go to state 66
+
+
+state 46
+
+    (32) expresion_logica -> PARIZQ expresion_logica . PARDER MENQUE PARIZQ expresion_logica PARDER
+    (33) expresion_logica -> PARIZQ expresion_logica . PARDER MAYQUE PARIZQ expresion_logica PARDER
+    (34) expresion_logica -> PARIZQ expresion_logica . PARDER IGUALQUE PARIZQ expresion_logica PARDER
+    (35) expresion_logica -> PARIZQ expresion_logica . PARDER NIGUALQUE PARIZQ expresion_logica PARDER
+    (36) expresion_logica -> PARIZQ expresion_logica . PARDER MAYIGUAL PARIZQ expresion_logica PARDER
+    (37) expresion_logica -> PARIZQ expresion_logica . PARDER MENIGUAL PARIZQ expresion_logica PARDER
+    (38) expresion_logica -> PARIZQ expresion_logica . PARDER AND PARIZQ expresion_logica PARDER
+    (39) expresion_logica -> PARIZQ expresion_logica . PARDER OR PARIZQ expresion_logica PARDER
+    (40) expresion_logica -> expresion_logica . AND expresion_logica
+    (41) expresion_logica -> expresion_logica . OR expresion_logica
+
+    PARDER          shift and go to state 67
+    AND             shift and go to state 59
+    OR              shift and go to state 60
+
+
+state 47
+
+    (24) imprimir_instr -> PRINT PARIZQ expresion PARDER . PTCOMA
+
+    PTCOMA          shift and go to state 68
+
+
+state 48
+
+    (42) expresion -> expresion MAS . expresion
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion                      shift and go to state 69
+
+state 49
+
+    (43) expresion -> expresion MENOS . expresion
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion                      shift and go to state 70
+
+state 50
+
+    (44) expresion -> expresion POR . expresion
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion                      shift and go to state 71
+
+state 51
+
+    (45) expresion -> expresion DIVIDIDO . expresion
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion                      shift and go to state 72
+
+state 52
+
+    (26) expresion_logica -> expresion MENQUE . expresion
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion                      shift and go to state 73
+
+state 53
+
+    (27) expresion_logica -> expresion MAYQUE . expresion
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion                      shift and go to state 74
+
+state 54
+
+    (28) expresion_logica -> expresion IGUALQUE . expresion
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion                      shift and go to state 75
+
+state 55
+
+    (29) expresion_logica -> expresion NIGUALQUE . expresion
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion                      shift and go to state 76
+
+state 56
+
+    (30) expresion_logica -> expresion MENIGUAL . expresion
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion                      shift and go to state 77
+
+state 57
+
+    (31) expresion_logica -> expresion MAYIGUAL . expresion
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion                      shift and go to state 78
+
+state 58
+
+    (25) imprimir_instr -> PRINT PARIZQ expresion_logica PARDER . PTCOMA
+
+    PTCOMA          shift and go to state 79
+
+
+state 59
+
+    (40) expresion_logica -> expresion_logica AND . expresion_logica
+    (26) expresion_logica -> . expresion MENQUE expresion
+    (27) expresion_logica -> . expresion MAYQUE expresion
+    (28) expresion_logica -> . expresion IGUALQUE expresion
+    (29) expresion_logica -> . expresion NIGUALQUE expresion
+    (30) expresion_logica -> . expresion MENIGUAL expresion
+    (31) expresion_logica -> . expresion MAYIGUAL expresion
+    (32) expresion_logica -> . PARIZQ expresion_logica PARDER MENQUE PARIZQ expresion_logica PARDER
+    (33) expresion_logica -> . PARIZQ expresion_logica PARDER MAYQUE PARIZQ expresion_logica PARDER
+    (34) expresion_logica -> . PARIZQ expresion_logica PARDER IGUALQUE PARIZQ expresion_logica PARDER
+    (35) expresion_logica -> . PARIZQ expresion_logica PARDER NIGUALQUE PARIZQ expresion_logica PARDER
+    (36) expresion_logica -> . PARIZQ expresion_logica PARDER MAYIGUAL PARIZQ expresion_logica PARDER
+    (37) expresion_logica -> . PARIZQ expresion_logica PARDER MENIGUAL PARIZQ expresion_logica PARDER
+    (38) expresion_logica -> . PARIZQ expresion_logica PARDER AND PARIZQ expresion_logica PARDER
+    (39) expresion_logica -> . PARIZQ expresion_logica PARDER OR PARIZQ expresion_logica PARDER
+    (40) expresion_logica -> . expresion_logica AND expresion_logica
+    (41) expresion_logica -> . expresion_logica OR expresion_logica
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    PARIZQ          shift and go to state 32
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion_logica               shift and go to state 80
+    expresion                      shift and go to state 41
+
+state 60
+
+    (41) expresion_logica -> expresion_logica OR . expresion_logica
+    (26) expresion_logica -> . expresion MENQUE expresion
+    (27) expresion_logica -> . expresion MAYQUE expresion
+    (28) expresion_logica -> . expresion IGUALQUE expresion
+    (29) expresion_logica -> . expresion NIGUALQUE expresion
+    (30) expresion_logica -> . expresion MENIGUAL expresion
+    (31) expresion_logica -> . expresion MAYIGUAL expresion
+    (32) expresion_logica -> . PARIZQ expresion_logica PARDER MENQUE PARIZQ expresion_logica PARDER
+    (33) expresion_logica -> . PARIZQ expresion_logica PARDER MAYQUE PARIZQ expresion_logica PARDER
+    (34) expresion_logica -> . PARIZQ expresion_logica PARDER IGUALQUE PARIZQ expresion_logica PARDER
+    (35) expresion_logica -> . PARIZQ expresion_logica PARDER NIGUALQUE PARIZQ expresion_logica PARDER
+    (36) expresion_logica -> . PARIZQ expresion_logica PARDER MAYIGUAL PARIZQ expresion_logica PARDER
+    (37) expresion_logica -> . PARIZQ expresion_logica PARDER MENIGUAL PARIZQ expresion_logica PARDER
+    (38) expresion_logica -> . PARIZQ expresion_logica PARDER AND PARIZQ expresion_logica PARDER
+    (39) expresion_logica -> . PARIZQ expresion_logica PARDER OR PARIZQ expresion_logica PARDER
+    (40) expresion_logica -> . expresion_logica AND expresion_logica
+    (41) expresion_logica -> . expresion_logica OR expresion_logica
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    PARIZQ          shift and go to state 32
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion_logica               shift and go to state 81
+    expresion                      shift and go to state 41
+
+state 61
+
+    (17) asignacion_instr -> ID IGUAL expresion PTCOMA .
+
+    PRINT           reduce using rule 17 (asignacion_instr -> ID IGUAL expresion PTCOMA .)
+    ID              reduce using rule 17 (asignacion_instr -> ID IGUAL expresion PTCOMA .)
+    IF              reduce using rule 17 (asignacion_instr -> ID IGUAL expresion PTCOMA .)
+    ELIF            reduce using rule 17 (asignacion_instr -> ID IGUAL expresion PTCOMA .)
+    ELSE            reduce using rule 17 (asignacion_instr -> ID IGUAL expresion PTCOMA .)
+    WHILE           reduce using rule 17 (asignacion_instr -> ID IGUAL expresion PTCOMA .)
+    FOR             reduce using rule 17 (asignacion_instr -> ID IGUAL expresion PTCOMA .)
+    $end            reduce using rule 17 (asignacion_instr -> ID IGUAL expresion PTCOMA .)
+    LLAVDER         reduce using rule 17 (asignacion_instr -> ID IGUAL expresion PTCOMA .)
+
+
+state 62
+
+    (10) if_instr -> IF PARIZQ expresion_logica PARDER . LLAVIZQ instrucciones LLAVDER
+    (11) if_instr -> IF PARIZQ expresion_logica PARDER . LLAVIZQ instrucciones LLAVDER elif_instr
+    (12) if_instr -> IF PARIZQ expresion_logica PARDER . LLAVIZQ instrucciones LLAVDER else_instr
+
+    LLAVIZQ         shift and go to state 82
+
+
+state 63
+
+    (13) elif_instr -> ELIF PARIZQ expresion_logica PARDER . LLAVIZQ instrucciones LLAVDER
+    (14) elif_instr -> ELIF PARIZQ expresion_logica PARDER . LLAVIZQ instrucciones LLAVDER else_instr
+
+    LLAVIZQ         shift and go to state 83
+
+
+state 64
+
+    (15) else_instr -> ELSE LLAVIZQ instrucciones LLAVDER .
+
+    PRINT           reduce using rule 15 (else_instr -> ELSE LLAVIZQ instrucciones LLAVDER .)
+    ID              reduce using rule 15 (else_instr -> ELSE LLAVIZQ instrucciones LLAVDER .)
+    IF              reduce using rule 15 (else_instr -> ELSE LLAVIZQ instrucciones LLAVDER .)
+    ELIF            reduce using rule 15 (else_instr -> ELSE LLAVIZQ instrucciones LLAVDER .)
+    ELSE            reduce using rule 15 (else_instr -> ELSE LLAVIZQ instrucciones LLAVDER .)
+    WHILE           reduce using rule 15 (else_instr -> ELSE LLAVIZQ instrucciones LLAVDER .)
+    FOR             reduce using rule 15 (else_instr -> ELSE LLAVIZQ instrucciones LLAVDER .)
+    $end            reduce using rule 15 (else_instr -> ELSE LLAVIZQ instrucciones LLAVDER .)
+    LLAVDER         reduce using rule 15 (else_instr -> ELSE LLAVIZQ instrucciones LLAVDER .)
+
+
+state 65
+
+    (16) while_instr -> WHILE PARIZQ expresion_logica PARDER . LLAVIZQ instrucciones LLAVDER
+
+    LLAVIZQ         shift and go to state 84
+
+
+state 66
+
+    (46) for_instr -> FOR PARIZQ ID IN . expresion PARDER LLAVIZQ instrucciones LLAVDER
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion                      shift and go to state 85
+
+state 67
+
+    (32) expresion_logica -> PARIZQ expresion_logica PARDER . MENQUE PARIZQ expresion_logica PARDER
+    (33) expresion_logica -> PARIZQ expresion_logica PARDER . MAYQUE PARIZQ expresion_logica PARDER
+    (34) expresion_logica -> PARIZQ expresion_logica PARDER . IGUALQUE PARIZQ expresion_logica PARDER
+    (35) expresion_logica -> PARIZQ expresion_logica PARDER . NIGUALQUE PARIZQ expresion_logica PARDER
+    (36) expresion_logica -> PARIZQ expresion_logica PARDER . MAYIGUAL PARIZQ expresion_logica PARDER
+    (37) expresion_logica -> PARIZQ expresion_logica PARDER . MENIGUAL PARIZQ expresion_logica PARDER
+    (38) expresion_logica -> PARIZQ expresion_logica PARDER . AND PARIZQ expresion_logica PARDER
+    (39) expresion_logica -> PARIZQ expresion_logica PARDER . OR PARIZQ expresion_logica PARDER
+
+    MENQUE          shift and go to state 86
+    MAYQUE          shift and go to state 87
+    IGUALQUE        shift and go to state 88
+    NIGUALQUE       shift and go to state 89
+    MAYIGUAL        shift and go to state 90
+    MENIGUAL        shift and go to state 91
+    AND             shift and go to state 92
+    OR              shift and go to state 93
+
+
+state 68
+
+    (24) imprimir_instr -> PRINT PARIZQ expresion PARDER PTCOMA .
+
+    PRINT           reduce using rule 24 (imprimir_instr -> PRINT PARIZQ expresion PARDER PTCOMA .)
+    ID              reduce using rule 24 (imprimir_instr -> PRINT PARIZQ expresion PARDER PTCOMA .)
+    IF              reduce using rule 24 (imprimir_instr -> PRINT PARIZQ expresion PARDER PTCOMA .)
+    ELIF            reduce using rule 24 (imprimir_instr -> PRINT PARIZQ expresion PARDER PTCOMA .)
+    ELSE            reduce using rule 24 (imprimir_instr -> PRINT PARIZQ expresion PARDER PTCOMA .)
+    WHILE           reduce using rule 24 (imprimir_instr -> PRINT PARIZQ expresion PARDER PTCOMA .)
+    FOR             reduce using rule 24 (imprimir_instr -> PRINT PARIZQ expresion PARDER PTCOMA .)
+    $end            reduce using rule 24 (imprimir_instr -> PRINT PARIZQ expresion PARDER PTCOMA .)
+    LLAVDER         reduce using rule 24 (imprimir_instr -> PRINT PARIZQ expresion PARDER PTCOMA .)
+
+
+state 69
+
+    (42) expresion -> expresion MAS expresion .
+    (42) expresion -> expresion . MAS expresion
+    (43) expresion -> expresion . MENOS expresion
+    (44) expresion -> expresion . POR expresion
+    (45) expresion -> expresion . DIVIDIDO expresion
+
+    PARDER          reduce using rule 42 (expresion -> expresion MAS expresion .)
+    MAS             reduce using rule 42 (expresion -> expresion MAS expresion .)
+    MENOS           reduce using rule 42 (expresion -> expresion MAS expresion .)
+    MENQUE          reduce using rule 42 (expresion -> expresion MAS expresion .)
+    MAYQUE          reduce using rule 42 (expresion -> expresion MAS expresion .)
+    IGUALQUE        reduce using rule 42 (expresion -> expresion MAS expresion .)
+    NIGUALQUE       reduce using rule 42 (expresion -> expresion MAS expresion .)
+    MENIGUAL        reduce using rule 42 (expresion -> expresion MAS expresion .)
+    MAYIGUAL        reduce using rule 42 (expresion -> expresion MAS expresion .)
+    PTCOMA          reduce using rule 42 (expresion -> expresion MAS expresion .)
+    AND             reduce using rule 42 (expresion -> expresion MAS expresion .)
+    OR              reduce using rule 42 (expresion -> expresion MAS expresion .)
+    POR             shift and go to state 50
+    DIVIDIDO        shift and go to state 51
+
+  ! POR             [ reduce using rule 42 (expresion -> expresion MAS expresion .) ]
+  ! DIVIDIDO        [ reduce using rule 42 (expresion -> expresion MAS expresion .) ]
+  ! MAS             [ shift and go to state 48 ]
+  ! MENOS           [ shift and go to state 49 ]
+
+
+state 70
+
+    (43) expresion -> expresion MENOS expresion .
+    (42) expresion -> expresion . MAS expresion
+    (43) expresion -> expresion . MENOS expresion
+    (44) expresion -> expresion . POR expresion
+    (45) expresion -> expresion . DIVIDIDO expresion
+
+    PARDER          reduce using rule 43 (expresion -> expresion MENOS expresion .)
+    MAS             reduce using rule 43 (expresion -> expresion MENOS expresion .)
+    MENOS           reduce using rule 43 (expresion -> expresion MENOS expresion .)
+    MENQUE          reduce using rule 43 (expresion -> expresion MENOS expresion .)
+    MAYQUE          reduce using rule 43 (expresion -> expresion MENOS expresion .)
+    IGUALQUE        reduce using rule 43 (expresion -> expresion MENOS expresion .)
+    NIGUALQUE       reduce using rule 43 (expresion -> expresion MENOS expresion .)
+    MENIGUAL        reduce using rule 43 (expresion -> expresion MENOS expresion .)
+    MAYIGUAL        reduce using rule 43 (expresion -> expresion MENOS expresion .)
+    PTCOMA          reduce using rule 43 (expresion -> expresion MENOS expresion .)
+    AND             reduce using rule 43 (expresion -> expresion MENOS expresion .)
+    OR              reduce using rule 43 (expresion -> expresion MENOS expresion .)
+    POR             shift and go to state 50
+    DIVIDIDO        shift and go to state 51
+
+  ! POR             [ reduce using rule 43 (expresion -> expresion MENOS expresion .) ]
+  ! DIVIDIDO        [ reduce using rule 43 (expresion -> expresion MENOS expresion .) ]
+  ! MAS             [ shift and go to state 48 ]
+  ! MENOS           [ shift and go to state 49 ]
+
+
+state 71
+
+    (44) expresion -> expresion POR expresion .
+    (42) expresion -> expresion . MAS expresion
+    (43) expresion -> expresion . MENOS expresion
+    (44) expresion -> expresion . POR expresion
+    (45) expresion -> expresion . DIVIDIDO expresion
+
+    PARDER          reduce using rule 44 (expresion -> expresion POR expresion .)
+    MAS             reduce using rule 44 (expresion -> expresion POR expresion .)
+    MENOS           reduce using rule 44 (expresion -> expresion POR expresion .)
+    POR             reduce using rule 44 (expresion -> expresion POR expresion .)
+    DIVIDIDO        reduce using rule 44 (expresion -> expresion POR expresion .)
+    MENQUE          reduce using rule 44 (expresion -> expresion POR expresion .)
+    MAYQUE          reduce using rule 44 (expresion -> expresion POR expresion .)
+    IGUALQUE        reduce using rule 44 (expresion -> expresion POR expresion .)
+    NIGUALQUE       reduce using rule 44 (expresion -> expresion POR expresion .)
+    MENIGUAL        reduce using rule 44 (expresion -> expresion POR expresion .)
+    MAYIGUAL        reduce using rule 44 (expresion -> expresion POR expresion .)
+    PTCOMA          reduce using rule 44 (expresion -> expresion POR expresion .)
+    AND             reduce using rule 44 (expresion -> expresion POR expresion .)
+    OR              reduce using rule 44 (expresion -> expresion POR expresion .)
+
+  ! MAS             [ shift and go to state 48 ]
+  ! MENOS           [ shift and go to state 49 ]
+  ! POR             [ shift and go to state 50 ]
+  ! DIVIDIDO        [ shift and go to state 51 ]
+
+
+state 72
+
+    (45) expresion -> expresion DIVIDIDO expresion .
+    (42) expresion -> expresion . MAS expresion
+    (43) expresion -> expresion . MENOS expresion
+    (44) expresion -> expresion . POR expresion
+    (45) expresion -> expresion . DIVIDIDO expresion
+
+    PARDER          reduce using rule 45 (expresion -> expresion DIVIDIDO expresion .)
+    MAS             reduce using rule 45 (expresion -> expresion DIVIDIDO expresion .)
+    MENOS           reduce using rule 45 (expresion -> expresion DIVIDIDO expresion .)
+    POR             reduce using rule 45 (expresion -> expresion DIVIDIDO expresion .)
+    DIVIDIDO        reduce using rule 45 (expresion -> expresion DIVIDIDO expresion .)
+    MENQUE          reduce using rule 45 (expresion -> expresion DIVIDIDO expresion .)
+    MAYQUE          reduce using rule 45 (expresion -> expresion DIVIDIDO expresion .)
+    IGUALQUE        reduce using rule 45 (expresion -> expresion DIVIDIDO expresion .)
+    NIGUALQUE       reduce using rule 45 (expresion -> expresion DIVIDIDO expresion .)
+    MENIGUAL        reduce using rule 45 (expresion -> expresion DIVIDIDO expresion .)
+    MAYIGUAL        reduce using rule 45 (expresion -> expresion DIVIDIDO expresion .)
+    PTCOMA          reduce using rule 45 (expresion -> expresion DIVIDIDO expresion .)
+    AND             reduce using rule 45 (expresion -> expresion DIVIDIDO expresion .)
+    OR              reduce using rule 45 (expresion -> expresion DIVIDIDO expresion .)
+
+  ! MAS             [ shift and go to state 48 ]
+  ! MENOS           [ shift and go to state 49 ]
+  ! POR             [ shift and go to state 50 ]
+  ! DIVIDIDO        [ shift and go to state 51 ]
+
+
+state 73
+
+    (26) expresion_logica -> expresion MENQUE expresion .
+    (42) expresion -> expresion . MAS expresion
+    (43) expresion -> expresion . MENOS expresion
+    (44) expresion -> expresion . POR expresion
+    (45) expresion -> expresion . DIVIDIDO expresion
+
+    PARDER          reduce using rule 26 (expresion_logica -> expresion MENQUE expresion .)
+    AND             reduce using rule 26 (expresion_logica -> expresion MENQUE expresion .)
+    OR              reduce using rule 26 (expresion_logica -> expresion MENQUE expresion .)
+    MAS             shift and go to state 48
+    MENOS           shift and go to state 49
+    POR             shift and go to state 50
+    DIVIDIDO        shift and go to state 51
+
+
+state 74
+
+    (27) expresion_logica -> expresion MAYQUE expresion .
+    (42) expresion -> expresion . MAS expresion
+    (43) expresion -> expresion . MENOS expresion
+    (44) expresion -> expresion . POR expresion
+    (45) expresion -> expresion . DIVIDIDO expresion
+
+    PARDER          reduce using rule 27 (expresion_logica -> expresion MAYQUE expresion .)
+    AND             reduce using rule 27 (expresion_logica -> expresion MAYQUE expresion .)
+    OR              reduce using rule 27 (expresion_logica -> expresion MAYQUE expresion .)
+    MAS             shift and go to state 48
+    MENOS           shift and go to state 49
+    POR             shift and go to state 50
+    DIVIDIDO        shift and go to state 51
+
+
+state 75
+
+    (28) expresion_logica -> expresion IGUALQUE expresion .
+    (42) expresion -> expresion . MAS expresion
+    (43) expresion -> expresion . MENOS expresion
+    (44) expresion -> expresion . POR expresion
+    (45) expresion -> expresion . DIVIDIDO expresion
+
+    PARDER          reduce using rule 28 (expresion_logica -> expresion IGUALQUE expresion .)
+    AND             reduce using rule 28 (expresion_logica -> expresion IGUALQUE expresion .)
+    OR              reduce using rule 28 (expresion_logica -> expresion IGUALQUE expresion .)
+    MAS             shift and go to state 48
+    MENOS           shift and go to state 49
+    POR             shift and go to state 50
+    DIVIDIDO        shift and go to state 51
+
+
+state 76
+
+    (29) expresion_logica -> expresion NIGUALQUE expresion .
+    (42) expresion -> expresion . MAS expresion
+    (43) expresion -> expresion . MENOS expresion
+    (44) expresion -> expresion . POR expresion
+    (45) expresion -> expresion . DIVIDIDO expresion
+
+    PARDER          reduce using rule 29 (expresion_logica -> expresion NIGUALQUE expresion .)
+    AND             reduce using rule 29 (expresion_logica -> expresion NIGUALQUE expresion .)
+    OR              reduce using rule 29 (expresion_logica -> expresion NIGUALQUE expresion .)
+    MAS             shift and go to state 48
+    MENOS           shift and go to state 49
+    POR             shift and go to state 50
+    DIVIDIDO        shift and go to state 51
+
+
+state 77
+
+    (30) expresion_logica -> expresion MENIGUAL expresion .
+    (42) expresion -> expresion . MAS expresion
+    (43) expresion -> expresion . MENOS expresion
+    (44) expresion -> expresion . POR expresion
+    (45) expresion -> expresion . DIVIDIDO expresion
+
+    PARDER          reduce using rule 30 (expresion_logica -> expresion MENIGUAL expresion .)
+    AND             reduce using rule 30 (expresion_logica -> expresion MENIGUAL expresion .)
+    OR              reduce using rule 30 (expresion_logica -> expresion MENIGUAL expresion .)
+    MAS             shift and go to state 48
+    MENOS           shift and go to state 49
+    POR             shift and go to state 50
+    DIVIDIDO        shift and go to state 51
+
+
+state 78
+
+    (31) expresion_logica -> expresion MAYIGUAL expresion .
+    (42) expresion -> expresion . MAS expresion
+    (43) expresion -> expresion . MENOS expresion
+    (44) expresion -> expresion . POR expresion
+    (45) expresion -> expresion . DIVIDIDO expresion
+
+    PARDER          reduce using rule 31 (expresion_logica -> expresion MAYIGUAL expresion .)
+    AND             reduce using rule 31 (expresion_logica -> expresion MAYIGUAL expresion .)
+    OR              reduce using rule 31 (expresion_logica -> expresion MAYIGUAL expresion .)
+    MAS             shift and go to state 48
+    MENOS           shift and go to state 49
+    POR             shift and go to state 50
+    DIVIDIDO        shift and go to state 51
+
+
+state 79
+
+    (25) imprimir_instr -> PRINT PARIZQ expresion_logica PARDER PTCOMA .
+
+    PRINT           reduce using rule 25 (imprimir_instr -> PRINT PARIZQ expresion_logica PARDER PTCOMA .)
+    ID              reduce using rule 25 (imprimir_instr -> PRINT PARIZQ expresion_logica PARDER PTCOMA .)
+    IF              reduce using rule 25 (imprimir_instr -> PRINT PARIZQ expresion_logica PARDER PTCOMA .)
+    ELIF            reduce using rule 25 (imprimir_instr -> PRINT PARIZQ expresion_logica PARDER PTCOMA .)
+    ELSE            reduce using rule 25 (imprimir_instr -> PRINT PARIZQ expresion_logica PARDER PTCOMA .)
+    WHILE           reduce using rule 25 (imprimir_instr -> PRINT PARIZQ expresion_logica PARDER PTCOMA .)
+    FOR             reduce using rule 25 (imprimir_instr -> PRINT PARIZQ expresion_logica PARDER PTCOMA .)
+    $end            reduce using rule 25 (imprimir_instr -> PRINT PARIZQ expresion_logica PARDER PTCOMA .)
+    LLAVDER         reduce using rule 25 (imprimir_instr -> PRINT PARIZQ expresion_logica PARDER PTCOMA .)
+
+
+state 80
+
+    (40) expresion_logica -> expresion_logica AND expresion_logica .
+    (40) expresion_logica -> expresion_logica . AND expresion_logica
+    (41) expresion_logica -> expresion_logica . OR expresion_logica
+
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    PARDER          reduce using rule 40 (expresion_logica -> expresion_logica AND expresion_logica .)
+    AND             shift and go to state 59
+    OR              shift and go to state 60
+
+  ! AND             [ reduce using rule 40 (expresion_logica -> expresion_logica AND expresion_logica .) ]
+  ! OR              [ reduce using rule 40 (expresion_logica -> expresion_logica AND expresion_logica .) ]
+
+
+state 81
+
+    (41) expresion_logica -> expresion_logica OR expresion_logica .
+    (40) expresion_logica -> expresion_logica . AND expresion_logica
+    (41) expresion_logica -> expresion_logica . OR expresion_logica
+
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    PARDER          reduce using rule 41 (expresion_logica -> expresion_logica OR expresion_logica .)
+    AND             shift and go to state 59
+    OR              shift and go to state 60
+
+  ! AND             [ reduce using rule 41 (expresion_logica -> expresion_logica OR expresion_logica .) ]
+  ! OR              [ reduce using rule 41 (expresion_logica -> expresion_logica OR expresion_logica .) ]
+
+
+state 82
+
+    (10) if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ . instrucciones LLAVDER
+    (11) if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ . instrucciones LLAVDER elif_instr
+    (12) if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ . instrucciones LLAVDER else_instr
+    (2) instrucciones -> . imprimir_instr instrucciones
+    (3) instrucciones -> . asignacion_instr instrucciones
+    (4) instrucciones -> . if_instr instrucciones
+    (5) instrucciones -> . elif_instr instrucciones
+    (6) instrucciones -> . else_instr instrucciones
+    (7) instrucciones -> . while_instr instrucciones
+    (8) instrucciones -> . empty
+    (9) instrucciones -> . for_instr instrucciones
+    (24) imprimir_instr -> . PRINT PARIZQ expresion PARDER PTCOMA
+    (25) imprimir_instr -> . PRINT PARIZQ expresion_logica PARDER PTCOMA
+    (17) asignacion_instr -> . ID IGUAL expresion PTCOMA
+    (10) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (11) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr
+    (12) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (13) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (14) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (15) else_instr -> . ELSE LLAVIZQ instrucciones LLAVDER
+    (16) while_instr -> . WHILE PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (47) empty -> .
+    (46) for_instr -> . FOR PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER
+
+    PRINT           shift and go to state 11
+    ID              shift and go to state 12
+    IF              shift and go to state 13
+    ELIF            shift and go to state 14
+    ELSE            shift and go to state 15
+    WHILE           shift and go to state 16
+    LLAVDER         reduce using rule 47 (empty -> .)
+    FOR             shift and go to state 17
+
+    instrucciones                  shift and go to state 94
+    elif_instr                     shift and go to state 6
+    else_instr                     shift and go to state 7
+    imprimir_instr                 shift and go to state 3
+    asignacion_instr               shift and go to state 4
+    if_instr                       shift and go to state 5
+    while_instr                    shift and go to state 8
+    empty                          shift and go to state 9
+    for_instr                      shift and go to state 10
+
+state 83
+
+    (13) elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ . instrucciones LLAVDER
+    (14) elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ . instrucciones LLAVDER else_instr
+    (2) instrucciones -> . imprimir_instr instrucciones
+    (3) instrucciones -> . asignacion_instr instrucciones
+    (4) instrucciones -> . if_instr instrucciones
+    (5) instrucciones -> . elif_instr instrucciones
+    (6) instrucciones -> . else_instr instrucciones
+    (7) instrucciones -> . while_instr instrucciones
+    (8) instrucciones -> . empty
+    (9) instrucciones -> . for_instr instrucciones
+    (24) imprimir_instr -> . PRINT PARIZQ expresion PARDER PTCOMA
+    (25) imprimir_instr -> . PRINT PARIZQ expresion_logica PARDER PTCOMA
+    (17) asignacion_instr -> . ID IGUAL expresion PTCOMA
+    (10) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (11) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr
+    (12) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (13) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (14) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (15) else_instr -> . ELSE LLAVIZQ instrucciones LLAVDER
+    (16) while_instr -> . WHILE PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (47) empty -> .
+    (46) for_instr -> . FOR PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER
+
+    PRINT           shift and go to state 11
+    ID              shift and go to state 12
+    IF              shift and go to state 13
+    ELIF            shift and go to state 14
+    ELSE            shift and go to state 15
+    WHILE           shift and go to state 16
+    LLAVDER         reduce using rule 47 (empty -> .)
+    FOR             shift and go to state 17
+
+    instrucciones                  shift and go to state 95
+    else_instr                     shift and go to state 7
+    imprimir_instr                 shift and go to state 3
+    asignacion_instr               shift and go to state 4
+    if_instr                       shift and go to state 5
+    elif_instr                     shift and go to state 6
+    while_instr                    shift and go to state 8
+    empty                          shift and go to state 9
+    for_instr                      shift and go to state 10
+
+state 84
+
+    (16) while_instr -> WHILE PARIZQ expresion_logica PARDER LLAVIZQ . instrucciones LLAVDER
+    (2) instrucciones -> . imprimir_instr instrucciones
+    (3) instrucciones -> . asignacion_instr instrucciones
+    (4) instrucciones -> . if_instr instrucciones
+    (5) instrucciones -> . elif_instr instrucciones
+    (6) instrucciones -> . else_instr instrucciones
+    (7) instrucciones -> . while_instr instrucciones
+    (8) instrucciones -> . empty
+    (9) instrucciones -> . for_instr instrucciones
+    (24) imprimir_instr -> . PRINT PARIZQ expresion PARDER PTCOMA
+    (25) imprimir_instr -> . PRINT PARIZQ expresion_logica PARDER PTCOMA
+    (17) asignacion_instr -> . ID IGUAL expresion PTCOMA
+    (10) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (11) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr
+    (12) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (13) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (14) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (15) else_instr -> . ELSE LLAVIZQ instrucciones LLAVDER
+    (16) while_instr -> . WHILE PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (47) empty -> .
+    (46) for_instr -> . FOR PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER
+
+    PRINT           shift and go to state 11
+    ID              shift and go to state 12
+    IF              shift and go to state 13
+    ELIF            shift and go to state 14
+    ELSE            shift and go to state 15
+    WHILE           shift and go to state 16
+    LLAVDER         reduce using rule 47 (empty -> .)
+    FOR             shift and go to state 17
+
+    instrucciones                  shift and go to state 96
+    imprimir_instr                 shift and go to state 3
+    asignacion_instr               shift and go to state 4
+    if_instr                       shift and go to state 5
+    elif_instr                     shift and go to state 6
+    else_instr                     shift and go to state 7
+    while_instr                    shift and go to state 8
+    empty                          shift and go to state 9
+    for_instr                      shift and go to state 10
+
+state 85
+
+    (46) for_instr -> FOR PARIZQ ID IN expresion . PARDER LLAVIZQ instrucciones LLAVDER
+    (42) expresion -> expresion . MAS expresion
+    (43) expresion -> expresion . MENOS expresion
+    (44) expresion -> expresion . POR expresion
+    (45) expresion -> expresion . DIVIDIDO expresion
+
+    PARDER          shift and go to state 97
+    MAS             shift and go to state 48
+    MENOS           shift and go to state 49
+    POR             shift and go to state 50
+    DIVIDIDO        shift and go to state 51
+
+
+state 86
+
+    (32) expresion_logica -> PARIZQ expresion_logica PARDER MENQUE . PARIZQ expresion_logica PARDER
+
+    PARIZQ          shift and go to state 98
+
+
+state 87
+
+    (33) expresion_logica -> PARIZQ expresion_logica PARDER MAYQUE . PARIZQ expresion_logica PARDER
+
+    PARIZQ          shift and go to state 99
+
+
+state 88
+
+    (34) expresion_logica -> PARIZQ expresion_logica PARDER IGUALQUE . PARIZQ expresion_logica PARDER
+
+    PARIZQ          shift and go to state 100
+
+
+state 89
+
+    (35) expresion_logica -> PARIZQ expresion_logica PARDER NIGUALQUE . PARIZQ expresion_logica PARDER
+
+    PARIZQ          shift and go to state 101
+
+
+state 90
+
+    (36) expresion_logica -> PARIZQ expresion_logica PARDER MAYIGUAL . PARIZQ expresion_logica PARDER
+
+    PARIZQ          shift and go to state 102
+
+
+state 91
+
+    (37) expresion_logica -> PARIZQ expresion_logica PARDER MENIGUAL . PARIZQ expresion_logica PARDER
+
+    PARIZQ          shift and go to state 103
+
+
+state 92
+
+    (38) expresion_logica -> PARIZQ expresion_logica PARDER AND . PARIZQ expresion_logica PARDER
+
+    PARIZQ          shift and go to state 104
+
+
+state 93
+
+    (39) expresion_logica -> PARIZQ expresion_logica PARDER OR . PARIZQ expresion_logica PARDER
+
+    PARIZQ          shift and go to state 105
+
+
+state 94
+
+    (10) if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones . LLAVDER
+    (11) if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones . LLAVDER elif_instr
+    (12) if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones . LLAVDER else_instr
+
+    LLAVDER         shift and go to state 106
+
+
+state 95
+
+    (13) elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones . LLAVDER
+    (14) elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones . LLAVDER else_instr
+
+    LLAVDER         shift and go to state 107
+
+
+state 96
+
+    (16) while_instr -> WHILE PARIZQ expresion_logica PARDER LLAVIZQ instrucciones . LLAVDER
+
+    LLAVDER         shift and go to state 108
+
+
+state 97
+
+    (46) for_instr -> FOR PARIZQ ID IN expresion PARDER . LLAVIZQ instrucciones LLAVDER
+
+    LLAVIZQ         shift and go to state 109
+
+
+state 98
+
+    (32) expresion_logica -> PARIZQ expresion_logica PARDER MENQUE PARIZQ . expresion_logica PARDER
+    (26) expresion_logica -> . expresion MENQUE expresion
+    (27) expresion_logica -> . expresion MAYQUE expresion
+    (28) expresion_logica -> . expresion IGUALQUE expresion
+    (29) expresion_logica -> . expresion NIGUALQUE expresion
+    (30) expresion_logica -> . expresion MENIGUAL expresion
+    (31) expresion_logica -> . expresion MAYIGUAL expresion
+    (32) expresion_logica -> . PARIZQ expresion_logica PARDER MENQUE PARIZQ expresion_logica PARDER
+    (33) expresion_logica -> . PARIZQ expresion_logica PARDER MAYQUE PARIZQ expresion_logica PARDER
+    (34) expresion_logica -> . PARIZQ expresion_logica PARDER IGUALQUE PARIZQ expresion_logica PARDER
+    (35) expresion_logica -> . PARIZQ expresion_logica PARDER NIGUALQUE PARIZQ expresion_logica PARDER
+    (36) expresion_logica -> . PARIZQ expresion_logica PARDER MAYIGUAL PARIZQ expresion_logica PARDER
+    (37) expresion_logica -> . PARIZQ expresion_logica PARDER MENIGUAL PARIZQ expresion_logica PARDER
+    (38) expresion_logica -> . PARIZQ expresion_logica PARDER AND PARIZQ expresion_logica PARDER
+    (39) expresion_logica -> . PARIZQ expresion_logica PARDER OR PARIZQ expresion_logica PARDER
+    (40) expresion_logica -> . expresion_logica AND expresion_logica
+    (41) expresion_logica -> . expresion_logica OR expresion_logica
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    PARIZQ          shift and go to state 32
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion_logica               shift and go to state 110
+    expresion                      shift and go to state 41
+
+state 99
+
+    (33) expresion_logica -> PARIZQ expresion_logica PARDER MAYQUE PARIZQ . expresion_logica PARDER
+    (26) expresion_logica -> . expresion MENQUE expresion
+    (27) expresion_logica -> . expresion MAYQUE expresion
+    (28) expresion_logica -> . expresion IGUALQUE expresion
+    (29) expresion_logica -> . expresion NIGUALQUE expresion
+    (30) expresion_logica -> . expresion MENIGUAL expresion
+    (31) expresion_logica -> . expresion MAYIGUAL expresion
+    (32) expresion_logica -> . PARIZQ expresion_logica PARDER MENQUE PARIZQ expresion_logica PARDER
+    (33) expresion_logica -> . PARIZQ expresion_logica PARDER MAYQUE PARIZQ expresion_logica PARDER
+    (34) expresion_logica -> . PARIZQ expresion_logica PARDER IGUALQUE PARIZQ expresion_logica PARDER
+    (35) expresion_logica -> . PARIZQ expresion_logica PARDER NIGUALQUE PARIZQ expresion_logica PARDER
+    (36) expresion_logica -> . PARIZQ expresion_logica PARDER MAYIGUAL PARIZQ expresion_logica PARDER
+    (37) expresion_logica -> . PARIZQ expresion_logica PARDER MENIGUAL PARIZQ expresion_logica PARDER
+    (38) expresion_logica -> . PARIZQ expresion_logica PARDER AND PARIZQ expresion_logica PARDER
+    (39) expresion_logica -> . PARIZQ expresion_logica PARDER OR PARIZQ expresion_logica PARDER
+    (40) expresion_logica -> . expresion_logica AND expresion_logica
+    (41) expresion_logica -> . expresion_logica OR expresion_logica
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    PARIZQ          shift and go to state 32
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion_logica               shift and go to state 111
+    expresion                      shift and go to state 41
+
+state 100
+
+    (34) expresion_logica -> PARIZQ expresion_logica PARDER IGUALQUE PARIZQ . expresion_logica PARDER
+    (26) expresion_logica -> . expresion MENQUE expresion
+    (27) expresion_logica -> . expresion MAYQUE expresion
+    (28) expresion_logica -> . expresion IGUALQUE expresion
+    (29) expresion_logica -> . expresion NIGUALQUE expresion
+    (30) expresion_logica -> . expresion MENIGUAL expresion
+    (31) expresion_logica -> . expresion MAYIGUAL expresion
+    (32) expresion_logica -> . PARIZQ expresion_logica PARDER MENQUE PARIZQ expresion_logica PARDER
+    (33) expresion_logica -> . PARIZQ expresion_logica PARDER MAYQUE PARIZQ expresion_logica PARDER
+    (34) expresion_logica -> . PARIZQ expresion_logica PARDER IGUALQUE PARIZQ expresion_logica PARDER
+    (35) expresion_logica -> . PARIZQ expresion_logica PARDER NIGUALQUE PARIZQ expresion_logica PARDER
+    (36) expresion_logica -> . PARIZQ expresion_logica PARDER MAYIGUAL PARIZQ expresion_logica PARDER
+    (37) expresion_logica -> . PARIZQ expresion_logica PARDER MENIGUAL PARIZQ expresion_logica PARDER
+    (38) expresion_logica -> . PARIZQ expresion_logica PARDER AND PARIZQ expresion_logica PARDER
+    (39) expresion_logica -> . PARIZQ expresion_logica PARDER OR PARIZQ expresion_logica PARDER
+    (40) expresion_logica -> . expresion_logica AND expresion_logica
+    (41) expresion_logica -> . expresion_logica OR expresion_logica
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    PARIZQ          shift and go to state 32
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion_logica               shift and go to state 112
+    expresion                      shift and go to state 41
+
+state 101
+
+    (35) expresion_logica -> PARIZQ expresion_logica PARDER NIGUALQUE PARIZQ . expresion_logica PARDER
+    (26) expresion_logica -> . expresion MENQUE expresion
+    (27) expresion_logica -> . expresion MAYQUE expresion
+    (28) expresion_logica -> . expresion IGUALQUE expresion
+    (29) expresion_logica -> . expresion NIGUALQUE expresion
+    (30) expresion_logica -> . expresion MENIGUAL expresion
+    (31) expresion_logica -> . expresion MAYIGUAL expresion
+    (32) expresion_logica -> . PARIZQ expresion_logica PARDER MENQUE PARIZQ expresion_logica PARDER
+    (33) expresion_logica -> . PARIZQ expresion_logica PARDER MAYQUE PARIZQ expresion_logica PARDER
+    (34) expresion_logica -> . PARIZQ expresion_logica PARDER IGUALQUE PARIZQ expresion_logica PARDER
+    (35) expresion_logica -> . PARIZQ expresion_logica PARDER NIGUALQUE PARIZQ expresion_logica PARDER
+    (36) expresion_logica -> . PARIZQ expresion_logica PARDER MAYIGUAL PARIZQ expresion_logica PARDER
+    (37) expresion_logica -> . PARIZQ expresion_logica PARDER MENIGUAL PARIZQ expresion_logica PARDER
+    (38) expresion_logica -> . PARIZQ expresion_logica PARDER AND PARIZQ expresion_logica PARDER
+    (39) expresion_logica -> . PARIZQ expresion_logica PARDER OR PARIZQ expresion_logica PARDER
+    (40) expresion_logica -> . expresion_logica AND expresion_logica
+    (41) expresion_logica -> . expresion_logica OR expresion_logica
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    PARIZQ          shift and go to state 32
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion_logica               shift and go to state 113
+    expresion                      shift and go to state 41
+
+state 102
+
+    (36) expresion_logica -> PARIZQ expresion_logica PARDER MAYIGUAL PARIZQ . expresion_logica PARDER
+    (26) expresion_logica -> . expresion MENQUE expresion
+    (27) expresion_logica -> . expresion MAYQUE expresion
+    (28) expresion_logica -> . expresion IGUALQUE expresion
+    (29) expresion_logica -> . expresion NIGUALQUE expresion
+    (30) expresion_logica -> . expresion MENIGUAL expresion
+    (31) expresion_logica -> . expresion MAYIGUAL expresion
+    (32) expresion_logica -> . PARIZQ expresion_logica PARDER MENQUE PARIZQ expresion_logica PARDER
+    (33) expresion_logica -> . PARIZQ expresion_logica PARDER MAYQUE PARIZQ expresion_logica PARDER
+    (34) expresion_logica -> . PARIZQ expresion_logica PARDER IGUALQUE PARIZQ expresion_logica PARDER
+    (35) expresion_logica -> . PARIZQ expresion_logica PARDER NIGUALQUE PARIZQ expresion_logica PARDER
+    (36) expresion_logica -> . PARIZQ expresion_logica PARDER MAYIGUAL PARIZQ expresion_logica PARDER
+    (37) expresion_logica -> . PARIZQ expresion_logica PARDER MENIGUAL PARIZQ expresion_logica PARDER
+    (38) expresion_logica -> . PARIZQ expresion_logica PARDER AND PARIZQ expresion_logica PARDER
+    (39) expresion_logica -> . PARIZQ expresion_logica PARDER OR PARIZQ expresion_logica PARDER
+    (40) expresion_logica -> . expresion_logica AND expresion_logica
+    (41) expresion_logica -> . expresion_logica OR expresion_logica
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    PARIZQ          shift and go to state 32
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion_logica               shift and go to state 114
+    expresion                      shift and go to state 41
+
+state 103
+
+    (37) expresion_logica -> PARIZQ expresion_logica PARDER MENIGUAL PARIZQ . expresion_logica PARDER
+    (26) expresion_logica -> . expresion MENQUE expresion
+    (27) expresion_logica -> . expresion MAYQUE expresion
+    (28) expresion_logica -> . expresion IGUALQUE expresion
+    (29) expresion_logica -> . expresion NIGUALQUE expresion
+    (30) expresion_logica -> . expresion MENIGUAL expresion
+    (31) expresion_logica -> . expresion MAYIGUAL expresion
+    (32) expresion_logica -> . PARIZQ expresion_logica PARDER MENQUE PARIZQ expresion_logica PARDER
+    (33) expresion_logica -> . PARIZQ expresion_logica PARDER MAYQUE PARIZQ expresion_logica PARDER
+    (34) expresion_logica -> . PARIZQ expresion_logica PARDER IGUALQUE PARIZQ expresion_logica PARDER
+    (35) expresion_logica -> . PARIZQ expresion_logica PARDER NIGUALQUE PARIZQ expresion_logica PARDER
+    (36) expresion_logica -> . PARIZQ expresion_logica PARDER MAYIGUAL PARIZQ expresion_logica PARDER
+    (37) expresion_logica -> . PARIZQ expresion_logica PARDER MENIGUAL PARIZQ expresion_logica PARDER
+    (38) expresion_logica -> . PARIZQ expresion_logica PARDER AND PARIZQ expresion_logica PARDER
+    (39) expresion_logica -> . PARIZQ expresion_logica PARDER OR PARIZQ expresion_logica PARDER
+    (40) expresion_logica -> . expresion_logica AND expresion_logica
+    (41) expresion_logica -> . expresion_logica OR expresion_logica
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    PARIZQ          shift and go to state 32
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion_logica               shift and go to state 115
+    expresion                      shift and go to state 41
+
+state 104
+
+    (38) expresion_logica -> PARIZQ expresion_logica PARDER AND PARIZQ . expresion_logica PARDER
+    (26) expresion_logica -> . expresion MENQUE expresion
+    (27) expresion_logica -> . expresion MAYQUE expresion
+    (28) expresion_logica -> . expresion IGUALQUE expresion
+    (29) expresion_logica -> . expresion NIGUALQUE expresion
+    (30) expresion_logica -> . expresion MENIGUAL expresion
+    (31) expresion_logica -> . expresion MAYIGUAL expresion
+    (32) expresion_logica -> . PARIZQ expresion_logica PARDER MENQUE PARIZQ expresion_logica PARDER
+    (33) expresion_logica -> . PARIZQ expresion_logica PARDER MAYQUE PARIZQ expresion_logica PARDER
+    (34) expresion_logica -> . PARIZQ expresion_logica PARDER IGUALQUE PARIZQ expresion_logica PARDER
+    (35) expresion_logica -> . PARIZQ expresion_logica PARDER NIGUALQUE PARIZQ expresion_logica PARDER
+    (36) expresion_logica -> . PARIZQ expresion_logica PARDER MAYIGUAL PARIZQ expresion_logica PARDER
+    (37) expresion_logica -> . PARIZQ expresion_logica PARDER MENIGUAL PARIZQ expresion_logica PARDER
+    (38) expresion_logica -> . PARIZQ expresion_logica PARDER AND PARIZQ expresion_logica PARDER
+    (39) expresion_logica -> . PARIZQ expresion_logica PARDER OR PARIZQ expresion_logica PARDER
+    (40) expresion_logica -> . expresion_logica AND expresion_logica
+    (41) expresion_logica -> . expresion_logica OR expresion_logica
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    PARIZQ          shift and go to state 32
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion_logica               shift and go to state 116
+    expresion                      shift and go to state 41
+
+state 105
+
+    (39) expresion_logica -> PARIZQ expresion_logica PARDER OR PARIZQ . expresion_logica PARDER
+    (26) expresion_logica -> . expresion MENQUE expresion
+    (27) expresion_logica -> . expresion MAYQUE expresion
+    (28) expresion_logica -> . expresion IGUALQUE expresion
+    (29) expresion_logica -> . expresion NIGUALQUE expresion
+    (30) expresion_logica -> . expresion MENIGUAL expresion
+    (31) expresion_logica -> . expresion MAYIGUAL expresion
+    (32) expresion_logica -> . PARIZQ expresion_logica PARDER MENQUE PARIZQ expresion_logica PARDER
+    (33) expresion_logica -> . PARIZQ expresion_logica PARDER MAYQUE PARIZQ expresion_logica PARDER
+    (34) expresion_logica -> . PARIZQ expresion_logica PARDER IGUALQUE PARIZQ expresion_logica PARDER
+    (35) expresion_logica -> . PARIZQ expresion_logica PARDER NIGUALQUE PARIZQ expresion_logica PARDER
+    (36) expresion_logica -> . PARIZQ expresion_logica PARDER MAYIGUAL PARIZQ expresion_logica PARDER
+    (37) expresion_logica -> . PARIZQ expresion_logica PARDER MENIGUAL PARIZQ expresion_logica PARDER
+    (38) expresion_logica -> . PARIZQ expresion_logica PARDER AND PARIZQ expresion_logica PARDER
+    (39) expresion_logica -> . PARIZQ expresion_logica PARDER OR PARIZQ expresion_logica PARDER
+    (40) expresion_logica -> . expresion_logica AND expresion_logica
+    (41) expresion_logica -> . expresion_logica OR expresion_logica
+    (20) expresion -> . ENTERO
+    (21) expresion -> . DECIMAL
+    (22) expresion -> . STRING
+    (23) expresion -> . ID
+    (42) expresion -> . expresion MAS expresion
+    (43) expresion -> . expresion MENOS expresion
+    (44) expresion -> . expresion POR expresion
+    (45) expresion -> . expresion DIVIDIDO expresion
+
+    PARIZQ          shift and go to state 32
+    ENTERO          shift and go to state 35
+    DECIMAL         shift and go to state 36
+    STRING          shift and go to state 37
+    ID              shift and go to state 38
+
+    expresion_logica               shift and go to state 117
+    expresion                      shift and go to state 41
+
+state 106
+
+    (10) if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .
+    (11) if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER . elif_instr
+    (12) if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER . else_instr
+    (13) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (14) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (15) else_instr -> . ELSE LLAVIZQ instrucciones LLAVDER
+
+    PRINT           reduce using rule 10 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+    ID              reduce using rule 10 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+    IF              reduce using rule 10 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+    ELIF            reduce using rule 10 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+    ELSE            reduce using rule 10 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+    WHILE           reduce using rule 10 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+    FOR             reduce using rule 10 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+    $end            reduce using rule 10 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+    LLAVDER         reduce using rule 10 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+
+  ! ELIF            [ shift and go to state 14 ]
+  ! ELSE            [ shift and go to state 15 ]
+
+    elif_instr                     shift and go to state 118
+    else_instr                     shift and go to state 119
+
+state 107
+
+    (13) elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .
+    (14) elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER . else_instr
+    (15) else_instr -> . ELSE LLAVIZQ instrucciones LLAVDER
+
+    PRINT           reduce using rule 13 (elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+    ID              reduce using rule 13 (elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+    IF              reduce using rule 13 (elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+    ELIF            reduce using rule 13 (elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+    ELSE            reduce using rule 13 (elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+    WHILE           reduce using rule 13 (elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+    FOR             reduce using rule 13 (elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+    $end            reduce using rule 13 (elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+    LLAVDER         reduce using rule 13 (elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+
+  ! ELSE            [ shift and go to state 15 ]
+
+    else_instr                     shift and go to state 120
+
+state 108
+
+    (16) while_instr -> WHILE PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .
+
+    PRINT           reduce using rule 16 (while_instr -> WHILE PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+    ID              reduce using rule 16 (while_instr -> WHILE PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+    IF              reduce using rule 16 (while_instr -> WHILE PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+    ELIF            reduce using rule 16 (while_instr -> WHILE PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+    ELSE            reduce using rule 16 (while_instr -> WHILE PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+    WHILE           reduce using rule 16 (while_instr -> WHILE PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+    FOR             reduce using rule 16 (while_instr -> WHILE PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+    $end            reduce using rule 16 (while_instr -> WHILE PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+    LLAVDER         reduce using rule 16 (while_instr -> WHILE PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER .)
+
+
+state 109
+
+    (46) for_instr -> FOR PARIZQ ID IN expresion PARDER LLAVIZQ . instrucciones LLAVDER
+    (2) instrucciones -> . imprimir_instr instrucciones
+    (3) instrucciones -> . asignacion_instr instrucciones
+    (4) instrucciones -> . if_instr instrucciones
+    (5) instrucciones -> . elif_instr instrucciones
+    (6) instrucciones -> . else_instr instrucciones
+    (7) instrucciones -> . while_instr instrucciones
+    (8) instrucciones -> . empty
+    (9) instrucciones -> . for_instr instrucciones
+    (24) imprimir_instr -> . PRINT PARIZQ expresion PARDER PTCOMA
+    (25) imprimir_instr -> . PRINT PARIZQ expresion_logica PARDER PTCOMA
+    (17) asignacion_instr -> . ID IGUAL expresion PTCOMA
+    (10) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (11) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr
+    (12) if_instr -> . IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (13) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (14) elif_instr -> . ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr
+    (15) else_instr -> . ELSE LLAVIZQ instrucciones LLAVDER
+    (16) while_instr -> . WHILE PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER
+    (47) empty -> .
+    (46) for_instr -> . FOR PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER
+
+    PRINT           shift and go to state 11
+    ID              shift and go to state 12
+    IF              shift and go to state 13
+    ELIF            shift and go to state 14
+    ELSE            shift and go to state 15
+    WHILE           shift and go to state 16
+    LLAVDER         reduce using rule 47 (empty -> .)
+    FOR             shift and go to state 17
+
+    instrucciones                  shift and go to state 121
+    imprimir_instr                 shift and go to state 3
+    asignacion_instr               shift and go to state 4
+    if_instr                       shift and go to state 5
+    elif_instr                     shift and go to state 6
+    else_instr                     shift and go to state 7
+    while_instr                    shift and go to state 8
+    empty                          shift and go to state 9
+    for_instr                      shift and go to state 10
+
+state 110
+
+    (32) expresion_logica -> PARIZQ expresion_logica PARDER MENQUE PARIZQ expresion_logica . PARDER
+    (40) expresion_logica -> expresion_logica . AND expresion_logica
+    (41) expresion_logica -> expresion_logica . OR expresion_logica
+
+    PARDER          shift and go to state 122
+    AND             shift and go to state 59
+    OR              shift and go to state 60
+
+
+state 111
+
+    (33) expresion_logica -> PARIZQ expresion_logica PARDER MAYQUE PARIZQ expresion_logica . PARDER
+    (40) expresion_logica -> expresion_logica . AND expresion_logica
+    (41) expresion_logica -> expresion_logica . OR expresion_logica
+
+    PARDER          shift and go to state 123
+    AND             shift and go to state 59
+    OR              shift and go to state 60
+
+
+state 112
+
+    (34) expresion_logica -> PARIZQ expresion_logica PARDER IGUALQUE PARIZQ expresion_logica . PARDER
+    (40) expresion_logica -> expresion_logica . AND expresion_logica
+    (41) expresion_logica -> expresion_logica . OR expresion_logica
+
+    PARDER          shift and go to state 124
+    AND             shift and go to state 59
+    OR              shift and go to state 60
+
+
+state 113
+
+    (35) expresion_logica -> PARIZQ expresion_logica PARDER NIGUALQUE PARIZQ expresion_logica . PARDER
+    (40) expresion_logica -> expresion_logica . AND expresion_logica
+    (41) expresion_logica -> expresion_logica . OR expresion_logica
+
+    PARDER          shift and go to state 125
+    AND             shift and go to state 59
+    OR              shift and go to state 60
+
+
+state 114
+
+    (36) expresion_logica -> PARIZQ expresion_logica PARDER MAYIGUAL PARIZQ expresion_logica . PARDER
+    (40) expresion_logica -> expresion_logica . AND expresion_logica
+    (41) expresion_logica -> expresion_logica . OR expresion_logica
+
+    PARDER          shift and go to state 126
+    AND             shift and go to state 59
+    OR              shift and go to state 60
+
+
+state 115
+
+    (37) expresion_logica -> PARIZQ expresion_logica PARDER MENIGUAL PARIZQ expresion_logica . PARDER
+    (40) expresion_logica -> expresion_logica . AND expresion_logica
+    (41) expresion_logica -> expresion_logica . OR expresion_logica
+
+    PARDER          shift and go to state 127
+    AND             shift and go to state 59
+    OR              shift and go to state 60
+
+
+state 116
+
+    (38) expresion_logica -> PARIZQ expresion_logica PARDER AND PARIZQ expresion_logica . PARDER
+    (40) expresion_logica -> expresion_logica . AND expresion_logica
+    (41) expresion_logica -> expresion_logica . OR expresion_logica
+
+    PARDER          shift and go to state 128
+    AND             shift and go to state 59
+    OR              shift and go to state 60
+
+
+state 117
+
+    (39) expresion_logica -> PARIZQ expresion_logica PARDER OR PARIZQ expresion_logica . PARDER
+    (40) expresion_logica -> expresion_logica . AND expresion_logica
+    (41) expresion_logica -> expresion_logica . OR expresion_logica
+
+    PARDER          shift and go to state 129
+    AND             shift and go to state 59
+    OR              shift and go to state 60
+
+
+state 118
+
+    (11) if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr .
+
+    PRINT           reduce using rule 11 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr .)
+    ID              reduce using rule 11 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr .)
+    IF              reduce using rule 11 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr .)
+    ELIF            reduce using rule 11 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr .)
+    ELSE            reduce using rule 11 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr .)
+    WHILE           reduce using rule 11 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr .)
+    FOR             reduce using rule 11 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr .)
+    $end            reduce using rule 11 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr .)
+    LLAVDER         reduce using rule 11 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER elif_instr .)
+
+
+state 119
+
+    (12) if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr .
+
+    PRINT           reduce using rule 12 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr .)
+    ID              reduce using rule 12 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr .)
+    IF              reduce using rule 12 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr .)
+    ELIF            reduce using rule 12 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr .)
+    ELSE            reduce using rule 12 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr .)
+    WHILE           reduce using rule 12 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr .)
+    FOR             reduce using rule 12 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr .)
+    $end            reduce using rule 12 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr .)
+    LLAVDER         reduce using rule 12 (if_instr -> IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr .)
+
+
+state 120
+
+    (14) elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr .
+
+    PRINT           reduce using rule 14 (elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr .)
+    ID              reduce using rule 14 (elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr .)
+    IF              reduce using rule 14 (elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr .)
+    ELIF            reduce using rule 14 (elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr .)
+    ELSE            reduce using rule 14 (elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr .)
+    WHILE           reduce using rule 14 (elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr .)
+    FOR             reduce using rule 14 (elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr .)
+    $end            reduce using rule 14 (elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr .)
+    LLAVDER         reduce using rule 14 (elif_instr -> ELIF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER else_instr .)
+
+
+state 121
+
+    (46) for_instr -> FOR PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones . LLAVDER
+
+    LLAVDER         shift and go to state 130
+
+
+state 122
+
+    (32) expresion_logica -> PARIZQ expresion_logica PARDER MENQUE PARIZQ expresion_logica PARDER .
+
+    PARDER          reduce using rule 32 (expresion_logica -> PARIZQ expresion_logica PARDER MENQUE PARIZQ expresion_logica PARDER .)
+    AND             reduce using rule 32 (expresion_logica -> PARIZQ expresion_logica PARDER MENQUE PARIZQ expresion_logica PARDER .)
+    OR              reduce using rule 32 (expresion_logica -> PARIZQ expresion_logica PARDER MENQUE PARIZQ expresion_logica PARDER .)
+
+
+state 123
+
+    (33) expresion_logica -> PARIZQ expresion_logica PARDER MAYQUE PARIZQ expresion_logica PARDER .
+
+    PARDER          reduce using rule 33 (expresion_logica -> PARIZQ expresion_logica PARDER MAYQUE PARIZQ expresion_logica PARDER .)
+    AND             reduce using rule 33 (expresion_logica -> PARIZQ expresion_logica PARDER MAYQUE PARIZQ expresion_logica PARDER .)
+    OR              reduce using rule 33 (expresion_logica -> PARIZQ expresion_logica PARDER MAYQUE PARIZQ expresion_logica PARDER .)
+
+
+state 124
+
+    (34) expresion_logica -> PARIZQ expresion_logica PARDER IGUALQUE PARIZQ expresion_logica PARDER .
+
+    PARDER          reduce using rule 34 (expresion_logica -> PARIZQ expresion_logica PARDER IGUALQUE PARIZQ expresion_logica PARDER .)
+    AND             reduce using rule 34 (expresion_logica -> PARIZQ expresion_logica PARDER IGUALQUE PARIZQ expresion_logica PARDER .)
+    OR              reduce using rule 34 (expresion_logica -> PARIZQ expresion_logica PARDER IGUALQUE PARIZQ expresion_logica PARDER .)
+
+
+state 125
+
+    (35) expresion_logica -> PARIZQ expresion_logica PARDER NIGUALQUE PARIZQ expresion_logica PARDER .
+
+    PARDER          reduce using rule 35 (expresion_logica -> PARIZQ expresion_logica PARDER NIGUALQUE PARIZQ expresion_logica PARDER .)
+    AND             reduce using rule 35 (expresion_logica -> PARIZQ expresion_logica PARDER NIGUALQUE PARIZQ expresion_logica PARDER .)
+    OR              reduce using rule 35 (expresion_logica -> PARIZQ expresion_logica PARDER NIGUALQUE PARIZQ expresion_logica PARDER .)
+
+
+state 126
+
+    (36) expresion_logica -> PARIZQ expresion_logica PARDER MAYIGUAL PARIZQ expresion_logica PARDER .
+
+    PARDER          reduce using rule 36 (expresion_logica -> PARIZQ expresion_logica PARDER MAYIGUAL PARIZQ expresion_logica PARDER .)
+    AND             reduce using rule 36 (expresion_logica -> PARIZQ expresion_logica PARDER MAYIGUAL PARIZQ expresion_logica PARDER .)
+    OR              reduce using rule 36 (expresion_logica -> PARIZQ expresion_logica PARDER MAYIGUAL PARIZQ expresion_logica PARDER .)
+
+
+state 127
+
+    (37) expresion_logica -> PARIZQ expresion_logica PARDER MENIGUAL PARIZQ expresion_logica PARDER .
+
+    PARDER          reduce using rule 37 (expresion_logica -> PARIZQ expresion_logica PARDER MENIGUAL PARIZQ expresion_logica PARDER .)
+    AND             reduce using rule 37 (expresion_logica -> PARIZQ expresion_logica PARDER MENIGUAL PARIZQ expresion_logica PARDER .)
+    OR              reduce using rule 37 (expresion_logica -> PARIZQ expresion_logica PARDER MENIGUAL PARIZQ expresion_logica PARDER .)
+
+
+state 128
+
+    (38) expresion_logica -> PARIZQ expresion_logica PARDER AND PARIZQ expresion_logica PARDER .
+
+    PARDER          reduce using rule 38 (expresion_logica -> PARIZQ expresion_logica PARDER AND PARIZQ expresion_logica PARDER .)
+    AND             reduce using rule 38 (expresion_logica -> PARIZQ expresion_logica PARDER AND PARIZQ expresion_logica PARDER .)
+    OR              reduce using rule 38 (expresion_logica -> PARIZQ expresion_logica PARDER AND PARIZQ expresion_logica PARDER .)
+
+
+state 129
+
+    (39) expresion_logica -> PARIZQ expresion_logica PARDER OR PARIZQ expresion_logica PARDER .
+
+    PARDER          reduce using rule 39 (expresion_logica -> PARIZQ expresion_logica PARDER OR PARIZQ expresion_logica PARDER .)
+    AND             reduce using rule 39 (expresion_logica -> PARIZQ expresion_logica PARDER OR PARIZQ expresion_logica PARDER .)
+    OR              reduce using rule 39 (expresion_logica -> PARIZQ expresion_logica PARDER OR PARIZQ expresion_logica PARDER .)
+
+
+state 130
+
+    (46) for_instr -> FOR PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER .
+
+    PRINT           reduce using rule 46 (for_instr -> FOR PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER .)
+    ID              reduce using rule 46 (for_instr -> FOR PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER .)
+    IF              reduce using rule 46 (for_instr -> FOR PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER .)
+    ELIF            reduce using rule 46 (for_instr -> FOR PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER .)
+    ELSE            reduce using rule 46 (for_instr -> FOR PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER .)
+    WHILE           reduce using rule 46 (for_instr -> FOR PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER .)
+    FOR             reduce using rule 46 (for_instr -> FOR PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER .)
+    $end            reduce using rule 46 (for_instr -> FOR PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER .)
+    LLAVDER         reduce using rule 46 (for_instr -> FOR PARIZQ ID IN expresion PARDER LLAVIZQ instrucciones LLAVDER .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for AND in state 80 resolved as shift
+WARNING: shift/reduce conflict for OR in state 80 resolved as shift
+WARNING: shift/reduce conflict for AND in state 81 resolved as shift
+WARNING: shift/reduce conflict for OR in state 81 resolved as shift

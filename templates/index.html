@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename="css/style.css")}}">
+    <link rel="stylesheet" href="{{url_for('static',filename="css/normalize.css")}}">
+    <script src="{{url_for('static',filename="codemirror-5.65.9/lib/codemirror.js")}}"></script>
+    <link rel="stylesheet" href="{{url_for('static',filename="codemirror-5.65.9/lib/codemirror.css")}}">
+    <link rel="stylesheet" href="{{url_for('static',filename="codemirror-5.65.9/theme/dracula.css")}}">
+    <title>Proyecto Final</title>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-title">
+            <h1 class="title">PROYECTO FINAL</h1>
+        </div>
+        <div class="content">
+            <form class="form" id="formulario" method="POST" action="/">
+                <textarea class="form-area" id="editor" name='syntax'>{{text}}</textarea>
+                <div class="form__btns">
+                    <button class="form__btn btn-verificar" onclick="vaciar()" type="submit">ejecutar</button>
+                    <input type="checkbox" name="lexer" value="lexer">
+                    <label for="parser">lexer</label><br>
+
+                    <input type="checkbox" name="parser" value="parser">
+                    <label for="parser">run</label><br>
+
+                </div>
+            </form>
+            <div class="lateral">
+                <textarea class="lateral-area" readonly id="result">{{result}}</textarea>
+                <div class="info">
+                    <h2 class="info-text">INTEGRANTES</h2>
+                    <h3 class="info-text">-Diego Oñate</h3>
+                    <h3 class="info-text">-Andres Antequera</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{url_for('static',filename='js/index.js')}}"></script>
+    <script type="text/javascript">            
+        function vaciar(){
+            document.getElementById("result").innerHTML=""
+        }
+    </script>
+</body>
+</html>

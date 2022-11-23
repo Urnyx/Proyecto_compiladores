@@ -1,0 +1,64 @@
+/******************************************
+ * Ejemplo desarrollado por Rainman Sián  *
+ * Blog: https://ericknavarro.io/olc2     *
+ * Febrero - 2020                         *
+ ******************************************/
+
+/\Se imprime el encabezado
+anota($Tablas de$ & $ multiplicar$)[;
+
+/\Se declara la variable a, de tipo numero
+dca a[;
+/\Se asigna a la variable a el valor 0
+a-:0[;
+/\Se declara la variable c, de tipo numero
+dca c[;
+/\Se asigna a la variable c el valor 0
+c-:1[;
+/\Se imprime un separador
+anota($----------------$)[;
+/**
+ * Se imprimen las tablas del 1 al 5 y 
+ * para cada tabla, se imprimen los resultados
+ * desde el uno hasta el 5, esto se hace con 
+ * dos ciclos while anidados. 
+ **/
+duranteque(a<4+c){	
+	a-:a+1[;
+	dca b[;
+	b-:0[;
+	duranteque(b<4+c){
+		b-:b+1[;
+		anota(a & $ * $ & b & $ -: $ & a * b)[;
+	}
+	anota($----------------$)[;
+}
+
+/\Se asigna a la variable a el valor de 11
+a-:11[;
+/**
+ * La variable b ya había sido declarada pero 
+ * dentro del ámbito del primer ciclo while, 
+ * entonces no existe en este ámbito por lo que 
+ * debe declararse.
+ **/
+dca b[;
+/\Se asigna valor de 12 a b y valor de 13 a c
+b-:12[;
+c-:13[;
+/**
+ * Se evalua si el valor de la variable a es 
+ * mayor que 10, si el b es mayor que 11 y si
+ * el de c es mayor que 12. 
+ **/
+siempreque(a>10){
+	anota($a es mayor que 10.$)[;
+	siempreque(b>11){
+		anota($a es mayor que 10 y b es mayor que 11.$)[;
+		siempreque(c>-:12){
+			anota($a es mayor que 10, b es mayor que 11 y c es mayor o igual que 12.$)[;
+		}
+	}
+}cuandono{
+	anota($a es menor o igual que 10.$)[;
+}

@@ -1,0 +1,201 @@
+
+
+def p_declaration_asignar(t):
+    'declaracion : ID IGUAL expresion PUNTOCOMA'
+    nombres[t[1]] = t[3]
+
+def p_declaracion_expr(t):
+    'declaracion : expresion'
+    t[0] = t[1]
+    
+def p_expresion_operaciones(t):
+    '''
+    expresion : expresion SUMA expresion
+              |  expresion RESTA expresion
+              |  expresion MULT expresion
+              |  expresion DIV expresion
+              |  expresion POTENCIA expresion
+              |  expresion MODULO expresion
+    '''
+    if t[2] == '+':
+        t[0] = t[1] + t[3]
+    elif  t[2] == '-':
+        t[0] = t[1] - t[3]
+    elif t[2] == '*':
+        t[0] = t[1] * t[3]
+    elif t[2] == '/':
+        t[0] = t[1] / t[3]
+    elif t[2] == '%':
+        t[0] = t[1] % t[3]
+    elif t[2] == '**':
+        i = t[3]
+        t[0] = t[1]
+        while i > 1:
+            t[0] *= t[1]
+            i -= 1
+
+def p_expresion_uminus(t):
+    'expresion : RESTA expresion %prec UNIMUS'
+    t[0] = -t[2]
+
+def p_expresion_grupo(t):
+    '''
+    expresion : PARIZQ expresion PARDER
+              | LLAIZQ expresion LLADER
+              | CORIZQ expresion CORDER
+    '''
+    t[0] = t[2]
+    
+def p_expresiones_logicas(t):
+    '''
+    expresion : expresion MENORQUE expresion
+              |  expresion MAYORQUE expresion
+              |  expresion MENORIGUAL expresion
+              |  expresion MAYORIGUAL expresion
+              |  expresion IGUAL expresion
+              |  expresion DISTINTO expresion
+              |  PARIZQ expresion PARDER MENORQUE PARIZQ expresion PARDER
+              |  PARIZQ expresion PARDER MAYORQUE PARIZQ expresion PARDER
+              |  PARIZQ expresion PARDER MENORIGUAL PARIZQ expresion PARDER
+              |  PARIZQ expresion PARDER MAYORIGUAL PARIZQ expresion PARDER
+              |  PARIZQ expresion PARDER IGUAL PARIZQ expresion PARDER
+              |  PARIZQ expresion PARDER DISTINTO PARIZQ expresion PARDER
+    '''
+    if t[2] == "<":t[0] = t[1] < t[3]
+    elif t[2] == ">":t[0] = t[1] > t[3]
+    elif t[2] == "<=":t[0] = t[1] <= t[3]
+    elif t[2] == ">=":t[0] = t[1] >= t[3]
+    elif t[2] == "==":t[0] = t[1] == t[3]
+    elif t[2] == "!=":t[0] = t[1] != t[3]
+    elif t[3] == '<':
+        t[0] = t[2] < t[4]
+    elif t[3] == '>':
+        t[0] = t[2] > t[4]
+    elif t[3] == '<=':
+        t[0] = t[2] <= t[4]
+    elif t[3] == '>=':
+        t[0] = t[2] >= t[4]
+    elif t[3] == '==':
+        t[0] = t[2] is t[4]
+    elif t[3] == '!=':
+        t[0] = t[2] != t[4]
+    
+def p_expresion_booleana(t):
+    '''
+    expresion : expresion AND expresion
+              |  expresion OR expresion
+              |  expresion NOT expresion
+              |  PARIZQ expresion AND expresion PARDER
+              |  PARIZQ expresion OR expresion PARDER
+              |  PARIZQ expresion NOT expresion PARDER
+    '''
+    if t[2] == '^':
+        t[0] = t[1] and t[3]
+    elif t[2] == '~':
+        t[0] = t[1] or t[3]
+    elif t[2] == '!':
+        t[0] = t[1] is not t[3]
+    elif t[3] == '^':
+        t[0] = t[2] and t[4]
+    elif t[3] == '~':
+        t[0] = t[2] or t[4]
+    elif t[3] == '!':
+        t[0] = t[2] is not t[4]    
+
+def p_expresion_numero(t):
+    'expresion : ENTERO'
+    t[0] = t[1]
+    
+def p_expresion_cadena(t):
+    'expresion : STRING'
+
+def p_expresion_nombre(t):
+    'expresion : IDENTIFICADOR'
+    try:
+        t[0] = nombres[t[1]]
+    except LookupError:
+        print("Error","Nombre desconocido "+t[1])
+        t[0] = 0
+        
+def p_error(t):
+    global resultadoGramatica
+    if t:
+        resultado = "Error sintactico de tipo {} en el valor {}".format(str(t.type),str(t.value))
+        print(resultado)
+    else:
+        resultado = "Error sintactico {}".format(t)
+        print(resultado)
+    
+    resultadoGramatica.append(resultado)
+
+    
+parser = yacc.yacc()
+
+def prueba_sintactica(data):
+    global resultadoGramatica
+    resultadoGramatica.clear()
+    
+    for item in data.splitlines():
+        if item:
+            gram = parser.parse(item)
+            if gram:
+                resultadoGramatica.append(str(gram))
+        else: print("data vacia")
+    
+    return resultadoGramatica
+
+
+if __name__=='__main__':
+    while True:
+        try:
+            s = input('Ingresa dato >>> ')
+        except EOFError:
+            continue
+        
+        if not s:continue
+        gram = parser.parse(s)
+        print("Resultado ",gram)
+        
+        prueba_sintactica(s)
+
+
+
+
+    def p_for_statement(self, p):
+        '''for_statement : FOR '(' for_init_opt ';' expression_opt ';' for_update_opt ')' statement'''
+        p[0] = For(p[3], p[5], p[7], p[9])
+
+    def p_for_statement_no_short_if(self, p):
+        '''for_statement_no_short_if : FOR '(' for_init_opt ';' expression_opt ';' for_update_opt ')' statement_no_short_if'''
+        p[0] = For(p[3], p[5], p[7], p[9])
+
+    def p_for_init_opt(self, p):
+        '''for_init_opt : for_init
+                        | empty'''
+        p[0] = p[1]
+
+    def p_for_init(self, p):
+        '''for_init : statement_expression_list
+                    | local_variable_declaration'''
+        p[0] = p[1]
+
+--------------------------------
+
+def p_expresion_logica(t):
+    ''' expresion_logica : expresion MENQUE expresion
+                         | expresion MAYQUE expresion
+                         | expresion IGUALQUE expresion
+                         | expresion NIGUALQUE expresion
+                         | expresion MENIGUAL expresion
+                         | expresion MAYIGUAL expresion
+    '''
+    if t[2] == '<':t[0] = t[1] < t[3]
+    elif t[2] == '>':t[0] = t[1] > t[3]
+    elif t[2] == '==':t[0] = t[1] == t[3]
+    elif t[2] == '!=':t[0] = t[1] != t[3]
+    elif t[2] == '<=':t[0] = t[1] <= t[3]
+    elif t[2] == '>=':t[0] = t[1] >= t[3]
+    
+def p_expresion_logica_group(t):
+    '''expresion_logica : PARIZQ expresion_logica PARDER'''
+    t[0] = t[2]    
