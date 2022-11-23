@@ -28,11 +28,23 @@ class For(Instruccion) :
         de instrucciones a ejecutar si la expresión lógica es verdadera.
     '''
 
-    def __init__(self,asignacion1,expLogica,asignacion2,instrucciones = []) :
+    def __init__(self,asignacion1,expLogica,instrucciones = []) :
+        # print(instrucciones,'xd')
         self.asignacion1 = asignacion1
         self.expLogica = expLogica
-        self.asignacion2 = asignacion2
         self.instrucciones = instrucciones
+        
+class Funcion(Instruccion):
+    def __init__(self,nombreF,parametrosF,instrucciones=[]):
+        self.nombreF = nombreF
+        self.parametrosF = parametrosF
+        self.instrucciones = instrucciones
+
+
+class FuncionCall(Instruccion):
+    def __init__(self,nombreF):
+        self.nombreF = nombreF
+
 
 class Definicion(Instruccion) :
     '''

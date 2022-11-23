@@ -2,6 +2,7 @@ from enum import Enum
 
 class TIPO_DATO(Enum) :
     NUMERO = 1
+    FUNCION = 2
 
 class Simbolo() :
     'Esta clase representa un simbolo dentro de nuestra tabla de simbolos'

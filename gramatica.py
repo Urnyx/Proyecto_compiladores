@@ -6,7 +6,9 @@ reservadas = {
     'siempreque' : 'IF',
     'cuandono' : 'ELSE',
     'desde':'FOR',
-    'hasta':'TO'
+    'hasta':'TO',
+    'fun':'DEF',
+    'devuelve':'RETURN'
 }
 
 tokens  = [
@@ -31,10 +33,12 @@ tokens  = [
     'ENTERO',
     'CADENA',
     'PTCOMACERRADO',
-    'ID'
+    'ID',
+    'COMA',
 ] + list(reservadas.values())
 
 # Tokens
+t_COMA = r'\,'
 t_PTCOMACERRADO = r'\[\;\]'
 t_PTCOMA    = r'\[\;'
 t_LLAVIZQ   = r'{'
@@ -131,7 +135,6 @@ def p_instrucciones_lista(t) :
     t[1].append(t[2])
     t[0] = t[1]
 
-
 def p_instrucciones_instruccion(t) :
     'instrucciones    : instruccion '
     t[0] = [t[1]]
@@ -144,7 +147,6 @@ def p_instruccion(t) :
                         | if_instr
                         | if_else_instr
                         | for_instr
-                        | for
                         | for_asign
     '''
     t[0] = t[1]
@@ -167,26 +169,43 @@ def p_mientras_instr(t) :
 
 def p_for_asign(t):
     'for_asign : ID IGUAL expresion_numerica'
-    t[0] = Asignacion(t[2],t[3])
-
-def p_for(t):
-    """
-    for : FOR PARIZQ ID TO ENTERO PARDER LLAVIZQ instrucciones LLAVDER
-    """
-    print(t[5])
-    i = int(str(t[5]))
-    x = 0
-    while x < i:
-        t[0] = t[8]
-        print(t[8][0])
-        for i in t[8][0]:
-            print (i)
-        x = x + 1
-    t[0] = t[8]
+    t[0] = Asignacion(t[1],t[3])
 
 def p_for_instr(t) :
     'for_instr     : FOR PARIZQ for_asign PTCOMACERRADO expresion_logica PTCOMACERRADO for_asign PARDER LLAVIZQ instrucciones LLAVDER'
-    t[0] =For(t[3],t[5],t[7],t[10])
+    t[10].append(t[7])
+    t[0] =For(t[3],t[5],t[10])
+    
+def p_function_call(t):
+    """
+    function_call : ID PARIZQ PARDER
+                  | ID PARIZQ expresion_numerica COMA expresion_numerica PARDER
+    """
+    t[0] = FuncionCall(t[1])
+    
+def p_function(t):
+    """
+    function : DEF ID PARIZQ argument_list_option PARDER LLAVIZQ instrucciones LLAVDER
+    
+    argument_list_option : argument_list
+                         
+    argument_list : argument_list COMA argument
+                  | argument
+                  
+    argument : ID
+    """
+    t[0] = Funcion(t[2],t[4],t[7])
+    
+    
+def p_return_statement(p):
+    """
+    return-statement : RETURN PTCOMA
+                     | RETURN expresion_numerica PTCOMA
+    """
+    
+    child = ["_e_" if  item is None else item for item in p ]
+        
+    p[0] = ("return_statement",child)
 
 def p_if_instr(t) :
     'if_instr           : IF PARIZQ expresion_logica PARDER LLAVIZQ instrucciones LLAVDER'

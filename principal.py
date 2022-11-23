@@ -7,7 +7,7 @@ result = ''
     
 def procesar_imprimir(instr, ts) :
     global result
-    # print('> ',resolver_cadena(instr.cad, ts))
+    print('> ',resolver_cadena(instr.cad, ts))
     result += resolver_cadena(instr.cad, ts) +'\n'
     
 def procesar_definicion(instr, ts) :
@@ -25,11 +25,23 @@ def procesar_mientras(instr, ts) :
         procesar_instrucciones(instr.instrucciones, ts_local)
 
 def procesar_for(instr, ts) :
+    cont = 0
     while resolver_expreision_logica(instr.expLogica, ts): 
+        # print(instr.instrucciones)
         ts_local = TS.TablaDeSimbolos(ts.simbolos)
-        procesar_instrucciones(instr.asignacion1,ts_local)
+        if cont == 0:
+            procesar_asignacion(instr.asignacion1,ts_local)
+            cont+=1
         procesar_instrucciones(instr.instrucciones, ts_local)
-        procesar_instrucciones(instr.asignacion2,ts_local)
+
+def procesar_funcion(instr,ts):
+    simbolo = TS.Simbolo(instr.nombreF, TS.TIPO_DATO.FUNCION, instr.instrucciones)
+    ts.agregar(simbolo)
+    
+def procesar_funcionCall(instr,ts):
+    ts_local = TS.TablaDeSimbolos(ts.simbolos)
+    print(ts_local.obtener())
+     
 
 def procesar_if(instr, ts) :
     val = resolver_expreision_logica(instr.expLogica, ts)
@@ -96,6 +108,8 @@ def procesar_instrucciones(instrucciones, ts) :
         elif isinstance(instr, If) : procesar_if(instr, ts)
         elif isinstance(instr, IfElse) : procesar_if_else(instr, ts)
         elif isinstance(instr, For) : procesar_for(instr, ts)
+        elif isinstance(instr, Funcion) : procesar_for(instr, ts)
+        elif isinstance(instr, FuncionCall) : procesar_for(instr, ts)
         else : print('Error: instrucción no válida')
 
 f = open("entrada.txt", "r")
@@ -104,6 +118,7 @@ input = f.read()
 def run(input):
     instrucciones = g.parse(input)
     ts_global = TS.TablaDeSimbolos()
+    # print(instrucciones)
     return str(procesar_instrucciones(instrucciones, ts_global))
     
 def mostrar(input):
@@ -114,8 +129,10 @@ def mostrar(input):
         return 'error'
 
 data='''
-desde(i hasta 10){
-    anota(i)[;
+anota(2)[;
+
+def (x){
+    anota(x)
 }
 '''
 
